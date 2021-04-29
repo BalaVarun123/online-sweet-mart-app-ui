@@ -6,10 +6,8 @@ import reportWebVitals from './reportWebVitals';
 
 
 import AppRouter from './routers/AppRouter';
-import getAppStore from './store/store';
-import { getBooks } from './actions/books';
-import './styles/styles.scss';
-
+//import getAppStore from './store/store';
+import store from './store/store'
 import { Provider } from 'react-redux';
 
 /*ReactDOM.render(
@@ -20,7 +18,7 @@ import { Provider } from 'react-redux';
 );
 */
 
-const store = getAppStore();
+//const store = getAppStore();
 
 const template = (
     <Provider store={store}>
@@ -28,9 +26,9 @@ const template = (
     </Provider>
 );
 
-store.dispatch(getBooks()).then(() => {
-    ReactDOM.render(template, document.getElementById('root'));
-});
+
+ReactDOM.render(template, document.getElementById('root'));
+
 
 
 

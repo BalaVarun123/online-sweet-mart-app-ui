@@ -1,28 +1,37 @@
 import React from "react";
+import { connect } from "react-redux";
+import {getLoginAction} from "../../actions/LoginActions"
+import { LoginService } from "../../services/LoginServices/LoginService";
+import LoginForm from "./LoginForm";
 
-export default class LoginComponent extends React.Component{
+
+var loginService = new LoginService();
+
+class LoginContainer extends React.Component{
     render(){
         return <React.Fragment>
-            <LoginComponent/>
+            <LoginForm message = {this.props.message} onSubmit = {this.props.onSubmit}/>
         </React.Fragment>
     }
 }
 
 
-const mapStateToProps = state => {
+const mapStateToProps = (state,props) => {
+    console.log("message is "+state.login.message);
     return {
-      numOfCakes: state.cake.numOfCakes
+      message : state.login.message
     }
   }
   
   const mapDispatchToProps = dispatch => {
     return {
-      buyCake: () => dispatch(buyCake())
+        onSubmit: (userId,password) => {
+            console.log("clicked");
+            dispatch(getLoginAction(userId,password));
+            loginService.login(userId,password,dispatch);
+        }
     }
   }
   
-  export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(CakeContainer)
+  export default connect(mapStateToProps,mapDispatchToProps)(LoginContainer)
   
