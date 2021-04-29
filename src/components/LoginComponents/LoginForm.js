@@ -12,3 +12,4 @@ export default class LoginForm extends React.Component{
         this.props.onSubmit()
     }
 }
+//this is a login form
