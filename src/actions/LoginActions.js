@@ -12,9 +12,10 @@ export function getLogoutAction(){
         type : USER_LOGOUT
     }
 }
-export function getLoginSuccessfulAction(){
+export function getLoginSuccessfulAction(payload){
     return {
-        type : USER_LOGIN_SUCCESSFUL
+        type : USER_LOGIN_SUCCESSFUL,
+        payload
     }
 }
 
@@ -24,9 +25,10 @@ export function getLogoutSuccessfulAction(){
     }
 }
 
-export function getLoginFailedAction(){
+export function getLoginFailedAction(payload){
     return {
-        type : USER_LOGIN_FAILED
+        type : USER_LOGIN_FAILED,
+        payload
     }
 }
 

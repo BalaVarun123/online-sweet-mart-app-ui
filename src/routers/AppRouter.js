@@ -1,18 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Header from '../components/Header';
-import DashBoard from '../components/DashBoard';
-import AddBook from '../components/AddBook';
-import EditBook from '../components/EditBook';
-import NotFound from '../components/NotFound';
-import LoginComponent from '../components/LoginComponents/LoginComponent';
+import LoginContainer from '../components/LoginComponents/LoginContainer';
+
 
 const AppRouter = () => (
     <BrowserRouter>
         <div className='container'>
-            <Header />
+            {/*<Header />*/}
             <Switch>
-                <Route path="/" component={LoginComponent} exact/>
+                <Route path="/" component={LoginContainer} exact/>
             </Switch>
         </div>
     </BrowserRouter>

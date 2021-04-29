@@ -6,29 +6,33 @@ const defaultState = {
     userId : -1,
     userType : null,
     tempUserDetails : null,
-    userId:null
+    message : ""
 }
 
 
 const LoginReducer = (state = defaultState , action) => {
     let newState = {...state};
-    switch (action.userType){
+    switch (action.type){
         case USER_LOGIN:
             newState.processing = true;
             newState.tempUserDetails = {userId : action.userId, password : action.password};
+            newState.message = "Please wait";
             break;
         case USER_LOGOUT:
             newState.processing = true;
+            newState.message = "Please wait";
             //newState.userId = action.userId;
             break;
         case USER_LOGIN_SUCCESSFUL:
             newState.processing = false;
             newState.userId = state.tempUserDetails.userId;
             newState.tempUserDetails = null;
+            newState.message = action.payload;
             break;
         case USER_LOGIN_FAILED:
             newState.processing = false;
             newState.tempUserDetails = null;
+            newState.message = action.payload;
             break;
         case USER_LOGOUT_SUCCESSFUL:
             newState.processing = false;
@@ -39,6 +43,8 @@ const LoginReducer = (state = defaultState , action) => {
             newState.processing = false;
             newState.tempUserDetails = null;
             break;
+        default :
+            newState = state;
     }
     return newState;
 }
