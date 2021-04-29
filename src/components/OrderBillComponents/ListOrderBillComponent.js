@@ -1,5 +1,5 @@
 import React from "react";
-class ListAdminComponent extends React.Component{
+class ListOrderBillComponent extends React.Component{
 
 
     render(){
@@ -63,4 +63,4 @@ class ListAdminComponent extends React.Component{
 
 }
 
-export default ListAdminComponent;
+export default ListOrderBillComponent;

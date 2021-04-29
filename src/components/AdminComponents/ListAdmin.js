@@ -1,6 +1,6 @@
 import React from "react";
 import ListAdminComponent from "./ListAdminComponent";
-class ListAdminContainer extends React.Component{
+class ListAdmin extends React.Component{
     render(){
         return <div>
             <ListAdminComponent/>
@@ -8,4 +8,4 @@ class ListAdminContainer extends React.Component{
     }
 }
 
-export default ListAdminContainer;
+export default ListAdmin;
