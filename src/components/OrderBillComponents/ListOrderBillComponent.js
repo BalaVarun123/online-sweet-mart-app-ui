@@ -10,13 +10,10 @@ class ListOrderBillComponent extends React.Component{
             <table>
             <thead>
               <tr>
-                  <th>ID</th>
-                  <th>Customer ID</th>
-                  <th>User ID</th>
-                  <th>Item ID</th>
-                  <th>Category ID</th>
-                  <th>Cart ID</th>
-                  <th>Product ID</th>
+                  <th>Order Bill Id</th>
+                  <th>Created Date</th>
+                  <th>Total Cost</th>
+                  <th>Sweet Orders</th>
                   <th colSpan = {2}>Action</th> {/*UPDATE DELETE*/}
                   <tbody>{this.props.details}</tbody>
               </tr>  
@@ -27,19 +24,16 @@ class ListOrderBillComponent extends React.Component{
     }
 
 
-    loadDetails = (adminList) =>{
-        if (adminList && adminList.length > 0){
+    loadDetails = (orderBillList) =>{
+        if (orderBillList && orderBillList.length > 0){
             let rows = [];
-            for (let admin of adminList){
+            for (let orderBill of orderBillList){
                 rows.push(
-                    <tr key = {admin.id}>
-                        <td>{admin.id}</td>
-                        <td>{admin.customer.userId}</td>
-                        <td>{admin.user.userId}</td>
-                        <td>{admin.item.orderItemId}</td>
-                        <td>{admin.category.categoryId}</td>
-                        <td>{admin.cart.cartId}</td>
-                        <td>{admin.product.productId}</td>
+                    <tr key = {orderBill.orderBillId}>
+                        <td>{orderBill.orderBillId}</td>
+                        <td>{orderBill.createdDate}</td>
+                        <td>{orderBill.totalCost}</td>
+                        <td><button type="button">View Sweet Orders</button></td>
                         <td><button type="button">UPDATE</button></td>
                         <td><button type="button">DELETE</button></td>
                     </tr>
@@ -58,6 +52,10 @@ class ListOrderBillComponent extends React.Component{
     }
 
     onClickDelete = (event) => {
+
+    }
+
+    onClickViewSweetOrders = (event) => {
 
     }
 

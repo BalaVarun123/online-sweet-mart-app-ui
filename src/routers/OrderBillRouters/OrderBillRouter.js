@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AddOrderBill from '../../components/OrderBillComponents/AddOrderBill';
 import ListOrderBill from '../../components/OrderBillComponents/ListOrderBill';
 import OrderBill from '../../components/OrderBillComponents/OrderBill';
-import ShowOrderBill from '../../components/OrderBillComponents/ShowAdmin';
+import ShowOrderBill from '../../components/OrderBillComponents/ShowOrderBill';
 import UpdateOrderBill from '../../components/OrderBillComponents/UpdateOrderBill';
 
 

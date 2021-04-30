@@ -13,4 +13,4 @@ class ShowOrderBill extends React.Component{
         </div>
     }
 }
-export default ShowOrderBill;
+export default ShowOrderBill; 
