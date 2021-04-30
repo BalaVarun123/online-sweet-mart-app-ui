@@ -1,7 +1,10 @@
 import React from "react";
 export default class ShowAdminComponent extends React.Component{
     render(){
-        return <div>
+        let component;
+        if (this.props.admin){
+            component  = 
+            <div>
             <p>
                 ID : {this.props.admin.id} <br/>
                 Customer ID : {this.props.admin.customer.userId} <br/>
@@ -16,5 +19,10 @@ export default class ShowAdminComponent extends React.Component{
             </p>
             <br/>
         </div>
+    }
+    else{
+        component = <p>{this.props.message}</p>
+    }
+        return component;
     }
 }
