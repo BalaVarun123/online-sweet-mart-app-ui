@@ -13,8 +13,8 @@ export default class ShowAdminComponent extends React.Component{
                 Category Id : {this.props.admin.category.categoryId} <br/>
                 Cart ID : {this.props.admin.cart.cartId} <br/>
                 Product ID : {this.props.admin.product.productId} <br/>
-                <button type="button">Update</button>
-                <button type="button">Delete</button>
+                <button type="button" id = "btn-update" onClick = {this.props.onClickUpdate}>Update</button>
+                <button type="button" id = "btn-delete">Delete</button>
                 {/*<button type="button">Cancel</button>*/}
             </p>
             <br/>
@@ -25,4 +25,5 @@ export default class ShowAdminComponent extends React.Component{
     }
         return component;
     }
+
 }

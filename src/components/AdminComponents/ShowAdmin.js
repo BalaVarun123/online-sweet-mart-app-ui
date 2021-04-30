@@ -1,21 +1,27 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { _showAdmin } from "../../actions/AdminActions";
+import { _adminRedirectToUpdate, _showAdmin } from "../../actions/AdminActions";
+import { ADMIN_REDIRECT_TO_UPDATE } from "../../actionTypes/AdminActionTypes";
 import AdminService from "../../services/AdminServices/AdminService";
 import ShowAdminComponent from "./ShowAdminComponent";
 
 class ShowAdmin extends React.Component{
 
 
-    
+    constructor(props){
+        super(props);
+    }
 
     render(){
+        if (this.props.redirectToUpdate ){
+            this.props.history.push(`/admin/update/${this.props.id}`)
+        }
+        
         return <div>
             <h2>ShowAdmin</h2>
             <br/>
-            <p>{this.props.message}</p>
-            <ShowAdminComponent admin = {this.props.admin}/>
+            <ShowAdminComponent admin = {this.props.admin} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate}/>
         </div>
     }
 
@@ -27,16 +33,16 @@ class ShowAdmin extends React.Component{
     }
 
 
-
 }
 
 
 const mapStateToProps = (state,props) => {
-    
     return {
         admin: state.admin.admin,
         id : props.match.params.id,
-        processing : state.admin.processing
+        processing : state.admin.processing,
+        message : state.admin.message,
+        redirectToUpdate : state.admin.redirectToUpdate
     };
 }
 
@@ -44,8 +50,6 @@ const mapStateToProps = (state,props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         responseCallBack : (response) => {
-            console.log("+++");
-            console.log("response :"+JSON.stringify(response));
             let data = response.data;
             if (data.length > 0)
             dispatch(_showAdmin(response.data[0],false,""));
@@ -53,9 +57,11 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(_showAdmin(null,false,"Ivalid admin ID."))
         },
         catchCallBack  : (error) => {
-            console.log("****");
-            console.log("error :"+JSON.stringify(error));
             dispatch(_showAdmin(null,false,error.response.data));
+        },
+
+        onClickUpdate : () => {
+            dispatch(_adminRedirectToUpdate(true));
         }
     }
 }
