@@ -27,21 +27,38 @@ class ListAdminComponent extends React.Component{
     }
 
 
-    loadDetails(adminList){
+    loadDetails = (adminList) =>{
         if (adminList && adminList.length > 0){
             let rows = [];
             for (let admin of adminList){
                 rows.push(
-                    <tr>
+                    <tr key = {admin.id}>
                         <td>{admin.id}</td>
-                        <td>{admin.customer}</td>
-                        <td>{admin.user}</td>
-                        <td>{admin.id}</td>
-                        <td>{admin.id}</td>
+                        <td>{admin.customer.userId}</td>
+                        <td>{admin.user.userId}</td>
+                        <td>{admin.item.orderItemId}</td>
+                        <td>{admin.category.categoryId}</td>
+                        <td>{admin.cart.cartId}</td>
+                        <td>{admin.product.productId}</td>
+                        <td><button type="button">UPDATE</button></td>
+                        <td><button type="button">DELETE</button></td>
                     </tr>
                 );
             }
         }
+    }
+
+
+    componentDidMount(){
+        console.log("component mounted");
+    }
+
+    onClickUpdate = (event)=>{
+
+    }
+
+    onClickDelete = (event) => {
+
     }
 
 }
