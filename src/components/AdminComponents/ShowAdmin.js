@@ -9,6 +9,8 @@ import ShowAdminComponent from "./ShowAdminComponent";
 class ShowAdmin extends React.Component{
 
 
+    adminService = new AdminService();
+
     constructor(props){
         super(props);
     }
@@ -20,16 +22,21 @@ class ShowAdmin extends React.Component{
         
         return <div>
             <h2>ShowAdmin</h2>
+            <p>{this.props.message}</p>
             <br/>
-            <ShowAdminComponent admin = {this.props.admin} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate}/>
+            <ShowAdminComponent admin = {this.props.admin} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.onClickDelete}/>
         </div>
     }
 
     componentDidMount(){
         if (!this.props.admin){
-            let adminService = new AdminService();
-            adminService.getAdmin(this.props.id,this.props.responseCallBack,this.props.catchCallBack);
+            this.adminService.getAdmin(this.props.id,this.props.responseCallBack,this.props.catchCallBack);
         }
+    }
+
+    onClickDelete = () => {
+        this.adminService.deleteAdmin(this.props.id,(response) => console.log("Record deleted :"+response.data), (error) => error.response.data);
+        this.props.history.push("/")
     }
 
 

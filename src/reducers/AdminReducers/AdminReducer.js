@@ -5,7 +5,8 @@ const defaultState = {
     adminList:null,
     processing : false,
     message : "",
-    redirectToUpdate : false
+    redirectToUpdate : false,
+    redirectToShow : false
 }
 
 export default function adminReducer(state = defaultState , action){
@@ -28,6 +29,12 @@ export default function adminReducer(state = defaultState , action){
             if (action.admin!=null)
             newState.admin = action.admin;
             newState.message = action.message;
+            break;
+        case ADMIN_ADD:
+            if (action.admin!=null)
+            newState.admin = action.admin;
+            newState.message = action.message;
+            newState.redirectToShow = action.redirectToShow;
             break;
         default :
             newState = state;

@@ -11,6 +11,7 @@ export function _showAdmin(admin = {},processing = false,message = ""){
 }
 
 
+
 export function _showAllAdmins(adminList = [],processing = false,message = ""){
     return {
         type : ADMIN_SHOW_ALL,
@@ -33,5 +34,22 @@ export function _updateAdmin(admin,message){
         type : ADMIN_UPDATE,
         admin,
         message
+    }
+}
+
+export function _deleteAdmin(id) {
+    return {
+        type : ADMIN_DELETE,
+        id : id
+    }
+}
+
+
+export function _addAdmin(admin,message,redirectToShow) {
+    return {
+        type : ADMIN_ADD,
+        admin : admin,
+        message : message,
+        redirectToShow : redirectToShow
     }
 }

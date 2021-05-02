@@ -12,12 +12,12 @@ export default class AddAdminComponent extends React.Component{
         return <div>
                <form onSubmit = {this.onSubmit} onReset = {this.onReset}>
                 ID : will be auto-generated.<br/>
-                Customer ID : <input id = "customer-id-input"type = "number" min = "0" defaultValue = {this.props.admin.customer.userId} ref = {this.customerIdRef} />   <br/>
-                User ID: <input id = "user-id-input" type = "number" min = "0" defaultValue = {this.props.admin.user.userId} ref = {this.userIdRef}/>   <br/>
-                SweetItem ID : <input id = "sweet-item-id-input" type = "number" min = "0" defaultValue = {this.props.admin.item.orderItemId} ref = {this.itemIdRef}/>   <br/>
-                Category Id : <input id = "category-id-input" type = "number" min = "0" defaultValue = {this.props.admin.category.categoryId} ref = {this.categoryIdRef}/>    <br/>
-                Cart ID : <input id = "cart-id-input" type = "number" min = "0" defaultValue = {this.props.admin.cart.cartId}  ref = {this.cartIdRef}/>  <br/>
-                Product ID : <input id = "product-id-input" type = "number" min = "0" defaultValue = {this.props.admin.product.productId} ref = {this.productIdRef}/>   <br/>
+                Customer ID : <input id = "customer-id-input"type = "number" min = "0"  ref = {this.customerIdRef} required/>   <br/>
+                User ID: <input id = "user-id-input" type = "number" min = "0"  ref = {this.userIdRef} required/>   <br/>
+                SweetItem ID : <input id = "sweet-item-id-input" type = "number" min = "0"  ref = {this.itemIdRef} required/>   <br/>
+                Category Id : <input id = "category-id-input" type = "number" min = "0"  ref = {this.categoryIdRef} required/>    <br/>
+                Cart ID : <input id = "cart-id-input" type = "number" min = "0"   ref = {this.cartIdRef} required/>  <br/>
+                Product ID : <input id = "product-id-input" type = "number" min = "0" ref = {this.productIdRef} required/>   <br/>
                 <button type="submit">Add</button>
                 <button type= "reset">Reset</button>
                 {/*<button type="button">Cancel</button>*/}
@@ -26,7 +26,17 @@ export default class AddAdminComponent extends React.Component{
     }
 
     onSubmit = (event) => {
-
+        event.preventDefault();
+        const admin = {     
+            id : 0,
+            customerId : this.customerIdRef.current.value,
+            userId : this.userIdRef.current.value,
+            itemId : this.itemIdRef.current.value,
+            category : this.categoryIdRef.current.value,
+            cart : this.cartIdRef.current.value,
+            product : this.productIdRef.current.value
+        }
+        this.props.onSubmit(admin);
     }
 
     onReset = (event) => {
