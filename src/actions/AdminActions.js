@@ -12,20 +12,20 @@ export function _showAdmin(admin = {},processing = false,message = ""){
 
 
 
-export function _showAllAdmins(adminList = [],processing = false,message = ""){
+export function _showAllAdmins(adminList = [],message = ""){
     return {
         type : ADMIN_SHOW_ALL,
-        adminList,
-        processing,
-        message
+        adminList : adminList,
+        message : message
     }
 }
 
 
-export function _adminRedirectToUpdate(value = true){
+export function _adminRedirectToUpdate(value = true,redirectionId = 0){
     return {
         type : ADMIN_REDIRECT_TO_UPDATE,
-        value
+        value: value,
+        redirectionId:redirectionId
     }
 }
 

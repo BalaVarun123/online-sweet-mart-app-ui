@@ -2,9 +2,16 @@ import React from "react";
 class ListOrderBillComponent extends React.Component{
 
 
+
+    constructor(props){
+        super(props);
+        this.details = [];
+    }
+
     render(){
+        this.loadDetails(this.props.orderBillList);
         return <div>
-            <p>Message display</p> 
+            <p>{this.props.message}</p> 
             <div>Selected view</div>
             <div>
             <table>
@@ -15,9 +22,9 @@ class ListOrderBillComponent extends React.Component{
                   <th>Total Cost</th>
                   <th>Sweet Orders</th>
                   <th colSpan = {2}>Action</th> {/*UPDATE DELETE*/}
-                  <tbody>{this.props.details}</tbody>
               </tr>  
             </thead>
+            <tbody>{this.details}</tbody>
            </table>
            </div>
         </div>
@@ -25,6 +32,7 @@ class ListOrderBillComponent extends React.Component{
 
 
     loadDetails = (orderBillList) =>{
+        console.log("orderBillList is of length :"+orderBillList.length);
         if (orderBillList && orderBillList.length > 0){
             let rows = [];
             for (let orderBill of orderBillList){
@@ -33,13 +41,15 @@ class ListOrderBillComponent extends React.Component{
                         <td>{orderBill.orderBillId}</td>
                         <td>{orderBill.createdDate}</td>
                         <td>{orderBill.totalCost}</td>
-                        <td><button type="button">View Sweet Orders</button></td>
-                        <td><button type="button">UPDATE</button></td>
-                        <td><button type="button">DELETE</button></td>
+                        <td>{orderBill.listSweetOrder.map((sweetOrder) => <button id = {`btn-so-${sweetOrder.sweetOrderId}`}>{sweetOrder.sweetOrderId}</button>)}</td>
+                        <td><button type="button" onClick = {this.onClickUpdate.bind(this,orderBill.orderBillId)}>UPDATE</button></td>
+                        <td><button type="button" onClick = {this.onClickDelete.bind(this,orderBill.orderBillId)}>DELETE</button></td>
                     </tr>
                 );
             }
+            this.details = rows;
         }
+        
     }
 
 
@@ -47,12 +57,12 @@ class ListOrderBillComponent extends React.Component{
         console.log("component mounted");
     }
 
-    onClickUpdate = (event)=>{
-
+    onClickUpdate = (id,event)=>{
+        this.props.onClickUpdate(id);
     }
 
-    onClickDelete = (event) => {
-
+    onClickDelete = (id,event) => {
+        this.props.onClickDelete(id);
     }
 
     onClickViewSweetOrders = (event) => {

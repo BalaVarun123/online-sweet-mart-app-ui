@@ -16,6 +16,9 @@ class ShowAdmin extends React.Component{
     }
 
     render(){
+        if (this.props){
+
+        }
         if (this.props.redirectToUpdate ){
             this.props.history.push(`/admin/update/${this.props.id}`)
         }
@@ -49,7 +52,8 @@ const mapStateToProps = (state,props) => {
         id : props.match.params.id,
         processing : state.admin.processing,
         message : state.admin.message,
-        redirectToUpdate : state.admin.redirectToUpdate
+        redirectToUpdate : state.admin.redirectToUpdate,
+        redirectToShow : state.admin.redirectToShow,
     };
 }
 
