@@ -6,6 +6,8 @@ import AddOrderBillComponent from "./AddOrderBillComponent";
 const orderBillService = new OrderBillService();
 class AddOrderBill extends React.Component{
     render(){
+        if (this.props.redirectToShow)
+            this.props.history.push(`/order-bill/show/${this.props.redirectionId}`)
         return <div>
             <h2>Order Bill Add</h2>
             <br/>
@@ -17,7 +19,9 @@ const mapStateToProps = (state,props) => {
     return {
         orderBill : state.orderBill.orderBill,
         message : state.orderBill.message,
-        sweetOrderIds : state.orderBill.sweetOrderIds
+        sweetOrderIds : state.orderBill.sweetOrderIds,
+        redirectToShow : state.orderBill.redirectToShow,
+        redirectionId : state.orderBill.redirectionId
     }
 }
 const mapDispatchToProps = (dispatch) => {

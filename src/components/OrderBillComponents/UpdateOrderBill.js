@@ -1,13 +1,14 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { _displayMessage, _redirectToUpdate, _showOrderBill } from "../../actions/OrderBillActions";
+import { _addSweetOrderId, _displayMessage, _redirectToUpdate, _removeSweetOrderId, _resetSweetOrderId, _showOrderBill } from "../../actions/OrderBillActions";
 import OrderBillService from "../../services/OrderBillServices/OrderBillService";
 import UpdateOrderBillComponent from "./UpdateOrderBillComponent";
 
 
 const orderBillService = new OrderBillService();
 class UpdateOrderBill extends React.Component{
+    
     render(){
         if (this.props.redirectToUpdate){
             this.props.resetRedirection();
@@ -15,7 +16,7 @@ class UpdateOrderBill extends React.Component{
         return <div>
             <h2>UpdateAdmin</h2>
             <br/>
-            <UpdateOrderBillComponent message = {this.props.message} orderBill = {this.props.orderBill} onSubmit = {this.props.onSubmit} onClickViewSweetOrders = {this.props.onClickViewSweetOrders}/>
+            <UpdateOrderBillComponent message = {this.props.message} orderBill = {this.props.orderBill} sweetOrderIds = {this.props.sweetOrderIds} onSubmit = {this.props.onSubmit}  onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId}  onClickAddSweetOrderId = {this.props. onClickAddSweetOrderId} onReset = {this.props.onReset}/>
         </div>
     }
 
@@ -32,17 +33,20 @@ const mapStateToProps = (state,props) => {
         orderBill : state.orderBill.orderBill,
         message : state.orderBill.message,
         id : props.match.params.id,
-        redirectToUpdate: state.orderBill.redirectToUpdate
+        redirectToUpdate: state.orderBill.redirectToUpdate,
+        sweetOrderIds : state.orderBill.sweetOrderIds
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         responseCallBack : (response) => {
+            console.log("The response is "+JSON.stringify(response.data[0]));
             if (response.data.length > 0)
-            dispatch(_showOrderBill(response.data[0], ""))
+            dispatch(_showOrderBill(response.data[0], ""));
             else 
-            dispatch(_showOrderBill(null,"Invalid Order Bill Id"))
+            dispatch(_showOrderBill(null,"Invalid Order Bill Id"));
+
         },
         catchCallBack : (error) => {dispatch(_showOrderBill(null,error.response.data))},
         onSubmit : (orderBill) => {
@@ -54,8 +58,16 @@ const mapDispatchToProps = (dispatch) => {
             }
             orderBillService.updateOrderBill(orderBill,responseCallBack,catchCallBack );
         },
-        onClickViewSweetOrders : () => {},
-        resetRedirection : () => {dispatch(_redirectToUpdate(false))}
+        resetRedirection : () => {dispatch(_redirectToUpdate(false))},
+        onClickRemoveSweetOrderId : (id) => {
+            dispatch(_removeSweetOrderId(id))
+        },
+        onClickAddSweetOrderId : (id) => {
+            dispatch(_addSweetOrderId(id) )
+        },
+        onReset : () => {
+            dispatch(_resetSweetOrderId());
+        }
     }
 }
 

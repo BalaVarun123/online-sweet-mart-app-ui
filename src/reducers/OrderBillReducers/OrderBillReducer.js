@@ -1,4 +1,4 @@
-import {ORDER_BILL_ADD_SWEET_ORDER_ID, ORDER_BILL_DISPLAY_MESSAGE, ORDER_BILL_REDIRECT_TO_UPDATE, ORDER_BILL_REMOVE_SWEET_ORDER_ID, ORDER_BILL_RESET_SWEET_ORDER_IDS, ORDER_BILL_SHOW, ORDER_BILL_SHOW_ALL} from "../../actionTypes/OrderBillActionTypes"
+import {ORDER_BILL_ADD_SWEET_ORDER_ID, ORDER_BILL_DISPLAY_MESSAGE, ORDER_BILL_REDIRECT_TO_SHOW, ORDER_BILL_REDIRECT_TO_UPDATE, ORDER_BILL_REMOVE_SWEET_ORDER_ID, ORDER_BILL_RESET_SWEET_ORDER_IDS, ORDER_BILL_SHOW, ORDER_BILL_SHOW_ALL} from "../../actionTypes/OrderBillActionTypes"
 const defaultState = {
     orderBill : null,
     orderBillList : [],
@@ -17,12 +17,18 @@ export default (state = defaultState,action) => {
         case ORDER_BILL_SHOW :
             newState.orderBill = action.orderBill;
             newState.message = action.message;
+            newState.sweetOrderIds = new Set(action.orderBill.listSweetOrder.map((sweetOrder) => sweetOrder.sweetOrderId));
             break;
         case ORDER_BILL_DISPLAY_MESSAGE:
             newState.message = action.message;
             break;
         case ORDER_BILL_REDIRECT_TO_UPDATE: 
             newState.redirectToUpdate = action.value;
+            newState.orderBill = null;
+            newState.redirectionId = action.redirectionId;
+            break;
+        case ORDER_BILL_REDIRECT_TO_SHOW:
+            newState.redirectToShow = action.value;
             newState.orderBill = null;
             newState.redirectionId = action.redirectionId;
             break;
