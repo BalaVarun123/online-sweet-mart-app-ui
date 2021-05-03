@@ -4,7 +4,6 @@ import './index.css';
 
 import reportWebVitals from './reportWebVitals';
 
-
 import AppRouter from './routers/AppRouter';
 //import getAppStore from './store/store';
 import store from './store/store'
@@ -21,9 +20,9 @@ import { Provider } from 'react-redux';
 //const store = getAppStore();
 
 const template = (
-    <Provider store={store}>
-        <AppRouter />
-    </Provider>
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
 );
 
 
