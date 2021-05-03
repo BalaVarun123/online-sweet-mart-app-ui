@@ -2,9 +2,16 @@ import React from "react";
 class ListAdminComponent extends React.Component{
 
 
+    constructor(props){
+        super(props);
+        this.details = [];
+    }
+
     render(){
+        if (this.props.adminList)
+        this.loadDetails(this.props.adminList);
         return <div>
-            <p>Message display</p> 
+            <p>{this.props.message}</p> 
             <div>Selected view</div>
             <div>
             <table>
@@ -18,9 +25,9 @@ class ListAdminComponent extends React.Component{
                   <th>Cart ID</th>
                   <th>Product ID</th>
                   <th colSpan = {2}>Action</th> {/*UPDATE DELETE*/}
-                  <tbody>{this.props.details}</tbody>
               </tr>  
             </thead>
+            <tbody>{this.details}</tbody>
            </table>
            </div>
         </div>
@@ -40,11 +47,12 @@ class ListAdminComponent extends React.Component{
                         <td>{admin.category.categoryId}</td>
                         <td>{admin.cart.cartId}</td>
                         <td>{admin.product.productId}</td>
-                        <td><button type="button">UPDATE</button></td>
-                        <td><button type="button">DELETE</button></td>
+                        <td><button type="button" onClick = {this.onClickUpdate.bind(this,admin.id)}>UPDATE</button></td>
+                        <td><button type="button" onClick = {this.onClickDelete.bind(this,admin.id)}>DELETE</button></td>
                     </tr>
                 );
             }
+            this.details = rows;
         }
     }
 
@@ -53,11 +61,11 @@ class ListAdminComponent extends React.Component{
         console.log("component mounted");
     }
 
-    onClickUpdate = (event)=>{
-
+    onClickUpdate = (id,event)=>{
+        this.props.onClickUpdate(id);
     }
 
-    onClickDelete = (event) => {
+    onClickDelete = (id,event) => {
 
     }
 
