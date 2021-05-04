@@ -41,8 +41,8 @@ const mapStateToProps = (state,props) => {
         category : state.category.category,
         message : state.category.message,
         id : props.match.params.id,
-        redirectToUpdate: state.orderBill.redirectToUpdate,
-        redirectToShow : state.orderBill.redirectToShow
+        redirectToUpdate: state.category.redirectToUpdate,
+        redirectToShow : state.category.redirectToShow
     }
 
 }
