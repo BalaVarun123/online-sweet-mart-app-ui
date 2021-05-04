@@ -1,13 +1,13 @@
-class ListSweetItemComponent extends React.Component {
+class CustomerCartComponent extends React.Component {
 
-    addSweetItemIdRef = React.createRef()
+    addCartIdRef = React.createRef()
 
 
     render(){
 
         let addSection;
         if (this.props.isAddSelected){
-        addSection = <div>Enter Sweet Item Id to add : <input type = "number" min = "0" ref = {this.addSweetItemIdRef}  required/>
+        addSection = <div>Enter Cart Id to add : <input type = "number" min = "0" ref = {this.addCartIdRef}  required/>
         <button type = "button">Add</button>
         </div>
         }
@@ -19,9 +19,11 @@ class ListSweetItemComponent extends React.Component {
             <table>
                 <thead>
                     <tr>
-                        <th>Order Item Id</th>
+                        <th>Grand total</th>
                         <th>Product</th>
-                        <th>Sweet Order</th>
+                        <th>Cart id</th>
+                        <th>Product count</th>
+                        <th>Total</th>
                         <th colSpan = {2}>Actions</th>{/*VIEW REMOVE*/}
                     </tr>
                 </thead>
@@ -39,14 +41,16 @@ class ListSweetItemComponent extends React.Component {
 
     }
 
-    loadDetails = (sweetItemList) =>{
-        if (sweetItemList && sweetItemList.length > 0){
+    loadDetails = (cart) =>{
+        if (cart && cart.length > 0){
             let rows = [];
-            for (let sweetItem of sweetItemList){
+            for (let cart of cart){
                 rows.push(
-                    <tr key = {sweetItem.orderItemId}>
-                        <td>{sweetOrder.product}</td>
-                        <td>{sweetOrder.user.sweetOrder}</td>
+                    <tr key = {cart.grandTotal}>
+                        <td>{cart.listProduct}</td>
+                        <td>{cart.cartId}</td>
+                        <td>{cart.productCount}</td>
+                        <td>{cart.total}</td>
                         <td><button type="button">UPDATE</button></td>
                         <td><button type="button">DELETE</button></td>
                     </tr>
