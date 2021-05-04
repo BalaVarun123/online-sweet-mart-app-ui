@@ -1,0 +1,9 @@
+export const CartActionTypes = {
+
+    ADD_CART: "ADD_CART",
+    UPDATE_CART: "UPDATE_CART",
+    CANCEL_CART: "CANCEL_CART",
+    SHOW_CART_BY_ID: "SHOW_CART_BY_ID",
+    SHOW_ALL_CARTS: "SHOW_ALL_CARTS"
+
+}
