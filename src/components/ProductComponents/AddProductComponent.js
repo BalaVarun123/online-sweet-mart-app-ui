@@ -14,8 +14,12 @@ export default class AddProductComponent extends React.Component{
             <div>
                 
                 NAME: <input type="text" min="3" max="15" ref={this.nameRef}/><br/>
-                DESCRIPTION: <input type="text"  max="150" ref={this.descriptionRef}/><br/>
-                {/* AVAILABILITY: <input type="radio" min="3" max="15" ref={this.nameRef}/><br/>  */}
+                DESCRIPTION: <input type="textarea"  max="150" ref={this.descriptionRef}/><br/>
+                
+                {/* AVAILABILITY:
+                <input type="checkbox"  checked>true</input>
+                <input type="checkbox">false</input>
+                <br/> */}
                 PRICE: <input type="number" ref={this.priceRef}/><br/>
                 <br/>
                 <button type="submit">Add Product</button>
