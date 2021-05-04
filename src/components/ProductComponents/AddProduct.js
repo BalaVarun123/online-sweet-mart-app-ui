@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch) => {
             };
             const catchCallBack = (error) => {
                 console.log("the error is :"+JSON.stringify(error));
-                dispatch(error.response.data);
+                // dispatch(error.response.data);
             }
             productService.addProduct(product,responseCallBack,catchCallBack );
         },

@@ -5,6 +5,7 @@ export const addProduct =(product) =>{
     return{
         type:ProductActionTypes.ADD_PRODUCT,
         payload:product
+        
     }
 }
 export const updateProduct =(product) =>{
