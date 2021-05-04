@@ -16,7 +16,10 @@ const AppRouter = () => (
                 <Route path="/admin" component={AdminRouter}/>
                 <Route path="/order-bill" component={OrderBillRouter}/>
                 <Route path="/login" component={LoginContainer} exact/>
+<<<<<<< HEAD
                 <Route path="/product" component={ProductRouter}/>
+=======
+>>>>>>> 2a1d34bef89d8270686dbd36668249a5807eb564
                 <Route path="/cart" component={CartRouter}/>
             </Switch>
         </div>

@@ -1,29 +1,98 @@
-import axios from 'axios';
+import axios from '../../axios/axios';
 
-const EMPLOYEE_API_BASE_URL = "http://localhost:8080/api/v1/employees";
+const CART_URL_ADD = "/add-cart"
+const CART_URL_UPDATE = "/update-cart"
+const PRODUCT_URL_GET = "/product/show-by-id/"
 
-class EmployeeService {
 
-    getEmployees(){
-        return axios.get(EMPLOYEE_API_BASE_URL);
+
+export default class CartServices {
+
+
+   //ADD
+
+   async addCart(cart, responseCallback, errorCallback){
+    
+        let cartOne = {productCount:cart.productCount, total:cart.total, grandTotal:cart.grandTotal }
+        
+        let products = [];
+
+        let productsJSON = {};
+
+        let invalidProudctIdFound = false;
+
+        console.log("it should work :" +cart.listProduct)
+        
+        for(let productId of cart.listProduct){
+
+          await  axios.get (PRODUCT_URL_GET+ productId)
+            .then ((response) => productsJSON[response.data.productId] = response.data) 
+            .catch ((error) => invalidProudctIdFound = true)
+          
+        }
+           
+        if(invalidProudctIdFound){
+
+            errorCallback({response:{data:"Invalid product ID"}})
+        }
+        else{
+
+            console.log("no time left" +JSON.stringify(productsJSON));
+
+            for(let key in productsJSON){
+
+                products.push(productsJSON [key] )
+            }
+
+            cartOne.listProduct = products;
+
+            axios.post (CART_URL_ADD, cartOne)
+            .then (responseCallback)
+            .catch (errorCallback) 
+        }
+
     }
 
-    createEmployee(employee){
-        return axios.post(EMPLOYEE_API_BASE_URL, employee);
-    }
 
-    getEmployeeById(employeeId){
-        return axios.get(EMPLOYEE_API_BASE_URL + '/' + employeeId);
-    }
+   //UPDATE
 
-    updateEmployee(employee, employeeId){
-        alert("in update empService")
-        return axios.put(EMPLOYEE_API_BASE_URL + '/' + employeeId, employee);
-    }
+   async updateCart(cart, responseCallback, errorCallback){
 
-    deleteEmployee(employeeId){
-        return axios.delete(EMPLOYEE_API_BASE_URL + '/' + employeeId);
+        let cartOne = {cartId:cart.cartId, productCount:cart.productCount, total:cart.total, grandTotal:cart.grandTotal } 
+
+        let products = [];
+
+        let productsJSON = {};
+
+        let invalidProudctIdFound = false;
+         
+        for(let productId of cart.listProduct){
+
+
+          await  axios.get (PRODUCT_URL_GET+ productId)
+            .then ((response) => productsJSON[response.data.productId] = response.data) 
+            .catch ((error) => invalidProudctIdFound = true)
+
+            
+        }
+           
+        if(invalidProudctIdFound){
+
+            errorCallback({response:{data:"Invalid product ID"}})
+        }
+        else{
+
+            for(let key in productsJSON){
+
+                products.push(productsJSON [key] )
+            }
+
+            cartOne.listProduct = products;
+
+            axios.put ( CART_URL_UPDATE , cartOne)
+            .then (responseCallback)
+            .catch (errorCallback) 
+        }
+        
     }
 }
-
-export default new EmployeeService()
