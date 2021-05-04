@@ -12,8 +12,8 @@ const CartRouter = () => (
             <Route path={`/admin-dashboard`} component={AdminDashBoard} />
             <Route path={`/users-dashboard`} component={UsersDashBoard} /> */}
 
-            <Route path={`/show-all-carts`} component={CartList}/>
-            <Route path={`/show-cart-by-id/:cartId`} exact component={Cartdetail} />
+            <Route path={`/cart/show-all-carts`} component={CartList}/>
+            <Route path={`/cart/show-cart-by-id/:cId`} exact component={Cartdetail} />
             
         </Switch>
         </div>

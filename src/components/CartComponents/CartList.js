@@ -1,24 +1,25 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import {showAllCarts} from '../../actions/CartActions';
+import { useSelector, useDispatch } from "react-redux";
+import { showAllCarts } from '../../actions/CartActions';
 import CartComponent from '../CartComponents/CartComponent';
 
 
 const CartList = () => {
     alert("Cart List");
     const carts = useSelector((state) => state);
+    const dispatch = useDispatch();
 
-    const fetchCarts = () => showAllCarts();  
+    const fetchCarts = () => showAllCarts();
 
     useEffect(() => {
-        fetchCarts();
+        dispatch(fetchCarts());
     }, []);
-    
+
     console.log("Carts : ", carts);
 
-    return(
-        <div className="ui grid container">
-            <CartComponent/>
+    return (
+        <div>
+            <CartComponent />
         </div>
     )
 }

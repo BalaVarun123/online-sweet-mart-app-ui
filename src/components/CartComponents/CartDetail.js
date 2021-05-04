@@ -2,43 +2,63 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom";
 import { showCartById } from "../../actions/CartActions";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const CartDetail = () => {
-    const cart = useSelector((state) => state.cart);
-
-    const {cartId, productCount, listProduct, total, grandTotal} = cart;
+    const cart = useSelector((state) => state.cartReducer.cart);
 
     const {cId} = useParams();
 
-    //const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-    console.log(cId);
-
+    console.log("cartId:" +cId);
+    
     const fetchCartDetail = () => showCartById(cId);
 
     useEffect(() => {
-        if(cId && cId != "") 
-           fetchCartDetail();
-    }, [cId]);
+        //if(cId && cId != "") 
+        dispatch (fetchCartDetail());
+    }, []);
+
+if(cart!=null){
+    console.log("checkingCartDetails:"+JSON.stringify(cart))
+
+    const {cartId, productCount, listProduct, total, grandTotal} = cart;
 
     return (
-        <div className="ui grid container">
+        <div>
           {Object.keys(cart).length === 0 ? (
             <div>...Loading</div>
           ) : (
-            <div className="ui placeholder segment">
-              <div className="ui two column stackable center aligned grid">
-                <div className="ui vertical divider">AND</div>
-                <div className="middle aligned row">
-                  <div className="column lp">
-                    <img className="ui fluid image" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.moneycrashers.com%2Ftips-tenant-landlords-find-apartment%2F&psig=AOvVaw3XAVGNx2oYpJG2jY0DM2mC&ust=1620038368910000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNCh57HnqvACFQAAAAAdAAAAABAD" alt="Tenant Image"/>
-                  </div>
-                  <div className="column rp">
-                    <h1>{cartId}</h1>
-                    <h1>{productCount}</h1>
-                    <h2>{listProduct}</h2>
-                    <p>{total}</p>
-                    <p>{grandTotal}</p>
+            <div   class="list-group">
+              <div  >
+                 <div class="col-sm-8" >
+                  <div>
+                    </div>
+
+                  <div>
+                    <h1  class="list-group-item active">CartID:{cartId}</h1>
+                    
+                    {listProduct.map(product =>{
+                     return (<div key={product.productId}  class="alert alert-primary"><h2>ProductID: {product.productId} </h2> <br/>
+                    <h2 class="list-group-item list-group-item-info">ProductCount: {productCount}</h2>
+                    <h2 class="list-group-item list-group-item-warning">ProductName: {product.name}<br/> </h2>
+                    <h2 class="list-group-item list-group-item-danger">Price: {product.price}<br/> </h2>
+                    <h2 class="list-group-item list-group-item-info">ProductDescription: {product.description}<br/> </h2>
+                    <h2 class="list-group-item list-group-item-warning">Available: {product.available+"" } <br/> </h2>
+                    <h2 class="list-group-item list-group-item-danger">Photopath: {product.photopath} <br/> </h2>
+                    <h2 class="list-group-item list-group-item-info">CategoryId: {product.category.categoryId} <br/> </h2>
+                    <h2 class="list-group-item list-group-item-warning">CategoryName: {product.category.name} <br/> </h2>
+                    <h2 class="list-group-item list-group-item-danger">Total: {total} <br/> </h2>
+                    <h1 class="list-group-item list-group-item-warning">GrandTotal: {grandTotal}<br/> </h1>
+
+                    <br/> <br/>
+
+
+
+                     </div>)})
+                    }
+                   
                   </div>
                 </div>
               </div>
@@ -46,6 +66,10 @@ const CartDetail = () => {
           )}
         </div>
     );
+          }
+          else{
+            return <p> please wait</p>
+          }
 };
 
 export default CartDetail;

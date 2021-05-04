@@ -1,7 +1,7 @@
 import { CartActionTypes } from '../actionTypes/CartActionTypes';
 import axios from 'axios';
 
-//const apiUrl = 'http://localhost:9191/api/osm';
+//const apiUrl = 'http://localhost:9191/api/osm/cart';
 
  const addCartSuccess = (cart) => {
 
@@ -123,7 +123,7 @@ export const showCartByIdSuccess = (cart) => {
     return {
 
         type: CartActionTypes.SHOW_CART_BY_ID,
-        payload: cart
+         cart
 
     }
 }
@@ -131,15 +131,19 @@ export const showCartByIdSuccess = (cart) => {
 export const showCartById = (cartId) => {
     // Returns a dispatcher function
     // that dispatches an action at a later time
+    console.log("first console")
     return (dispatch) => {
         // Returns a promise
-        return axios.get("http://localhost:9191/api/osm/cart/show-cart-by-id"+cartId)
+        console.log("hi")
+        return axios.get("http://localhost:9191/api/osm/show-cart-by-id/"+cartId)
             .then(resp => {
+                console.log("checking api")
                 // Dispatch another action
                 // to consume data              
                 dispatch(showCartByIdSuccess(resp.data))
             })
             .catch(error => {
+                console.log("catch statement")
                 throw (error);
             });
     };
@@ -150,7 +154,7 @@ export const showAllCartsSuccess = (carts) => {
     return {
 
         type: CartActionTypes.SHOW_ALL_CARTS,
-        payload:carts
+        carts
        
     }
 }
@@ -160,10 +164,13 @@ export const showAllCarts = () => {
     // that dispatches an action at a later time
     return (dispatch) => {
         // Returns a promise
-        return axios.get("http://localhost:9191/api/osm/cart/show-all-carts")
+       return axios.get("http://localhost:9191/api/osm/show-all-carts")
+          //return axios.get(apiUrl + "/show-all-carts")
             .then(resp => {
                 // Dispatch another action
-                // to consume data              
+                // to consume data         
+                console.log(resp.data)  
+               // document.write(resp.data)   
                 dispatch(showAllCartsSuccess(resp.data))
             })
             .catch(error => {

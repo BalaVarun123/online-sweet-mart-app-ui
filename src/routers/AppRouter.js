@@ -17,6 +17,7 @@ const AppRouter = () => (
                 <Route path="/login" component={LoginContainer} exact/>
 
                 <Route path="/cart" component={CartRouter}/>
+                
             </Switch>
         </div>
     </BrowserRouter>
