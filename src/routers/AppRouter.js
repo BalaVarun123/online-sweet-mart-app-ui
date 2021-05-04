@@ -15,7 +15,6 @@ const AppRouter = () => (
                 <Route path="/admin" component={AdminRouter}/>
                 <Route path="/order-bill" component={OrderBillRouter}/>
                 <Route path="/login" component={LoginContainer} exact/>
-
                 <Route path="/cart" component={CartRouter}/>
                 
             </Switch>
