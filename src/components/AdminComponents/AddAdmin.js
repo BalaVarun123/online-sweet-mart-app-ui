@@ -12,11 +12,9 @@ class AddAdmin extends React.Component{
         if (this.props.redirectToShow ){
             this.props.history.push(`/admin/show/${this.props.id}`)
         }
-        return <div>
-            <h2>Add Admin</h2>
-            <p>{this.props.message}</p>
-            <br/>
-            <AddAdminComponent onSubmit = {this.props.onSubmit}/>
+        return <div className = "ui container">
+           <div className="ui huge header center aligned">Add admin</div>
+            <AddAdminComponent onSubmit = {this.props.onSubmit} message = {this.props.message}/>
         </div>
     }
 }

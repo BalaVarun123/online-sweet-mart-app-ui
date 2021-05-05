@@ -4,9 +4,9 @@ export default class ShowAdminComponent extends React.Component{
         let component;
         if (this.props.admin){
             component  = 
-            <div>
-            
-                <div className = "ui big list">
+            <div class="ui column stackable center page grid">
+                 <div className="three wide column"></div>
+                <div className = "ui ten wide column big list segment">
                 <div class="item">
                 <label>ID : </label> {this.props.admin.id}
                 </div>
@@ -28,15 +28,18 @@ export default class ShowAdminComponent extends React.Component{
                 <div class="item">
                 <label>Product ID :</label> {this.props.admin.product.productId} <br/>
                 </div>
+                <div>
+                <button type="button" id = "btn-update" className="ui left floated button primary" onClick = {this.props.onClickUpdate}>Update</button>
+                <button type="button" id = "btn-delete" className="ui right floated button negative"onClick = {this.props.onClickDelete}>Delete</button>
                 </div>
-                <button type="button" id = "btn-update" onClick = {this.props.onClickUpdate}>Update</button>
-                <button type="button" id = "btn-delete" onClick = {this.props.onClickDelete}>Delete</button>
+                </div>
+                
                 {/*<button type="button">Cancel</button>*/}
             <br/>
         </div>
     }
     else{
-        component = <p>{this.props.message}</p>
+        component = <h2>{this.props.message}</h2>
     }
         return component;
     }
