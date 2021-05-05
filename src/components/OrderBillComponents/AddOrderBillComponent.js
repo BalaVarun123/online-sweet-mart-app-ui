@@ -12,7 +12,7 @@ export default class AddOrderBillComponent extends React.Component{
         this.renderSweetOrderIds();
         const date = new Date();
         let component = (<div>
-            <div>View OrderBill.SwetOrders</div>
+            <div>View OrderBill.SweetOrders</div>
             <p>{this.props.message}</p>
             <form onSubmit = {this.onSubmit} onReset = {this.onReset}>
             <div>

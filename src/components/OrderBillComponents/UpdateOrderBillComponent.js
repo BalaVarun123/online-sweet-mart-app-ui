@@ -21,7 +21,7 @@ export default class UpdateOrderBillComponent extends React.Component{
         else{
             this.renderSweetOrderIds();
             component = (<div>
-                <div>View OrderBill.SwetOrders</div>
+                <div>View OrderBill.SweetOrders</div>
                 <p>{this.props.message}</p>
                 <form onSubmit = {this.onSubmit} onReset = {this.onReset}>
                 <div>

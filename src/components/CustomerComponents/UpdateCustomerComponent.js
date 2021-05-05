@@ -29,36 +29,55 @@ export default class UpdateCustomerComponent extends React.Component{
                 <div>View Customer.SweetOrders</div>
                 <p>{this.props.message}</p>
                 <form onSubmit = {this.onSubmit} onReset = {this.onReset}>
-                <div>View Customer.sweetItem</div>
-                <p>{this.props.message}</p>
-                <form onSubmit = {this.onSubmit} onReset = {this.onReset}></form>
-                <div>View Customer.Cart</div>
-                <p>{this.props.message}</p>
-                <form onSubmit = {this.onSubmit} onReset = {this.onReset}></form>
                 <div>
                 User Id : <input type = "number" min = "0" value = {this.props.Customer.UserId} ref = {this.userIdRef}/> <br/>
-                Username : <input type = "string" min = "3" defaultValue = {this.props.Customer.Username} ref = {this.usernameRef}/> 
-                <br/>
+                Username : <input type = "string" min = "3" Value = {this.props.Customer.Username} ref = {this.usernameRef}/> <br/>
                 {this.sweetOrderIds}
                 <br/>
                 <input type = "number" min = "0" step = {1} ref = {this.addSweetOrderIdRef} placeholder = "Sweet Order ID"/><button type = "button" onClick = {this.onClickAddSweetOrderId}>Add Sweet Order</button>
-                <br/>
-                Sweet Item ID's : <br/>
-                {this.sweetItemIds}
-                <br/> 
-                <input type = "number" min = "0" step = {1} ref = {this.addSweetItemIdRef} placeholder = "Sweet Item ID"/><button type = "button" onClick = {this.onClickAddSweetItemId}>Add Sweet Item</button>
-                <br/>
-                Cart ID's : <br/>
-                {this.cartIds}
-                <br/> 
-                <input type = "number" min = "0" step = {1} ref = {this.addCartIdRef} placeholder = "Cart ID"/><button type = "button" onClick = {this.onClickAddCartId}>Add Cart</button>
                 <br/>
                 <button type="submit">Add Customer</button>
                 <br/>
                 <button type="reset">Reset</button>
                 <br/>
                 </div>
-                </form>
+                </form>   
+            </div>);
+            component = (<div>
+                <div>View Customer.SweetItems</div>
+                <p>{this.props.message}</p>
+                <form onSubmit = {this.onSubmit} onReset = {this.onReset}>
+                <div>
+                User Id : <input type = "number" min = "0" value = {this.props.Customer.UserId} ref = {this.userIdRef}/> <br/>
+                Username : <input type = "string" min = "3" Value = {this.props.Customer.Username} ref = {this.usernameRef}/> <br/>
+                {this.sweetItemIds}
+                <br/>
+                <input type = "number" min = "0" step = {1} ref = {this.addSweetItemIdRef} placeholder = "Sweet Item ID"/><button type = "button" onClick = {this.onClickAddSweetItemId}>Add Sweet Item</button>
+                <br/>
+                <button type="submit">Add Customer</button>
+                <br/>
+                <button type="reset">Reset</button>
+                <br/>
+                </div>
+                </form>   
+            </div>);
+            component = (<div>
+                <div>View Customer.Cart</div>
+                <p>{this.props.message}</p>
+                <form onSubmit = {this.onSubmit} onReset = {this.onReset}>
+                <div>
+                User Id : <input type = "number" min = "0" value = {this.props.Customer.UserId} ref = {this.userIdRef}/> <br/>
+                Username : <input type = "string" min = "3" Value = {this.props.Customer.Username} ref = {this.usernameRef}/> <br/>
+                {this.cartIds}
+                <br/>
+                <input type = "number" min = "0" step = {1} ref = {this.addCartIdRef} placeholder = "Cart ID"/><button type = "button" onClick = {this.onClickAddCartId}>Add cart</button>
+                <br/>
+                <button type="submit">Add Customer</button>
+                <br/>
+                <button type="reset">Reset</button>
+                <br/>
+                </div>
+                </form>   
             </div>);
         }
         
@@ -105,9 +124,9 @@ export default class UpdateCustomerComponent extends React.Component{
         const Customer = {
             username : this.usernameRef.current.value,
             userId : this.userIdRef.current.value,
-            listSweetOrder : listSweetOrder,
-            listSweetItem : listSweetItem,
-            Cart : Cart
+            listSweetOrder : this.listSweetOrder,
+            listSweetItem : this.listSweetItem,
+            cart : this.cart
         }
         this.props.onSubmit(Customer);
     }
@@ -135,9 +154,9 @@ export default class UpdateCustomerComponent extends React.Component{
         const customer = {
             username : this.usernameRef.current.value,
             userId : this.userIdRef.current.value,
-            listSweetOrder : listSweetOrder,
-            listSweetItem : listSweetItem,
-            Cart : Cart
+            listSweetOrder : this.listSweetOrder,
+            listSweetItem : this.listSweetItem,
+            cart : this.cart
         }
         this.props.onSubmit(customer);
     }
@@ -164,9 +183,9 @@ export default class UpdateCustomerComponent extends React.Component{
         const customer = {
             username : this.usernameRef.current.value,
             userId : this.userIdRef.current.value,
-            listSweetOrder : listSweetOrder,
-            listSweetItem : listSweetItem,
-            Cart : Cart
+            listSweetOrder : this.listSweetOrder,
+            listSweetItem : this.listSweetItem,
+            cart : this.cart
         }
         this.props.onSubmit(customer);
     }

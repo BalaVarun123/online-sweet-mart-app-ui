@@ -20,9 +20,13 @@ class ShowCustomer extends React.Component{
         return <div>
             <h2>Show Order Bill</h2>
             <br/>
-            <ShowCustomerComponent customer = {this.props.customer} onClickDelete = {this.onClickDelete} onClickUpdate = {this.props.onClickUpdate} onClickViewSweetOrder = {this.props.onClickViewSweetOrder} message = {this.props.message}/>
-            <ShowCustomerComponent customer = {this.props.customer} onClickDelete = {this.onClickDelete} onClickUpdate = {this.props.onClickUpdate} onClickViewSweetItem = {this.props.onClickViewSweetItem} message = {this.props.message}/>
-            <ShowCustomerComponent customer = {this.props.customer} onClickDelete = {this.onClickDelete} onClickUpdate = {this.props.onClickUpdate} onClickViewCart = {this.props.onClickViewCart} message = {this.props.message}/>
+            <ShowCustomerComponent message = {this.props.message} customer = {this.props.customer} sweetOrderIds = {this.props.sweetOrderIds} 
+            onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId} 
+            onClickAddSweetOrderId = {this.props.onClickAddSweetOrderId} sweetItemIds = {this.props.sweetItemIds} 
+            onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveSweetItemId = {this.props.onClickRemoveSweetItemId} 
+            onClickAddSweetItemId = {this.props.onClickAddSweetItemId} cartIds = {this.props.cartIds} 
+            onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveCartId = {this.props.onClickRemoveCartId} 
+            onClickAddCartId = {this.props.onClickAddCartId}/>
         </div>
     }
 

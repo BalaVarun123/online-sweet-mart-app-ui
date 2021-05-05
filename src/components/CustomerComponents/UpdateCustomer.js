@@ -1,31 +1,36 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { _addSweetOrderId,_addSweetItemId, _addCartId, _displayMessage, _redirectToUpdate, _removeSweetOrderId, _removeSweetItemId,_removeCartId,_resetSweetOrderId, _resetSweetItemId,_resetCartId ,_showCustomer } from "../../actions/CustomerActions";
+import { _addSweetOrderId,_addSweetItemId, _addCartId, _displayMessage, _redirectToUpdate,
+     _removeSweetOrderId, _removeSweetItemId,_removeCartId,_resetSweetOrderId, _resetSweetItemId,
+     _resetCartId ,_showCustomer } from "../../actions/CustomerActions";
 import CustomerService from "../../services/CustomerServices/CustomerService";
 import UpdateCustomerComponent from "./UpdateCustomerComponent";
 
 
-const CustomerService = new CustomerService();
+const customerService = new CustomerService();
 class UpdateCustomer extends React.Component{
     
     render(){
-        if (this.props.redirectToUpdate){
-            this.props.resetRedirection();
-        }
+        if (this.props.redirectToShow)
+            this.props.history.push(`/customer/show/${this.props.redirectionId}`)
         return <div>
-            <h2>UpdateAdmin</h2>
+            <h2>Customer Update</h2>
             <br/>
-            <UpdateCustomerComponent message = {this.props.message} Customer = {this.props.Customer} sweetOrderIds = {this.props.sweetOrderIds} onSubmit = {this.props.onSubmit}  onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId}  onClickAddSweetOrderId = {this.props. onClickAddSweetOrderId} onReset = {this.props.onReset}/>
-            <UpdateCustomerComponent message = {this.props.message} Customer = {this.props.Customer} sweetItemIds = {this.props.sweetItemIds} onSubmit = {this.props.onSubmit}  onClickRemoveSweetItemId = {this.props.onClickRemoveSweetItemId}  onClickAddSweetItemId = {this.props. onClickAddSweetItemId} onReset = {this.props.onReset}/>
-            <UpdateCustomerComponent message = {this.props.message} Customer = {this.props.Customer} cartIds = {this.props.cartIds} onSubmit = {this.props.onSubmit}  onClickRemoveCartId = {this.props.onClickRemoveCartId}  onClickAddCartId = {this.props. onClickAddCartId} onReset = {this.props.onReset}/>
+            <UpdateCustomerComponent message = {this.props.message} customer = {this.props.customer} sweetOrderIds = {this.props.sweetOrderIds} 
+            onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId} 
+            onClickAddSweetOrderId = {this.props.onClickAddSweetOrderId} sweetItemIds = {this.props.sweetItemIds} 
+            onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveSweetItemId = {this.props.onClickRemoveSweetItemId} 
+            onClickAddSweetItemId = {this.props.onClickAddSweetItemId} cartIds = {this.props.cartIds} 
+            onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveCartId = {this.props.onClickRemoveCartId} 
+            onClickAddCartId = {this.props.onClickAddCartId}/>
         </div>
     }
 
 
     componentDidMount(){
         console.log("update component mounted");
-        CustomerService.getCustomer(this.props.id,this.props.responseCallBack,this.props.catchCallBack);
+        customerService.getCustomer(this.props.id,this.props.responseCallBack,this.props.catchCallBack);
     }
 
 }
@@ -61,7 +66,7 @@ const mapDispatchToProps = (dispatch) => {
                 console.log("the error is :"+JSON.stringify(error));
                 dispatch(_displayMessage(error.response.data));
             }
-            CustomerService.updateCustomer(Customer,responseCallBack,catchCallBack );
+            customerService.updateCustomer(Customer,responseCallBack,catchCallBack );
         },
         resetRedirection : () => {dispatch(_redirectToUpdate(false))},
         onClickRemoveSweetOrderId : (id) => {
