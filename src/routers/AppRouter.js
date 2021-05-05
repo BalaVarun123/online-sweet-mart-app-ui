@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LoginContainer from '../components/LoginComponents/LoginContainer';
 import AdminRouter from './AdminRouters/AdminRouter';
 import OrderBillRouter from './OrderBillRouters/OrderBillRouter';
-import ProductRouter from './ProductRouters/ProductRouter'
 import CartRouter from './CartRouters/CartRouter';
+import ProductRouter from './ProductRouters/ProductRouter';
 
 
 const AppRouter = () => (
@@ -16,11 +16,9 @@ const AppRouter = () => (
                 <Route path="/admin" component={AdminRouter}/>
                 <Route path="/order-bill" component={OrderBillRouter}/>
                 <Route path="/login" component={LoginContainer} exact/>
-<<<<<<< HEAD
-                <Route path="/product" component={ProductRouter}/>
-=======
->>>>>>> 2a1d34bef89d8270686dbd36668249a5807eb564
                 <Route path="/cart" component={CartRouter}/>
+                <Route path="/product" component={ProductRouter}/>
+                
             </Switch>
         </div>
     </BrowserRouter>

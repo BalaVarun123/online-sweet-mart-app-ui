@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
+import LoginReducer from './LoginReducers/LoginReducer';
 import cartReducer from './CartReducers/cartReducer';
 import adminReducer from './AdminReducers/AdminReducer';
 import orderBillReducer from './OrderBillReducers/OrderBillReducer';
-import productReducer from './ProductReducers/productReducer';
 
 
 export default function rootReducer(){
@@ -10,12 +10,7 @@ export default function rootReducer(){
         login : LoginReducer,
         cartReducer : cartReducer,
         admin : adminReducer,
-<<<<<<< HEAD
-        orderBill:orderBillReducer,
-        product:productReducer
-=======
         orderBill : orderBillReducer
->>>>>>> 2a1d34bef89d8270686dbd36668249a5807eb564
 
     });
 }
