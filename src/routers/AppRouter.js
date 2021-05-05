@@ -5,6 +5,7 @@ import AdminRouter from './AdminRouters/AdminRouter';
 import OrderBillRouter from './OrderBillRouters/OrderBillRouter';
 import CartRouter from './CartRouters/CartRouter';
 import ProductRouter from './ProductRouters/ProductRouter';
+import SweetItemRouter from './SweetItemRouters/SweetItemRouter';
 
 
 const AppRouter = () => (
@@ -17,6 +18,7 @@ const AppRouter = () => (
                 <Route path="/order-bill" component={OrderBillRouter}/>
                 <Route path="/login" component={LoginContainer} exact/>
                 <Route path="/cart" component={CartRouter}/>
+                <Route path="/sweet-item" component={SweetItemRouter}/>
                 <Route path="/product" component={ProductRouter}/>
                 
             </Switch>
