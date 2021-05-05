@@ -24,7 +24,7 @@ class ShowAdmin extends React.Component{
         }
         
         return <div className = "ui container">
-            <div className="ui huge header center aligned">Show admin</div>
+            <div className="ui huge header center aligned">Admin information</div>
             <p>{this.props.message}</p>
             <br/>
             <ShowAdminComponent admin = {this.props.admin} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.onClickDelete}/>

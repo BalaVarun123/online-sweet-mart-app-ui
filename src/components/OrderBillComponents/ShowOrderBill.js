@@ -18,7 +18,7 @@ class ShowOrderBill extends React.Component{
             this.props.resetRedirection();
         }
         return <div className = "ui container">
-             <div className="ui huge header center aligned">Show Order Bill</div>
+             <div className="ui huge header center aligned">Order Bill Details</div>
             <ShowOrderBillComponent orderBill = {this.props.orderBill} onClickDelete = {this.onClickDelete} onClickUpdate = {this.props.onClickUpdate} onClickViewSweetOrder = {this.props.onClickViewSweetOrder} message = {this.props.message}/>
         </div>
     }
