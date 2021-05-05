@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch) => {
                 console.log("the error is :"+JSON.stringify(error));
                 dispatch(_displayMessage(error.response.data));
             }
-            categoryService.addcategory(category,responseCallBack,catchCallBack );
+            categoryService.addCategory(category,responseCallBack,catchCallBack );
         },
     }
 }

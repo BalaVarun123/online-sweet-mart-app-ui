@@ -34,7 +34,7 @@ const mapStateToProps = (state,props) => {
         message : state.category.message,
         id : props.match.params.id,
         redirectToUpdate: state.category.redirectToUpdate,
-        sweetOrderIds : state.cateory.sweetOrderIds
+       
     }
 }
 

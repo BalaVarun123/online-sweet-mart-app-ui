@@ -7,6 +7,7 @@ import ShowCategory from '../../components/CategoryComponents/ShowCategory';
 import UpdateCategory from '../../components/CategoryComponents/UpdateCategory';
 
 
+
 const CategoryRouter = () => (
     <BrowserRouter>
         <div className='container'>

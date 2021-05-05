@@ -12,6 +12,7 @@ export default class ShowCategoryComponent extends React.Component{
             <div>
             Category Id : {this.props.category.categoryId} <br/>
             Name : {this.props.category.name} <br/>
+            Total Cost : {this.props.category.totalCost}<br/>
             <button type="button" onClick = {this.props.onClickUpdate}>Update</button>
             <button type="button" onClick = {this.onClickDelete}>Delete</button>
             </div>

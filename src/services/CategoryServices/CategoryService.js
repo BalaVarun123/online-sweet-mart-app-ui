@@ -5,11 +5,24 @@ const URL_CATEGORY_UPDATE = "/category/update";
 const URL_CATEGORY_DELETE = "/category/cancel/";
 const URL_CATEGORY_ADD = "/category/add";
 const URL_CATEGORY_SHOW_ALL = "/category/show-all";
+const URL_CATEGORY_TOTAL_COST = "/category/total-cost/"
 export default class categoryService {
-    getCategory(id,responseCallBack,catchCallBack){
-        axios.get(URL_CATEGORY_SHOW+id)
-        .then(responseCallBack)
+  async getCategory(id,responseCallBack,catchCallBack){
+        let category = null;       
+        await axios.get(URL_CATEGORY_SHOW+id)
+        .then((response) => category=response.data)
         .catch(catchCallBack);
+        if(category != null)
+        {
+        await axios.get(URL_CATEGORY_TOTAL_COST+category.categoryId)
+        .then((response) => category.totalCost=response.data )
+        .catch(error => catchCallBack({response:{data:"Invalid category Id"}}))
+        responseCallBack({data:category})
+        }
+        else
+        {
+            catchCallBack({response:{data:"Invalid category Id"}})
+        }
     }
 
     updateCategory(category,responseCallBack,catchCallBack){
