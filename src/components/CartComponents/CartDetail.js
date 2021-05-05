@@ -5,71 +5,114 @@ import { showCartById } from "../../actions/CartActions";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const CartDetail = () => {
-    const cart = useSelector((state) => state.cartReducer.cart);
+  const cart = useSelector((state) => state.cartReducer.cart);
 
-    const {cId} = useParams();
+  const { cId } = useParams();
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    console.log("cartId:" +cId);
-    
-    const fetchCartDetail = () => showCartById(cId);
+  console.log("cartId:" + cId);
 
-    useEffect(() => {
-        //if(cId && cId != "") 
-        dispatch (fetchCartDetail());
-    }, []);
+  const fetchCartDetail = () => showCartById(cId);
 
-if(cart!=null){
-    console.log("checkingCartDetails:"+JSON.stringify(cart))
+  useEffect(() => {
 
-    const {cartId, productCount, listProduct, total, grandTotal} = cart;
+    dispatch(fetchCartDetail());
+
+  }, []);
+
+  if (cart != null) {
+    console.log("checkingCartDetails:" + JSON.stringify(cart))
+
+    const { cartId, productCount, listProduct, total, grandTotal } = cart;
 
     return (
-        <div>
-          {Object.keys(cart).length === 0 ? (
-            <div>...Loading</div>
-          ) : (
-            <div   class="list-group">
-              <div  >
-                 <div class="col-sm-8" >
-                  <div>
-                    </div>
 
-                  <div>
-                    <h1  class="list-group-item active">CartID:{cartId}</h1>
-                    
-                    {listProduct.map(product =>{
-                     return (<div key={product.productId}  class="alert alert-primary"><h2>ProductID: {product.productId} </h2> <br/>
-                    <h2 class="list-group-item list-group-item-info">ProductCount: {productCount}</h2>
-                    <h2 class="list-group-item list-group-item-warning">ProductName: {product.name}<br/> </h2>
-                    <h2 class="list-group-item list-group-item-danger">Price: {product.price}<br/> </h2>
-                    <h2 class="list-group-item list-group-item-info">ProductDescription: {product.description}<br/> </h2>
-                    <h2 class="list-group-item list-group-item-warning">Available: {product.available+"" } <br/> </h2>
-                    <h2 class="list-group-item list-group-item-danger">Photopath: {product.photopath} <br/> </h2>
-                    <h2 class="list-group-item list-group-item-info">CategoryId: {product.category.categoryId} <br/> </h2>
-                    <h2 class="list-group-item list-group-item-warning">CategoryName: {product.category.name} <br/> </h2>
-                    <h2 class="list-group-item list-group-item-danger">Total: {total} <br/> </h2>
-                    <h1 class="list-group-item list-group-item-warning">GrandTotal: {grandTotal}<br/> </h1>
-
-                    <br/> <br/>
+      <div  >
+        {Object.keys(cart).length === 0 ? (
+          <div>...Loading</div>
+        ) : (
 
 
+          <div >
 
-                     </div>)})
-                    }
-                   
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
+            <h1 class="list-group-item active"> CART ID: {cartId}</h1> <br /> <br />
+
+            {listProduct.map(product => {
+
+              return (<div key={product.productId}>
+
+                <h2 class="ui purple segment">  PRODUCT ID: {product.productId} </h2> <br />
+
+                <h1 class="ui purple segment"> PRODUCT COUNT:  {productCount}  </h1> <br />
+
+                <h2 class="ui red segment"> PRODUCT NAME:  {product.name}   </h2> <br />
+
+                <h2 class="ui pink segment"> PRICE:  {product.price} </h2>  <br />
+
+                <h2 class="ui purple segment"> PRODUCT DESCRIPTION: {product.description} </h2> <br />
+
+                <h2 class="ui blue segment"> AVAILABLE: {product.available + ""} </h2> <br />
+
+                <h2 class="ui green segment"> CATEGORY ID: {product.category.categoryId}  </h2> <br />
+
+                <h2 class="ui yellow segment"> CATEGORY NAME: {product.category.name}  </h2> <br />
+
+                <h2 class="ui teal segment" > TOTAL: {total}  </h2>  <br />
+
+                <h1 class="ui olive segment"> GRAND TOTAL: {grandTotal} </h1> <br />
+
+                <br /> <br />
+
+              </div>)
+            })
+            }
+
+          </div>
+
+        )}
+      </div>
     );
-          }
-          else{
-            return <p> please wait</p>
-          }
+  }
+  else {
+    return <p> please wait</p>
+  }
 };
 
+
+
 export default CartDetail;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/* <h2 >Photopath: {product.photopath} <br /> </h2> */ }
