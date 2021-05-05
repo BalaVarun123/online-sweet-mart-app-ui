@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { _displayMessage, _redirectToShow } from "../../actions/CategoryActions";
 import CategoryService from "../../services/CategoryServices/CategoryService";
-import AddCategoryComponent from "./AddCategoryComponent";
+import AddCategoryComponent from "./AddCategoryComponents";
 const categoryService = new CategoryService();
 class AddCategory extends React.Component{
     render(){
@@ -39,4 +39,4 @@ const mapDispatchToProps = (dispatch) => {
         },
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Addcategory);
+export default connect(mapStateToProps,mapDispatchToProps)(AddCategory);

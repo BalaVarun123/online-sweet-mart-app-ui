@@ -1,5 +1,5 @@
 import React from "react";
-class ListOrderBillComponent extends React.Component{
+class ListCategoryComponents extends React.Component{
 
 
 
@@ -68,4 +68,4 @@ class ListOrderBillComponent extends React.Component{
     
 }
 
-export default ListCategoryComponent;
+export default ListCategoryComponents;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ListOrderBill from "./ListCategory";
+import ListCategory from "./ListCategory";
 
 class Category extends React.Component{
     render(){

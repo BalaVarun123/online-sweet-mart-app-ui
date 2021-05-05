@@ -1,9 +1,9 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { _displayMessage, _redirectToUpdate, _showCategory } from "../../actions/CategoryActions";
+import { _displayMessage, _redirectToUpdate, _showcategory } from "../../actions/CategoryActions";
 import CategoryService from "../../services/CategoryServices/CategoryService";
-import UpdateCategoryComponent from "./UpdateCategoryComponent";
+import UpdateCategoryComponent from "./UpdateCategoryComponents";
 
 
 const categoryService = new CategoryService();
@@ -43,12 +43,12 @@ const mapDispatchToProps = (dispatch) => {
         responseCallBack : (response) => {
             console.log("The response is "+JSON.stringify(response.data[0]));
             if (response.data.length > 0)
-            dispatch(_showCategory(response.data[0], ""));
+            dispatch(_showcategory(response.data[0], ""));
             else 
-            dispatch(_showCategory(null,"Invalid Category Id"));
+            dispatch(_showcategory(null,"Invalid Category Id"));
 
         },
-        catchCallBack : (error) => {dispatch(_showCategory(null,error.response.data))},
+        catchCallBack : (error) => {dispatch(_showcategory(null,error.response.data))},
         onSubmit : (category) => {
             console.log("onSubmit activated");
             const responseCallBack = (response) => dispatch(_displayMessage("Updated successfully."));
@@ -60,9 +60,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         resetRedirection : () => {dispatch(_redirectToUpdate(false))},
         
-        onReset : () => {
-            dispatch(_resetSweetOrderId());
-        }
+       
     }
 }
 

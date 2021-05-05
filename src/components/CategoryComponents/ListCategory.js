@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { _displayMessage, _redirectToUpdate, _showAllcategory } from "../../actions/CategoryActions";
 import CategoryService from "../../services/CategoryServices/CategoryService";
-import ListCategoryComponent from "./ListCategoryComponent";
+import ListCategoryComponent from "./ListCategoryComponents";
 const  categoryService = new CategoryService();
 class ListCategory extends React.Component{
    

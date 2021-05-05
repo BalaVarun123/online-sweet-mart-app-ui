@@ -1,7 +1,7 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import ShowCategoryComponent from "./ShowCategoryComponent";
+import ShowCategoryComponent from "./ShowCategoryComponents";
 import {_displayMessage, _redirectToShow, _redirectToUpdate, _showcategory} from "../../actions/CategoryActions";
 import CategoryService from "../../services/CategoryServices/CategoryService";
 
@@ -52,11 +52,11 @@ const mapDispatchToProps = (dispatch) => {
         onClickUpdate : () => {dispatch(_redirectToUpdate(true))},
         responseCallBack : (response) => {
             if (response.data.length > 0)
-            dispatch(_showCategory(response.data[0], ""))
+            dispatch(_showcategory(response.data[0], ""))
             else 
-            dispatch(_showCategory(null,"Invalid Category Id"))
+            dispatch(_showcategory(null,"Invalid Category Id"))
         },
-        catchCallBack : (error) => {dispatch(_showCategory(null,error.response.data))},
+        catchCallBack : (error) => {dispatch(_showcategory(null,error.response.data))},
         resetRedirection : () => {dispatch(_redirectToShow(false))}
     }
    
