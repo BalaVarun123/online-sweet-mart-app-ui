@@ -1,10 +1,10 @@
 import {ProductActionTypes} from '../../actionTypes/ProductActionTypes';
 const initialState = {
-    products: null,
     product: null,
+    products: null
     
-}
- const productReducer=(state=[],action)=>{
+};
+ const productReducer=(state=initialState,action)=>{
     switch (action.type) {
         
         case ProductActionTypes.ADD_PRODUCT:
@@ -18,7 +18,7 @@ const initialState = {
         
         case ProductActionTypes.SHOW_ALL_PRODUCTS:
             return{...state, products:action.products }    
-        // return action.products
+        
             
         case ProductActionTypes.SHOW_SELECTED_PRODUCT:
             return{...state, product:action.product}
