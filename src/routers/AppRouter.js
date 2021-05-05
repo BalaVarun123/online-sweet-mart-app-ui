@@ -13,7 +13,7 @@ const AppRouter = () => (
             <Switch>
                 <Route path="/" component={LoginContainer} exact/>
                 <Route path="/admin" component={AdminRouter}/>
-                <Route path="/order-bill" component={OrderBillRouter}/>--
+                <Route path="/order-bill" component={OrderBillRouter}/>
                 <Route path="/login" component={LoginContainer} exact/>
                 <Route path="/category" component={CategoryRouter}/>
 
