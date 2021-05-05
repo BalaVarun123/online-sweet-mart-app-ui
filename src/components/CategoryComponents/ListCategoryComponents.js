@@ -21,6 +21,7 @@ class ListCategoryComponents extends React.Component{
                   <th>Category Name</th>
                   <th>Total Cost</th>
                   <th colSpan = {2}>Action</th> {/*UPDATE DELETE*/}
+
               </tr>  
             </thead>
             <tbody>{this.details}</tbody>
@@ -39,8 +40,10 @@ class ListCategoryComponents extends React.Component{
                              <tr key = {category.id}>
                              <td>{category.categoryId}</td>
                              <td>{category.name}</td>
+                             <td> {category.totalCost}</td>
                              <td><button type="button" onClick = {this.onClickUpdate.bind(this,category.categoryId)}>UPDATE</button></td>
                              <td><button type="button" onClick = {this.onClickDelete.bind(this,category.categoryId)}>DELETE</button></td>
+
                              </tr>
                          );
                      }   

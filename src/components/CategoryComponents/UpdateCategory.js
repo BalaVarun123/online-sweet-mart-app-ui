@@ -16,7 +16,7 @@ class UpdateCategory extends React.Component{
         return <div>
             <h2>Update Category</h2>
             <br/>
-            <UpdateCategoryComponent message = {this.props.message} category = {this.props.category}  onSubmit = {this.props.onSubmit}  onReset = {this.props.onReset}/>
+            <UpdateCategoryComponent message = {this.props.message} category = {this.props.category}  onSubmit = {this.props.onSubmit} />
         </div>
     }
 
@@ -42,10 +42,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         responseCallBack : (response) => {
             console.log("The response is "+JSON.stringify(response.data[0]));
-            if (response.data.length > 0)
             dispatch(_showcategory(response.data[0], ""));
-            else 
-            dispatch(_showcategory(null,"Invalid Category Id"));
 
         },
         catchCallBack : (error) => {dispatch(_showcategory(null,error.response.data))},

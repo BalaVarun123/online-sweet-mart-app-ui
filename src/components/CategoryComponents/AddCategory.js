@@ -28,7 +28,8 @@ const mapDispatchToProps = (dispatch) => {
         onSubmit : (category) => {
             console.log("onSubmit activated");
             const responseCallBack = (response) => {
-                dispatch(_displayMessage("Added successfully."));
+                console.log("Category Id is:"+JSON.stringify(response.data))
+                alert("Added successfully")
                 dispatch(_redirectToShow(true,response.data.categoryId));
             };
             const catchCallBack = (error) => {

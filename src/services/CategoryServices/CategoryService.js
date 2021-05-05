@@ -16,11 +16,16 @@ export default class categoryService {
         {
         await axios.get(URL_CATEGORY_TOTAL_COST+category.categoryId)
         .then((response) => category.totalCost=response.data )
-        .catch(error => catchCallBack({response:{data:"Invalid category Id"}}))
+        .catch(error => {
+            console.log("The error is:"+JSON.stringify(error))
+            
+            catchCallBack({response:{data:"Invalid category Id"}})}) 
+            console.log("category is:"+JSON.stringify(category))
         responseCallBack({data:category})
         }
         else
         {
+            console.log("Else part executed")
             catchCallBack({response:{data:"Invalid category Id"}})
         }
     }

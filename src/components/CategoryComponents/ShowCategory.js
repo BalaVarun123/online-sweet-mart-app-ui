@@ -51,10 +51,7 @@ const mapDispatchToProps = (dispatch) => {
 
         onClickUpdate : () => {dispatch(_redirectToUpdate(true))},
         responseCallBack : (response) => {
-            if (response.data.length > 0)
-            dispatch(_showcategory(response.data, ""))
-            else 
-            dispatch(_showcategory(null,"Invalid Category Id"))
+        dispatch(_showcategory(response.data, ""))
         },
         catchCallBack : (error) => {dispatch(_showcategory(null,error.response.data))},
         resetRedirection : () => {dispatch(_redirectToShow(false))}

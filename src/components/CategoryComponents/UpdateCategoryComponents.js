@@ -17,6 +17,7 @@ export default class UpdateOrderBillComponent extends React.Component{
                 <button type="submit">Update</button>
                 <br/>
                 <button type="reset">Reset</button>
+                <p>{this.props.message}</p>
                 </div>
                 </form>
             </div>);
@@ -35,7 +36,7 @@ export default class UpdateOrderBillComponent extends React.Component{
     }
 
     onReset = (event) => {
-        this.props.onReset();
+        
         this.forceUpdate();
     }
 }
