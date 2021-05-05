@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const ProductComponent = () => {
-    const products = useSelector((state) => state.productReducer.products);
+    const products = useSelector((state) => state.product.product);
 if(products!=null){
     const renderList = products.map((product) => {
         const {productId, name,description, price, available,photoPath} = product;
