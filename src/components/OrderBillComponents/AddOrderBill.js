@@ -8,9 +8,8 @@ class AddOrderBill extends React.Component{
     render(){
         if (this.props.redirectToShow)
             this.props.history.push(`/order-bill/show/${this.props.redirectionId}`)
-        return <div>
-            <h2>Order Bill Add</h2>
-            <br/>
+        return <div className = "ui container">
+             <div className="ui huge header center aligned">Add Order Bill</div>
             <AddOrderBillComponent message = {this.props.message} orderBill = {this.props.orderBill} sweetOrderIds = {this.props.sweetOrderIds} onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId} onClickAddSweetOrderId = {this.props.onClickAddSweetOrderId}/>
         </div>
     }

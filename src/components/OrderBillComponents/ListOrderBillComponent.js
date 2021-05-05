@@ -39,9 +39,9 @@ class ListOrderBillComponent extends React.Component{
                 rows.push(
                     <tr key = {orderBill.orderBillId}>
                         <td><Link to={"/order-bill/show/"+ orderBill.orderBillId}>{orderBill.orderBillId}</Link></td>
-                        <td><Link>{orderBill.createdDate}</Link></td>
-                        <td><Link>{orderBill.totalCost}</Link></td>
-                        <td>{orderBill.listSweetOrder.map((sweetOrder) => <Link key = {sweetOrder.sweetOrderId}>{sweetOrder.sweetOrderId}</Link>)}</td>
+                        <td>{orderBill.createdDate}</td>
+                        <td>{orderBill.totalCost}</td>
+                        <td>{orderBill.listSweetOrder.map((sweetOrder) => <a key = {sweetOrder.sweetOrderId} href = {"/sweet-order/show/"+sweetOrder.sweetOrderId}>{sweetOrder.sweetOrderId}</a>)}</td>
                         <td className = "center aligned"><button type="button" className = "ui button primary" onClick = {this.onClickUpdate.bind(this,orderBill.orderBillId)}>UPDATE</button></td>
                         <td className = "center aligned"><button type="button" className = "ui button negative" onClick = {this.onClickDelete.bind(this,orderBill.orderBillId)}>DELETE</button></td>
                     </tr>

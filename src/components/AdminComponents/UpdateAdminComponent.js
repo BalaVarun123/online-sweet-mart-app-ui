@@ -15,9 +15,10 @@ export default class UpdateAdminComponent extends React.Component{
         let component;
         if (this.props.admin){
             component = ( 
-                    <div>
-                        <p>{this.props.message}</p>
-                        <form onSubmit = {this.onSubmit} className = "ui form">
+                    <div class="ui column stackable center page grid">
+                        <div class="three wide column"></div>
+                       
+                        <form onSubmit = {this.onSubmit}  className = "ui ten wide column form segment">
                             <div className = "field">
                             <label>ID</label>  <input id = "id-input" type = "number" min = "0" defaultValue = {this.props.admin.id}  ref = {this.idRef}/>   <br/>
                             </div>
@@ -39,14 +40,16 @@ export default class UpdateAdminComponent extends React.Component{
                             <div className = "field">
                             <label>Product ID</label>  <input id = "product-id-input" type = "number" min = "0" defaultValue = {this.props.admin.product.productId} ref = {this.productIdRef}/>   <br/>
                             </div>
-                            <button type="submit" className = "ui primary button">Update</button>
-                            <button type= "reset" className = "ui negative button">Reset</button>
+                            <button type="submit" className="ui left floated button primary">Update</button>
+                            <button type= "reset" className="ui right floated button negative">Reset</button>
                             {/*<button type="button">Cancel</button>*/}
+                            <p>{this.props.message}</p>
                         </form>
+                        
                     </div>);
             }
         else{
-            component = ( <p>{this.props.message}</p> );
+            component = ( <h2>{this.props.message}</h2> );
         }
 
         return component;

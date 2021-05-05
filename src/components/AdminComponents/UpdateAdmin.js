@@ -11,8 +11,8 @@ class UpdateAdmin extends React.Component{
         if (this.props.redirectToUpdate ){
             this.props.resetRedirection();
         }
-        return <div>
-            <h2>UpdateAdmin</h2>
+        return <div className = "ui container">
+            <div className="ui huge header center aligned">Update admin</div>
             <br/>
             <UpdateAdminComponent admin = {this.props.admin} message = {this.props.message} onSubmit = {this.props.onSubmit}/>
         </div>

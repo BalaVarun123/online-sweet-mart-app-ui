@@ -12,7 +12,8 @@ class ListAdmin extends React.Component{
     render(){
         if (this.props.redirectToUpdate)
         this.props.history.push(`/admin/update/${this.props.redirectionId}`)
-        return <div>
+        return <div className = "ui container">
+             <div className="ui huge header center aligned">All admin records</div>
             <ListAdminComponent adminList = {this.props.adminList} message = {this.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.props.onClickDelete}/>
         </div>
     }

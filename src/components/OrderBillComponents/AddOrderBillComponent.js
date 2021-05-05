@@ -11,23 +11,33 @@ export default class AddOrderBillComponent extends React.Component{
     render(){
         this.renderSweetOrderIds();
         const date = new Date();
-        let component = (<div>
-            <div>View OrderBill.SwetOrders</div>
-            <p>{this.props.message}</p>
-            <form onSubmit = {this.onSubmit} onReset = {this.onReset}>
+        let component = (<div class="ui column stackable center page grid">
+            <div class="three wide column"></div>
+            
+            <form onSubmit = {this.onSubmit} onReset = {this.onReset} className = "ui ten wide column form segment">
             <div>
             Order Bill Id : (will be auto generated.) <br/>
-            Created date : <input type = "date" max = {date} defaultValue = {date} ref = {this.createdDateRef}/> <br/>
-            Total Cost : <input type = "number" min = "0.0" step = "0.01"  ref = {this.totalCostRef}/> <br/>
-            Sweet Order ID's : <br/>
-            {this.sweetOrderIds}
-            <br/>
-            <input type = "number" min = "0" step = {1} ref = {this.addSweetOrderIdRef} placeholder = "Sweet Order ID"/><button type = "button" onClick = {this.onClickAddSweetOrderId}>Add Sweet Order</button>
-            <br/>
-            <button type="submit">Add Order Bill</button>
-            <br/>
-            <button type="reset">Reset</button>
+            <div className = "field">
+            <label>Created date </label><input type = "date" max = {date} defaultValue = {date} ref = {this.createdDateRef}/> <br/>
             </div>
+            <div className = "field">
+            <label>Total Cost </label> <input type = "number" min = "0.0" step = "0.01"  ref = {this.totalCostRef}/> <br/>
+            </div>
+            <div className = "field">
+            <label>Sweet Order ID's </label> <br/>
+            {this.sweetOrderIds}
+            </div>
+            <div className = "field">
+            <input type = "number" min = "0" step = {1} ref = {this.addSweetOrderIdRef} placeholder = "Add Sweet Order ID"/>
+            <button type = "button" className="ui left floated button secondary" onClick = {this.onClickAddSweetOrderId}>Add Sweet Order</button>
+            </div>
+            <br/><br/>
+            <div className = "field">
+            <button type="submit" className="ui left floated button primary">Add Order Bill</button>
+            <button type="reset" className="ui right floated button negative">Reset</button>
+            </div>
+            </div>
+            <p>{this.props.message}</p>
             </form>
         </div>);
 
@@ -43,7 +53,10 @@ export default class AddOrderBillComponent extends React.Component{
        this.sweetOrderIds = [];
        for (let id of this.props.sweetOrderIds){
            this.sweetOrderIds.push(
-           <div key = {id}>{id} <button type = "button" onClick = {this.onClickRemoveSweetOrderId.bind(this,id)}>Remove</button></div>  
+           <div key = {id}  className = "inline field">
+               <label>{id} </label>
+               <button type = "button" onClick = {this.onClickRemoveSweetOrderId.bind(this,id)} className="ui tiny button negative">Remove</button>
+            </div>  
            );
        }
     }
