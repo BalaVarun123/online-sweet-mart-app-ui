@@ -9,8 +9,9 @@ export default class AddAdminComponent extends React.Component{
 
 
     render(){
-        return <div class="ui raised segment">
-               <form onSubmit = {this.onSubmit} onReset = {this.onReset} className = "ui form">
+        return <div className="ui column stackable center page grid">
+                <div className="three wide column"></div>
+               <form onSubmit = {this.onSubmit} onReset = {this.onReset} className = "ui ten wide column form segment">
                 ID will be auto-generated.<br/>
                 <div className = "field">
                 <label>Customer ID</label>
@@ -31,9 +32,10 @@ export default class AddAdminComponent extends React.Component{
                 <div className = "field">
                 <label>Product ID</label>  <input id = "product-id-input" type = "number" min = "0" ref = {this.productIdRef} required/>   <br/>
                 </div>
-                <button type="submit" className = "ui primary button">Add</button>
-                <button type= "reset" className = "ui negative button">Reset</button>
+                <button type="submit" className="ui left floated button primary">Add</button>
+                <button type= "reset" className="ui right floated button negative">Reset</button>
                 {/*<button type="button">Cancel</button>*/}
+                <p>{this.props.message}</p>
                 </form>
         </div>
     }

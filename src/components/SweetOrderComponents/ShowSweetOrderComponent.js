@@ -1,32 +1,40 @@
 import React from "react";
-export default class ShowAdminComponent extends React.Component{
+
+class ShowSweetOrderComponent extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.sweetItemElements = [];
+        
+    }
+
+    
+
     render(){
+        
         let component;
-        if (this.props.admin){
+        if (this.props.sweetOrder){
+            console.log("sweet order is :::"+JSON.stringify(this.props.sweetOrder.totalCost))
+            this.loadSweetItemElements(this.props.sweetOrder.listItems)
             component  = 
             <div class="ui column stackable center page grid">
                  <div className="three wide column"></div>
                 <div className = "ui ten wide column big list segment">
                 <div class="item">
-                <label>ID : </label> {this.props.admin.id}
+                <label>ID : </label> {this.props.sweetOrder.sweetOrderId}
                 </div>
                 <div class="item">
-                <label>Customer ID :</label> {this.props.admin.customer.userId} 
+                <label>User ID : </label> {this.props.sweetOrder.user.userId} 
                 </div>
                 <div class="item">
-                <label>User ID:</label> {this.props.admin.user.userId}
+                <label>Created Date : </label> {this.props.sweetOrder.createdDate}
+                </div>
+                <div class = "item">
+                <label>Total cost : </label> {this.props.sweetOrder.totalCost}
                 </div>
                 <div class="item">
-                <label>SweetItem ID :</label> {this.props.admin.item.orderItemId} 
-                </div>
-                <div class="item">
-                <label>Category Id : </label>{this.props.admin.category.categoryId}
-                </div>
-                <div class="item">
-                <label>Cart ID : </label>{this.props.admin.cart.cartId} 
-                </div>
-                <div class="item">
-                <label>Product ID :</label> {this.props.admin.product.productId} <br/>
+                <label>Sweet Item ID's : </label>
+                {this.sweetItemElements}
                 </div>
                 <div>
                 <button type="button" id = "btn-update" className="ui left floated button primary" onClick = {this.props.onClickUpdate}>Update</button>
@@ -44,4 +52,13 @@ export default class ShowAdminComponent extends React.Component{
         return component;
     }
 
+
+    loadSweetItemElements = (listItems) => {
+        this.sweetItemElements = listItems.map(
+            (item) => <div className="item">{item.orderItemId}</div>
+            );
+    }
+
 }
+
+export default ShowSweetOrderComponent;
