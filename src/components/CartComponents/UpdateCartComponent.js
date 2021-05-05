@@ -23,7 +23,7 @@ class UpdateCartComponent extends React.Component {
                 <form onSubmit={this.onSubmit} onReset={this.onReset} class="ui form" class="ui twelve wide column form segment">
 
 
-                    <div class="list-group-item list-group-item-warning"  >
+                    <div class="list-group-item list-group-item-danger"  >
 
                         <div class="field" >
                             <i class="shopping cart icon"></i>
@@ -142,6 +142,32 @@ class UpdateCartComponent extends React.Component {
 }
 
 export default UpdateCartComponent;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// class="ui two column stackable center aligned page grid"
 
 
 

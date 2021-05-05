@@ -22,8 +22,7 @@ const CartDetail = () => {
   }, []);
 
   if (cart != null) {
-    console.log("checkingCartDetails:" + JSON.stringify(cart))
-
+    
     const { cartId, productCount, listProduct, total, grandTotal } = cart;
 
     return (
@@ -42,25 +41,25 @@ const CartDetail = () => {
 
               return (<div key={product.productId}>
 
-                <h2 class="ui purple segment">  PRODUCT ID: {product.productId} </h2> <br />
+                <h2 class="ui purple segment">  PRODUCT ID : {product.productId} </h2> <br />
 
-                <h1 class="ui purple segment"> PRODUCT COUNT:  {productCount}  </h1> <br />
+                <h1 class="ui purple segment"> PRODUCT COUNT :  {productCount}  </h1> <br />
 
-                <h2 class="ui red segment"> PRODUCT NAME:  {product.name}   </h2> <br />
+                <h2 class="ui red segment"> PRODUCT NAME :  {product.name}   </h2> <br />
 
-                <h2 class="ui pink segment"> PRICE:  {product.price} </h2>  <br />
+                <h2 class="ui pink segment"> PRICE :  {product.price} </h2>  <br />
 
-                <h2 class="ui purple segment"> PRODUCT DESCRIPTION: {product.description} </h2> <br />
+                <h2 class="ui purple segment"> PRODUCT DESCRIPTION : {product.description} </h2> <br />
 
-                <h2 class="ui blue segment"> AVAILABLE: {product.available + ""} </h2> <br />
+                <h2 class="ui blue segment"> AVAILABLE : {product.available + ""} </h2> <br />
 
-                <h2 class="ui green segment"> CATEGORY ID: {product.category.categoryId}  </h2> <br />
+                <h2 class="ui green segment"> CATEGORY ID : {product.category.categoryId}  </h2> <br />
 
-                <h2 class="ui yellow segment"> CATEGORY NAME: {product.category.name}  </h2> <br />
+                <h2 class="ui yellow segment"> CATEGORY NAME : {product.category.name}  </h2> <br />
 
-                <h2 class="ui teal segment" > TOTAL: {total}  </h2>  <br />
+                <h2 class="ui teal segment" > TOTAL : {total}  </h2>  <br />
 
-                <h1 class="ui olive segment"> GRAND TOTAL: {grandTotal} </h1> <br />
+                <h1 class="ui olive segment"> GRAND TOTAL : {grandTotal} </h1> <br />
 
                 <br /> <br />
 

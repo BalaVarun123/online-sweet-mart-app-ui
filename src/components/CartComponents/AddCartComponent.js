@@ -22,7 +22,7 @@ class AddCartComponent extends React.Component {
 
         return (
 
-            <div class="ui two column stackable center aligned page grid" >
+            <div class = 'container' >
                 <p> {this.props.state.message} </p>
                 <form onSubmit={this.onSubmit} onReset={this.onReset} class="ui form" class="ui twelve wide column form segment">
 

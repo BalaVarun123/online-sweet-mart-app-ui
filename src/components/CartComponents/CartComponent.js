@@ -6,31 +6,55 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CartComponent = () => {
     const carts = useSelector((state) => state.cartReducer.carts);
-if(carts!=null){
-    const renderList = carts.map((cart) => {
-        const {cartId, productCount, total, grandTotal} = cart;
-        return(
-            <div key={cartId} className = "container" >
-                <Link to={`/cart/show-cart-by-id/${cartId}`}>
-                     
-                     <div class = "row-sm-4">
-                               <div class="list-group-item active">CartId:{cartId}</div> <br/>
-                               <div class="list-group-item list-group-item-warning">ProductCount:{productCount}</div> <br/>
-                               <div class="list-group-item list-group-item-danger">Total:{total}</div> <br/>
-                               <div class="list-group-item list-group-item-info">GrandTotal:{grandTotal}</div> <br/>
-                               
+    if (carts != null) {
+        const renderList = carts.map((cart) => {
+            const { cartId, productCount, total, grandTotal } = cart;
 
-                               <br/> <br/>
-                     </div>
-                              
-                </Link>
-            </div>
-        );
-    });
-    return <>{renderList}</>;
-} else {
-    return <p> please wait </p>
-}
+
+            return (
+                <div key={cartId} className="container" >
+
+
+                    <table class="ui red table"  >
+                        <thead>
+                            <tr >
+                                <th className="center aligned" > CART ID </th>
+                                <th className="center aligned"> PRODUCT COUNT </th>
+                                <th className="center aligned"> TOTAL </th>
+                                <th className="center aligned"> GRAND TOTAL </th>
+                                <th className="center aligned" class="center aligned" class="ui olive label"> ACTION </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="center aligned"> {cartId} </td>
+                                <td class="center aligned"> {productCount} </td>
+                                <td class="center aligned"> {total} </td>
+                                <td class="center aligned"> {grandTotal} </td>
+
+                                <Link to={`/cart/show-cart-by-id/${cartId}`}>
+                                    <i class="shopping cart icon " ></i> SHOW PRODUCT IN CART
+
+                    </Link>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+            );
+        });
+        return <>{renderList}</>;
+
+    }
+    else {
+        return <p> please wait </p>
+    }
 };
 
 export default CartComponent;
