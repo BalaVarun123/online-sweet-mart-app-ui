@@ -9,7 +9,7 @@ export default class AddAdminComponent extends React.Component{
 
 
     render(){
-        return <div>
+        return <div class="ui raised segment">
                <form onSubmit = {this.onSubmit} onReset = {this.onReset} className = "ui form">
                 ID will be auto-generated.<br/>
                 <div className = "field">
