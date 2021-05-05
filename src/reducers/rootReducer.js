@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux';
-import LoginReducer from './LoginReducers/LoginReducer';
 import cartReducer from './CartReducers/cartReducer';
 import { combineReducers } from 'redux'
 import adminReducer from './AdminReducers/AdminReducer';

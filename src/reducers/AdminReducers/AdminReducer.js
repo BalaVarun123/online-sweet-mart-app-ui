@@ -1,4 +1,4 @@
-import {ADMIN_ADD,ADMIN_UPDATE,ADMIN_DELETE,ADMIN_SHOW,ADMIN_SHOW_ALL, ADMIN_REDIRECT_TO_UPDATE} from "../../actionTypes/AdminActionTypes";
+import {ADMIN_ADD,ADMIN_UPDATE,ADMIN_DELETE,ADMIN_SHOW,ADMIN_SHOW_ALL, ADMIN_REDIRECT_TO_UPDATE, ADMIN_DISPLAY_MESSAGE} from "../../actionTypes/AdminActionTypes";
 
 const defaultState = {
     admin : null,
@@ -38,6 +38,9 @@ export default function adminReducer(state = defaultState , action){
             newState.admin = action.admin;
             newState.message = action.message;
             newState.redirectToShow = action.redirectToShow;
+            break;
+        case ADMIN_DISPLAY_MESSAGE :
+            newState.message = action.message;
             break;
         default :
             newState = state;

@@ -17,16 +17,30 @@ export default class UpdateAdminComponent extends React.Component{
             component = ( 
                     <div>
                         <p>{this.props.message}</p>
-                        <form onSubmit = {this.onSubmit} >
-                            ID : <input id = "id-input" type = "number" min = "0" defaultValue = {this.props.admin.id}  ref = {this.idRef}/>   <br/>
-                            Customer ID : <input id = "customer-id-input"type = "number" min = "0" defaultValue = {this.props.admin.customer.userId} ref = {this.customerIdRef} />   <br/>
-                            User ID: <input id = "user-id-input" type = "number" min = "0" defaultValue = {this.props.admin.user.userId} ref = {this.userIdRef}/>   <br/>
-                            SweetItem ID : <input id = "sweet-item-id-input" type = "number" min = "0" defaultValue = {this.props.admin.item.orderItemId} ref = {this.itemIdRef}/>   <br/>
-                            Category Id : <input id = "category-id-input" type = "number" min = "0" defaultValue = {this.props.admin.category.categoryId} ref = {this.categoryIdRef}/>    <br/>
-                            Cart ID : <input id = "cart-id-input" type = "number" min = "0" defaultValue = {this.props.admin.cart.cartId}  ref = {this.cartIdRef}/>  <br/>
-                            Product ID : <input id = "product-id-input" type = "number" min = "0" defaultValue = {this.props.admin.product.productId} ref = {this.productIdRef}/>   <br/>
-                            <button type="submit">Update</button>
-                            <button type= "reset">Reset</button>
+                        <form onSubmit = {this.onSubmit} className = "ui form">
+                            <div className = "field">
+                            <label>ID</label>  <input id = "id-input" type = "number" min = "0" defaultValue = {this.props.admin.id}  ref = {this.idRef}/>   <br/>
+                            </div>
+                            <div className = "field">
+                            <label>Customer ID </label> <input id = "customer-id-input"type = "number" min = "0" defaultValue = {this.props.admin.customer.userId} ref = {this.customerIdRef} />   <br/>
+                            </div>
+                            <div className = "field">
+                            <label>User ID</label> <input id = "user-id-input" type = "number" min = "0" defaultValue = {this.props.admin.user.userId} ref = {this.userIdRef}/>   <br/>
+                            </div>
+                            <div className = "field">
+                            <label>SweetItem ID</label>  <input id = "sweet-item-id-input" type = "number" min = "0" defaultValue = {this.props.admin.item.orderItemId} ref = {this.itemIdRef}/>   <br/>
+                            </div>
+                            <div className = "field">
+                            <label>Category Id</label>  <input id = "category-id-input" type = "number" min = "0" defaultValue = {this.props.admin.category.categoryId} ref = {this.categoryIdRef}/>    <br/>
+                            </div>
+                            <div className = "field">
+                            <label>Cart ID</label>  <input id = "cart-id-input" type = "number" min = "0" defaultValue = {this.props.admin.cart.cartId}  ref = {this.cartIdRef}/>  <br/>
+                            </div>
+                            <div className = "field">
+                            <label>Product ID</label>  <input id = "product-id-input" type = "number" min = "0" defaultValue = {this.props.admin.product.productId} ref = {this.productIdRef}/>   <br/>
+                            </div>
+                            <button type="submit" className = "ui primary button">Update</button>
+                            <button type= "reset" className = "ui negative button">Reset</button>
                             {/*<button type="button">Cancel</button>*/}
                         </form>
                     </div>);

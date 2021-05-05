@@ -1,4 +1,4 @@
-import {ADMIN_ADD,ADMIN_UPDATE,ADMIN_DELETE,ADMIN_SHOW,ADMIN_SHOW_ALL, ADMIN_REDIRECT_TO_UPDATE} from "../actionTypes/AdminActionTypes";
+import {ADMIN_ADD,ADMIN_UPDATE,ADMIN_DELETE,ADMIN_SHOW,ADMIN_SHOW_ALL, ADMIN_REDIRECT_TO_UPDATE, ADMIN_DISPLAY_MESSAGE} from "../actionTypes/AdminActionTypes";
 
 
 export function _showAdmin(admin = {},processing = false,message = ""){
@@ -51,5 +51,13 @@ export function _addAdmin(admin,message,redirectToShow) {
         admin : admin,
         message : message,
         redirectToShow : redirectToShow
+    }
+}
+
+
+export function _displayMessage(message) {
+    return {
+        type : ADMIN_DISPLAY_MESSAGE,
+        message : message
     }
 }

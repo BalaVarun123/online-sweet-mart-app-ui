@@ -10,16 +10,29 @@ export default class AddAdminComponent extends React.Component{
 
     render(){
         return <div>
-               <form onSubmit = {this.onSubmit} onReset = {this.onReset}>
-                ID : will be auto-generated.<br/>
-                Customer ID : <input id = "customer-id-input"type = "number" min = "0"  ref = {this.customerIdRef} required/>   <br/>
-                User ID: <input id = "user-id-input" type = "number" min = "0"  ref = {this.userIdRef} required/>   <br/>
-                SweetItem ID : <input id = "sweet-item-id-input" type = "number" min = "0"  ref = {this.itemIdRef} required/>   <br/>
-                Category Id : <input id = "category-id-input" type = "number" min = "0"  ref = {this.categoryIdRef} required/>    <br/>
-                Cart ID : <input id = "cart-id-input" type = "number" min = "0"   ref = {this.cartIdRef} required/>  <br/>
-                Product ID : <input id = "product-id-input" type = "number" min = "0" ref = {this.productIdRef} required/>   <br/>
-                <button type="submit">Add</button>
-                <button type= "reset">Reset</button>
+               <form onSubmit = {this.onSubmit} onReset = {this.onReset} className = "ui form">
+                ID will be auto-generated.<br/>
+                <div className = "field">
+                <label>Customer ID</label>
+                <input id = "customer-id-input"type = "number" min = "0"  ref = {this.customerIdRef} required/>   <br/>
+                </div>
+                <div className = "field">
+                <label>User ID</label><input id = "user-id-input" type = "number" min = "0"  ref = {this.userIdRef} required/>   <br/>
+                </div>
+                <div className = "field">
+                <label>SweetItem ID</label>  <input id = "sweet-item-id-input" type = "number" min = "0"  ref = {this.itemIdRef} required/>   <br/>
+                </div>
+                <div className = "field">
+                <label>Category Id</label>  <input id = "category-id-input" type = "number" min = "0"  ref = {this.categoryIdRef} required/>    <br/>
+                </div>
+                <div className = "field">
+                <label>Cart ID</label>  <input id = "cart-id-input" type = "number" min = "0"   ref = {this.cartIdRef} required/>  <br/>
+                </div>
+                <div className = "field">
+                <label>Product ID</label>  <input id = "product-id-input" type = "number" min = "0" ref = {this.productIdRef} required/>   <br/>
+                </div>
+                <button type="submit" className = "ui primary button">Add</button>
+                <button type= "reset" className = "ui negative button">Reset</button>
                 {/*<button type="button">Cancel</button>*/}
                 </form>
         </div>

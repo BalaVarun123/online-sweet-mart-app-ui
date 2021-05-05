@@ -32,9 +32,7 @@ class ShowAdmin extends React.Component{
     }
 
     componentDidMount(){
-        if (!this.props.admin){
-            this.adminService.getAdmin(this.props.id,this.props.responseCallBack,this.props.catchCallBack);
-        }
+        this.adminService.getAdmin(this.props.id,this.props.responseCallBack,this.props.catchCallBack);
     }
 
     onClickDelete = () => {
