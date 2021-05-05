@@ -9,9 +9,9 @@ export default class AddCategoryComponent extends React.Component{
             Category Id : (will be auto generated.) <br/>
             Category Name: <input type="text" ref={this.nameRef}/>
             <br/>
-            <button type="submit">Add Category</button>
+            <button type="submit" className = "ui primary button">Add Category</button>
             <br/>
-            <button type="reset">Reset</button>
+            <button type="reset" className = "ui negative button">Reset</button>
             </div>
             </form>
         </div>);
