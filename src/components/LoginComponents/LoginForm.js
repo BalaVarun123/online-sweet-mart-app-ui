@@ -5,7 +5,7 @@ export default class LoginForm extends React.Component{
     passwordRef = React.createRef();
     render(){
         return <form onSubmit = {this.onSubmit}>
-            <input type="text" ref = {this.userIdRef}/>
+            <input type="text" ref = {this.userIdRef}/><br/>
             <input type="password" ref = {this.passwordRef}/>
             <button type="submit">Login</button>
             <p>{this.props.message}</p>

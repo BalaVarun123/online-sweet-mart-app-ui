@@ -3,10 +3,6 @@ import { CartActionTypes } from '../../actionTypes/CartActionTypes';
 const initialState = {
 cart:null,
 carts:null
-//     cart:,
-//     carts:[],
-//    isAdded:false,
-//     isUpdated:false
 };
 
 const cartReducer = (state=initialState, action)=>{
