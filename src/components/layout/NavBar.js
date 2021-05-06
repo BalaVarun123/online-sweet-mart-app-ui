@@ -19,7 +19,7 @@ class NavBar extends React.Component{
                 Friends
                 </a>
                 <div class="right menu">
-                <div class="item" onClick = {this.props.onClickLogOut()}>
+                <div class="item" onClick = {this.props.onClickLogOut.bind(this,this.props.userId)}>
                     Logout
                     </div>
                     </div>
@@ -29,14 +29,16 @@ class NavBar extends React.Component{
     }
 }
 const mapStateToProps = (state, props) => {
-return {}
+return {
+    userId : state.login.userId
+}
 }
 
 const mapDispatchToProps = (dispatch) => {
 return {
-    onClickLogOut : () => {
-        // const loginService = new LoginService();
-        // loginService.logout(dispatch)
+    onClickLogOut : (userId,event) => {
+         const loginService = new LoginService();
+         loginService.logout(userId,dispatch)
     }
 }
 }
