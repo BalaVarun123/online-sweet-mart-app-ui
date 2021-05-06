@@ -11,9 +11,11 @@ export default class ShowCustomerComponent extends React.Component{
              <div class="three wide column"></div>
             <div className = "ui ten wide column big list segment">
             <div class="item">
+            <i class="id badge icon"> </i>
             <label>User Id : </label>{this.props.customer.userId} 
             </div>
             <div class = "item">
+            <i class="user plus icon"></i>
             <label>Username :</label> {this.props.Customer.username}
             </div>
             <button type = "button">View Sweet orders</button>
