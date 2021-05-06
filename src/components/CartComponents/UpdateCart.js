@@ -28,7 +28,7 @@ class UpdateCart extends React.Component {
 
         return <div>
 
-            <Header title="WELCOME TO UPDATE CART" />
+            <Header title="UPDATE CART MODULE" />
 
             <UpdateCartComponent state={this.state} setState={p => { this.setState(p) }} />  <br /> <br />
 
@@ -36,7 +36,6 @@ class UpdateCart extends React.Component {
 
         </div>
     }
-
 
 }
 
