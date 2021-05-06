@@ -8,7 +8,6 @@ export default function rootReducer(){
     return combineReducers({
         login : LoginReducer,
         admin : adminReducer,
-        orderBill:orderBillReducer,
         category : CategoryReducer
     });
 }
