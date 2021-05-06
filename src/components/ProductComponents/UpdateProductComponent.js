@@ -26,19 +26,28 @@ export default class UpdateProductComponent extends React.Component{
         component = <p>{this.props.message}</p>
         else{
             
-            component = (<div>
-                <div>Update Product</div>
-                
-                <form onSubmit = {this.onSubmit} >
+            component = (<div className="ui column stackable center page grid">
+                <div className="three wide column"></div>
+                <form onSubmit = {this.onSubmit} className = "ui ten wide column form segment">
                 <div>
+                <div className = "field">
                 Product ID : <input type = "number" min = "0" value = {this.props.product.productId} ref = {this.ProductIdRef}/> <br/>
+                </div>
+                <div className = "field">
                 <input type="file"  ref={this.photoPathRef}/>
-                PhotoPath :{this.props.product.photopath}<br/>
+                {/* PhotoPath :{this.props.product.photopath}<br/> */}
+                </div>
+                <div className = "field">
                 NAME: <input type="text" min="3" max="15" defaultValue = {this.props.product.name} ref={this.nameRef}/><br/>
+                </div>
+                <div className = "field">
                 DESCRIPTION: <input type="textarea" max="150" defaultValue = {this.props.product.description} ref={this.descriptionRef}/><br/>
+                </div>
+                <div className = "field">
                 PRICE: <input type="number" min="0" step="0.01" defaultValue = {this.props.product.price} ref={this.priceRef}/><br/>
+                </div>
                 <br/>
-                <button type="submit">Update</button>
+                <button type="submit" className="ui left floated button primary">Update</button>
                 <br/>
                 </div>
                 <p>{this.props.message}</p>

@@ -8,8 +8,8 @@ class AddProduct extends React.Component{
     render(){
         if (this.props.redirectToShow)
             this.props.history.push(`/product/show-by-id/${this.props.redirectionId}`)
-        return <div>
-            <h2>Product Add</h2>
+        return <div className = "ui container">
+            <h2 className="ui huge header center aligned">Product Add</h2>
             <br/>
             <AddProductComponent message = {this.props.message} product = {this.props.product} onSubmit = {this.props.onSubmit}/>
         </div>

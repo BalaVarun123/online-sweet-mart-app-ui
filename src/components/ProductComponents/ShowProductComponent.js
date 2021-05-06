@@ -7,14 +7,21 @@ export default class ShowProductComponent extends React.Component{
         if (this.props.product == null)
         component = <p>{this.props.message}</p>
         else 
-        component = ( <div>
+        component = ( <div class="ui column stackable center page grid">
+             <div class="three wide column"></div>
             <div>Show products</div>
-            <div>
+            <div className = "ui ten wide column big list segment">
+            <div class="item">
             Product Id : {this.props.product.productId} <br/>
+            </div>
+            <div class="item">
             Name : {this.props.product.name} <br/>
+            </div>
+            <div class="item">
             price : {this.props.product.price} <br/>
-            <button type="button" onClick = {this.props.onClickUpdate}>Update</button>
-            <button type="button" onClick = {this.onClickDelete}>Delete</button>
+            </div>
+            <button type="button" onClick = {this.props.onClickUpdate} className="ui left floated button primary">Update</button>
+            <button type="button" onClick = {this.onClickDelete} className="ui right floated button negative">Delete</button>
             </div>
         </div>);
         return component;

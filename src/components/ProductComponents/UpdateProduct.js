@@ -13,8 +13,8 @@ class UpdateProduct extends React.Component{
         if (this.props.redirectToUpdate){
             this.props.resetRedirection();
         }
-        return <div>
-            <h2>Update Product</h2>
+        return <div className = "ui container">
+            <div className="ui huge header center aligned">Update Product</div>
             <br/>
             <UpdateProductComponent message = {this.props.message} product = {this.props.product} onSubmit = {this.props.onSubmit}/>
         </div>

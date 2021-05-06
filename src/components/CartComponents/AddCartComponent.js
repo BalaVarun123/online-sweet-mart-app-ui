@@ -23,7 +23,7 @@ class AddCartComponent extends React.Component {
         return (
 
 
-            <div class = 'container' >
+        
 
             <div class = "container" >
 

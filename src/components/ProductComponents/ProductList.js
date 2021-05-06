@@ -9,7 +9,8 @@ class ProductList extends React.Component{
     render(){
         if (this.props.redirectToUpdate)
         this.props.history.push(`/product/update/${this.props.redirectionId}`)
-        return <div>
+        return <div className = "ui container">
+            <div className="ui huge header center aligned">All Products</div>
             <ListProductComponent productList = {this.props.productList} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.props.onClickDelete}/>
         </div>
     }

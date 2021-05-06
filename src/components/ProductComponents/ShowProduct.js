@@ -17,8 +17,8 @@ class ShowProduct extends React.Component{
         if (this.props.redirectToShow){
             this.props.resetRedirection();
         }
-        return <div>
-            <h2>Show product</h2>
+        return <div className = "ui container">
+             <div className="ui huge header center aligned">Product Details</div>
             <br/>
             <ShowProductComponent product = {this.props.product} onClickDelete = {this.onClickDelete} onClickUpdate = {this.props.onClickUpdate} message = {this.props.message}/>
         </div>

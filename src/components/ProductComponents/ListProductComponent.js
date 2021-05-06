@@ -11,17 +11,17 @@ class ListProductComponent extends React.Component{
     render(){
         this.loadDetails(this.props.productList);
         return <div>
+            <div class="three wide column"></div>
             <p>{this.props.message}</p> 
-            <div>Selected view</div>
             <div>
-            <table>
+            <table className = "ui celled table large selectable">
             <thead>
               <tr>
-                  <th>Product_Id</th>
-                  <th>Name</th>
-                  <th>Price</th>
-                  <th>Description</th>
-                  <th colSpan = {2}>Action</th> 
+                  <th  className = "center aligned">Product_Id</th>
+                  <th  className = "center aligned">Name</th>
+                  <th  className = "center aligned">Price</th>
+                  <th  className = "center aligned">Description</th>
+                  <th  className = "center aligned" colSpan = {2}>Action</th> 
               </tr>  
             </thead>
             <tbody>{this.details}</tbody>
@@ -42,8 +42,8 @@ class ListProductComponent extends React.Component{
                         <td>{Product.name}</td>
                         <td>{Product.price}</td>
                         <td>{Product.description}</td>
-                        <td><button type="button" onClick = {this.onClickUpdate.bind(this,Product.productId)}>UPDATE</button></td>
-                        <td><button type="button" onClick = {this.onClickDelete.bind(this,Product.productId)}>DELETE</button></td>
+                        <td  className = "center aligned"><button type="button" className = "ui button primary" onClick = {this.onClickUpdate.bind(this,Product.productId)}>UPDATE</button></td>
+                        <td  className = "center aligned"><button type="button" className = "ui button negative" onClick = {this.onClickDelete.bind(this,Product.productId)}>DELETE</button></td>
                     </tr>
                 );
             }
