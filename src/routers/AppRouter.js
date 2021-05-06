@@ -17,6 +17,7 @@ const AppRouter = () => (
                 <Route path = "/customer" component = {CustomerRouter}/>
             </Switch>
         </div>
+       
     </BrowserRouter>
 );
 

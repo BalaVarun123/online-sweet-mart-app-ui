@@ -8,6 +8,7 @@ const URL_CUSTOMER_SHOW_ALL = "/customer/show-all";
 export default class CustomerService {
     getCustomer(id,responseCallBack,catchCallBack){
         axios.get(URL_CUSTOMER_SHOW+id)
+        
         .then(responseCallBack)
         .catch(catchCallBack);
     }
@@ -26,6 +27,7 @@ export default class CustomerService {
     }
 
     addCustomer(customer,responseCallBack,catchCallBack){
+        console.log("the customer object" +(customer))
         axios.post(URL_CUSTOMER_ADD,customer)
         .then(responseCallBack)
         .catch(catchCallBack);

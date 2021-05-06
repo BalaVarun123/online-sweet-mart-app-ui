@@ -5,7 +5,7 @@ import ShowCustomerComponent from "./ShowCustomerComponent";
 import {_displayMessage, _redirectToShow, _redirectToUpdate, _showCustomer} from "../../actions/CustomerActions";
 import CustomerService from "../../services/CustomerServices/CustomerService";
 
-const customerService = new CustomerService();;
+const customerService = new CustomerService();
 class ShowCustomer extends React.Component{
 
     
@@ -17,15 +17,15 @@ class ShowCustomer extends React.Component{
         if (this.props.redirectToShow){
             this.props.resetRedirection();
         }
-        return <div>
-            <h2>Show Order Bill</h2>
-            <br/>
+        return <div className = "ui container">
+            <div className="ui huge header center aligned">Customer Details</div>"
+
             <ShowCustomerComponent message = {this.props.message} customer = {this.props.customer} sweetOrderIds = {this.props.sweetOrderIds} 
             onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId} 
             onClickAddSweetOrderId = {this.props.onClickAddSweetOrderId} sweetItemIds = {this.props.sweetItemIds} 
-            onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveSweetItemId = {this.props.onClickRemoveSweetItemId} 
+             onClickRemoveSweetItemId = {this.props.onClickRemoveSweetItemId} 
             onClickAddSweetItemId = {this.props.onClickAddSweetItemId} cartIds = {this.props.cartIds} 
-            onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveCartId = {this.props.onClickRemoveCartId} 
+            onClickRemoveCartId = {this.props.onClickRemoveCartId} 
             onClickAddCartId = {this.props.onClickAddCartId}/>
         </div>
     }
@@ -60,10 +60,9 @@ const mapDispatchToProps = (dispatch) => {
         onClickViewSweetItem : () => {},
         onClickViewCart : () => {},
         responseCallBack : (response) => {
-            if (response.data.length > 0)
+            
             dispatch(_showCustomer(response.data[0], ""))
-            else 
-            dispatch(_showCustomer(null,"Invalid Order Bill Id"))
+            
         },
         catchCallBack : (error) => {dispatch(_showCustomer(null,error.response.data))},
         resetRedirection : () => {dispatch(_redirectToShow(false))}

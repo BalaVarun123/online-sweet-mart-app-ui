@@ -17,13 +17,14 @@ class UpdateCustomer extends React.Component{
         return <div>
             <h2>Customer Update</h2>
             <br/>
-            <UpdateCustomerComponent message = {this.props.message} customer = {this.props.customer} sweetOrderIds = {this.props.sweetOrderIds} 
-            onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId} 
+            <UpdateCustomerComponent message = {this.props.message} customer = {this.props.customer} 
+            sweetOrderIds = {this.props.sweetOrderIds} 
+            onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} 
+            onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId} 
             onClickAddSweetOrderId = {this.props.onClickAddSweetOrderId} sweetItemIds = {this.props.sweetItemIds} 
-            onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveSweetItemId = {this.props.onClickRemoveSweetItemId} 
-            onClickAddSweetItemId = {this.props.onClickAddSweetItemId} cartIds = {this.props.cartIds} 
-            onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveCartId = {this.props.onClickRemoveCartId} 
-            onClickAddCartId = {this.props.onClickAddCartId}/>
+            onClickRemoveSweetItemId = {this.props.onClickRemoveSweetItemId} 
+            onClickAddSweetItemId = {this.props.onClickAddSweetItemId} />
+            
         </div>
     }
 
@@ -36,14 +37,14 @@ class UpdateCustomer extends React.Component{
 }
 
 const mapStateToProps = (state,props) => {
+    console.log("sweet order display"+JSON.stringify(state.customer.sweetOrderIds))
     return {
-        Customer : state.Customer.Customer,
-        message : state.Customer.message,
+        customer : state.customer.customer,
+        message : state.customer.message,
         id : props.match.params.id,
-        redirectToUpdate: state.Customer.redirectToUpdate,
-        sweetOrderIds : state.Customer.sweetOrderIds,
-        sweetItemIds : state.Customer.sweetItemIds,
-        cartIds : state.Customer.cartIds
+        redirectToUpdate: state.customer.redirectToUpdate,
+        sweetOrderIds : state.customer.sweetOrderIds,
+        sweetItemIds : state.customer.sweetItemIds
 
     }
 }
@@ -51,24 +52,22 @@ const mapStateToProps = (state,props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         responseCallBack : (response) => {
-            console.log("The response is "+JSON.stringify(response.data[0]));
-            if (response.data.length > 0)
-            dispatch(_showCustomer(response.data[0], ""));
-            else 
-            dispatch(_showCustomer(null,"Invalid User Id"));
-
+            console.log("The response is "+JSON.stringify(response.data));
+            dispatch(_showCustomer(response.data, ""));
+            
         },
-        catchCallBack : (error) => {dispatch(_showCustomer(null,error.response.data))},
+        catchCallBack : (error) => {dispatch(_showCustomer(null,error.message))},
         onSubmit : (Customer) => {
             console.log("onSubmit activated");
             const responseCallBack = (response) => dispatch(_displayMessage("Updated successfully."));
             const catchCallBack = (error) => {
                 console.log("the error is :"+JSON.stringify(error));
-                dispatch(_displayMessage(error.response.data));
+                dispatch(_displayMessage(error.message));
             }
             customerService.updateCustomer(Customer,responseCallBack,catchCallBack );
         },
         resetRedirection : () => {dispatch(_redirectToUpdate(false))},
+
         onClickRemoveSweetOrderId : (id) => {
             dispatch(_removeSweetOrderId(id))
         },

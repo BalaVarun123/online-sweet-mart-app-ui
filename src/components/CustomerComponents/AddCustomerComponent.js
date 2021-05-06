@@ -14,59 +14,45 @@ export default class AddCustomerComponent extends React.Component{
     }
     render(){
         this.renderSweetOrderIds();
+        this.renderSweetItemIds();
+   
         let component = (<div>
             <div>View Customer.SweetOrders</div>
-            <p>{this.props.message}</p>
             <form onSubmit = {this.onSubmit} onReset = {this.onReset}>
-            <div>
-            User Id : (will be auto generated.) <br/>
-            Username : <input type = "string" min = "3" ref = {this.createduserIdRef}/> <br/>
-            Sweet Order ID's : <br/>
-            {this.sweetOrderIds}
-            <br/>
-            <input type = "number" min = "0" step = {1} ref = {this.addSweetOrderIdRef} placeholder = "Sweet Order ID"/><button type = "button" onClick = {this.onClickAddSweetOrderId}>Add Sweet Order</button>
-            <br/>
-            </div>
-            </form>
-        </div>);
-    }
-    render(){
-        this.renderSweetItemIds();
-        let component = (<div>
-            <div>View Customer.SweetItems</div>
-            <p>{this.props.message}</p>
-            <form onSubmit = {this.onSubmit} onReset = {this.onReset}>
-            <div>
-            User Id : <input type = "number" min = "0" value = {this.props.Customer.UserId} ref = {this.userIdRef}/> <br/>
-            Username : <input type = "string" min = "3" Value = {this.props.Customer.Username} ref = {this.usernameRef}/> <br/>
-            {this.sweetItemIds}
-            <br/>
-            <input type = "number" min = "0" step = {1} ref = {this.addSweetItemIdRef} placeholder = "Sweet Item ID"/><button type = "button" onClick = {this.onClickAddSweetItemId}>Add Sweet Item</button>
-            <br/>
-            <button type="submit">Add Customer</button>
-            <br/>
-            <button type="reset">Reset</button>
-            <br/>
-            </div>
-            </form>   
-        </div>);
-    }
-    render(){
-        this.renderCartIds();
-        let component = (<div>
-            <div>View Customer.Cart</div>
-            <p>{this.props.message}</p>
-            <form onSubmit = {this.onSubmit} onReset = {this.onReset}>
-            <div>
-            {this.cartIds}
-            <br/>
-            <input type = "number" min = "0" step = {1} ref = {this.addCartIdRef} placeholder = "Cart ID"/><button type = "button" onClick = {this.onClickAddCartId}>Add cart</button>
-            <br/>
-            <button type="submit">Add Customer</button>
-            <br/>
-            <button type="reset">Reset</button>
-            <br/>
-            </div>
+                <div>
+                User Id : <input type = "number" min = "0" ref = {this.userIdRef}/> <br/>
+                Username : <input type = "string" min = "3" ref = {this.usernameRef}/> <br/>
+                cart id : <input type = "number" min ="0"  ref = {this.addCartIdRef}/> <br/>
+                sweet Order Ids :  <br/>
+                {this.sweetOrderIds}
+                <br/>
+                sweet Item Ids : <br/>
+                  {
+                      this.sweetItemsIds
+                  }
+              
+                <input type = "number" min = "0" step = {1} ref = {this.addSweetOrderIdRef} placeholder = "Sweet Order ID"/>
+                <button type = "button" onClick = {this.onClickAddSweetOrderId}>Add Sweet Order</button>
+                <br/>
+                <input type = "number" min = "0" step = {1} ref = {this.addSweetItemIdRef} placeholder = "Sweet Item ID"/>
+                <button type = "button" onClick = {this.onClickAddSweetItemId}>Add Sweet Item</button>
+                <br/>
+                <button type="submit">Add Customer</button>
+                <br/>
+                <button type="reset">Reset</button>
+                <br/>
+                </div>              
+                <div>
+             {this.cartIds}
+                <br/>
+                <input type = "number" min = "0" step = {1} ref = {this.addCartIdRef} placeholder = "Cart ID"/><button type = "button" onClick = {this.onClickAddCartId}>Add cart</button>
+                <br/>
+                <button type="submit">Add Customer</button>
+                <br/>
+                <button type="reset">Reset</button>
+                <br/>
+                </div>
+                <p>{this.props.message}</p>
             </form>   
         </div>);
          return component;
@@ -76,6 +62,7 @@ export default class AddCustomerComponent extends React.Component{
     
     renderSweetOrderIds = () =>{
         this.sweetOrderIds = [];
+        console.log("this is sweet order"+new Set(this.props.sweetOrderIds))
         for (let id of this.props.sweetOrderIds){
             this.sweetOrderIds.push(
             <div key = {id}>{id} <button type = "button" onClick = {this.onClickRemoveSweetOrderId.bind(this,id)}>Remove</button></div>  
@@ -85,30 +72,34 @@ export default class AddCustomerComponent extends React.Component{
  
     renderSweetItemIds = () =>{
         this.sweetItemsIds = [];
-        for (let id of this.props.sweetItemsIds){
-            this.sweetItemIds.push(
+        for (let id of this.props.sweetItemIds){
+            this.sweetItemsIds.push(
             <div key = {id}>{id} <button type = "button" onClick = {this.onClickRemoveSweetItemId.bind(this,id)}>Remove</button></div>  
             );
         }
      }
  
-    renderCartIds = () =>{
-         this.cartIds = [];
-         for (let id of this.props.cartIds){
-             this.cartIds.push(
-             <div key = {id}>{id} <button type = "button" onClick = {this.onClickRemoveCartId.bind(this,id)}>Remove</button></div>  
-             );
-         }
-      }
+    // renderCartIds = () =>{
+    //      this.cartIds = [];
+    //      for (let id of this.props.cartIds){
+    //          this.cartIds.push(
+    //          <div key = {id}>{id} <button type = "button" onClick = {this.onClickRemoveCartId.bind(this,id)}>Remove</button></div>  
+    //          );
+    //      }
+    //   }
   
  
     onSubmit = (event) => {
          event.preventDefault();
-         const listSweetOrder = Array.from(this.props.sweetOrderIds);
-         const customer = {
+         console.log("this is adding"+(Array.from(this.props.sweetItemIds)))
+        //  const listSweetOrder = Array.from(this.props.sweetOrderIds);
+          const customer = {}
 
-             listSweetOrder : this.listSweetOrder
-         }
+             customer.sweetOrders = Array.from(this.props.sweetOrderIds)
+             customer.sweetItems = Array.from(this.props.sweetItemIds)
+             customer.username = this.usernameRef.current.value
+             customer.cartId = this.addCartIdRef.current.value
+
          this.props.onSubmit(customer);
      }
  
@@ -129,14 +120,8 @@ export default class AddCustomerComponent extends React.Component{
          }
      }
  
-    onSubmit = (event) => {
-             event.preventDefault();
-             const listSweetItem = Array.from(this.props.sweetItemIds);
-             const customer = {
-                 listSweetItem : this.listSweetItem
-             }
-             this.props.onSubmit(customer);
-         }
+    
+
      
     onReset = (event) => {
              this.props.onReset();
@@ -153,14 +138,7 @@ export default class AddCustomerComponent extends React.Component{
                  this.forceUpdate();
             
          }
-    onSubmit = (event) => {
-             event.preventDefault();
-             const Cart = Array.from(this.props.cartIds);
-             const customer = {
-                 cart : this.Cart
-             }
-             this.props.onSubmit(customer);
-         }
+    
      
     onReset = (event) => {
              this.props.onReset();
@@ -176,5 +154,5 @@ export default class AddCustomerComponent extends React.Component{
                 this.props.onClickAddCartId(Number(this.addCartIdRef.current.value));
                  this.forceUpdate();
          }  
-        }
         
+        }

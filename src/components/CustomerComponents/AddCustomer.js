@@ -15,23 +15,24 @@ class AddCustomer extends React.Component{
             <h2>Customer Add</h2>
             <br/>
             <AddCustomerComponent message = {this.props.message} customer = {this.props.customer} sweetOrderIds = {this.props.sweetOrderIds} 
-            onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId} 
+             onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId} 
             onClickAddSweetOrderId = {this.props.onClickAddSweetOrderId} sweetItemIds = {this.props.sweetItemIds} 
-            onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveSweetItemId = {this.props.onClickRemoveSweetItemId} 
+           onClickRemoveSweetItemId = {this.props.onClickRemoveSweetItemId} 
             onClickAddSweetItemId = {this.props.onClickAddSweetItemId} cartIds = {this.props.cartIds} 
             onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveCartId = {this.props.onClickRemoveCartId} 
-            onClickAddCartId = {this.props.onClickAddCartId}/>
+          onClickAddCartId = {this.props.onClickAddCartId}/>
         </div>
     }
 }
 
 const mapStateToProps = (state,props) => {
+    console.log("this is add customer"+ (state.customer.sweetItemIds))
     return {
         Customer : state.customer.customer,
         message : state.customer.message,
         sweetOrderIds : state.customer.sweetOrderIds,
         sweetItemIds : state.customer.sweetItemIds,
-        cartIds : state.customer.cartIds,
+       
         redirectToShow : state.customer.redirectToShow,
         redirectionId : state.customer.redirectionId
     }
@@ -39,6 +40,7 @@ const mapStateToProps = (state,props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onSubmit : (customer) => {
+
             console.log("onSubmit activated");
             const responseCallBack = (response) => {
                 dispatch(_displayMessage("Added successfully."));
