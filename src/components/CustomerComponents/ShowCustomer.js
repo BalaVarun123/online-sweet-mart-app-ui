@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import ShowCustomerComponent from "./ShowCustomerComponent";
 import {_displayMessage, _redirectToShow, _redirectToUpdate, _showCustomer} from "../../actions/CustomerActions";
 import CustomerService from "../../services/CustomerServices/CustomerService";
+import Header from "../pages/Header";
+import Footer from "../pages/Footer";
 
 const customerService = new CustomerService();
 class ShowCustomer extends React.Component{
@@ -18,7 +20,9 @@ class ShowCustomer extends React.Component{
             this.props.resetRedirection();
         }
         return <div className = "ui container">
-            <div className="ui huge header center aligned">Customer Details</div>"
+            <Header title="DISPLAY CUSTOMER" />
+            <br/>
+            
 
             <ShowCustomerComponent message = {this.props.message} customer = {this.props.customer} sweetOrderIds = {this.props.sweetOrderIds} 
             onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId} 
@@ -27,6 +31,8 @@ class ShowCustomer extends React.Component{
             onClickAddSweetItemId = {this.props.onClickAddSweetItemId} cartIds = {this.props.cartIds} 
             onClickRemoveCartId = {this.props.onClickRemoveCartId} 
             onClickAddCartId = {this.props.onClickAddCartId}/>
+            <br/>
+           <Footer></Footer>
         </div>
     }
 

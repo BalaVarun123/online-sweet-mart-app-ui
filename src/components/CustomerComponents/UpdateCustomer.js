@@ -6,7 +6,8 @@ import { _addSweetOrderId,_addSweetItemId, _addCartId, _displayMessage, _redirec
      _resetCartId ,_showCustomer } from "../../actions/CustomerActions";
 import CustomerService from "../../services/CustomerServices/CustomerService";
 import UpdateCustomerComponent from "./UpdateCustomerComponent";
-
+import Header from "../pages/Header";
+import Footer from "../pages/Footer";
 
 const customerService = new CustomerService();
 class UpdateCustomer extends React.Component{
@@ -16,6 +17,7 @@ class UpdateCustomer extends React.Component{
             this.props.history.push(`/customer/show/${this.props.redirectionId}`)
         return <div className = "ui container">
             <div className="ui huge header center aligned">Update Customer</div>
+            <Header title="UPDATE CUSTOMER" />
             <br/>
             <UpdateCustomerComponent message = {this.props.message} customer = {this.props.customer} 
             sweetOrderIds = {this.props.sweetOrderIds} 
@@ -24,7 +26,8 @@ class UpdateCustomer extends React.Component{
             onClickAddSweetOrderId = {this.props.onClickAddSweetOrderId} sweetItemIds = {this.props.sweetItemIds} 
             onClickRemoveSweetItemId = {this.props.onClickRemoveSweetItemId} 
             onClickAddSweetItemId = {this.props.onClickAddSweetItemId} />
-            
+            <br/>
+           <Footer></Footer>
         </div>
     }
 

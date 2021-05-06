@@ -15,8 +15,6 @@ class AddCustomer extends React.Component{
             this.props.history.push(`/customer/show/${this.props.redirectionId}`)
         return <div className = "ui container">
             <Header title="WELCOME TO ADD CUSTOMER" />
-
-            <div className="ui huge header center aligned">Add Customer</div>
             <br/>
             <AddCustomerComponent message = {this.props.message} customer = {this.props.customer} sweetOrderIds = {this.props.sweetOrderIds} 
              onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId} 
@@ -25,6 +23,7 @@ class AddCustomer extends React.Component{
             onClickAddSweetItemId = {this.props.onClickAddSweetItemId} cartIds = {this.props.cartIds} 
             onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveCartId = {this.props.onClickRemoveCartId} 
           onClickAddCartId = {this.props.onClickAddCartId}/>
+          <br/>
            <Footer></Footer>
 
         </div>
