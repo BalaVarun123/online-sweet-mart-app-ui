@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { _displayMessage, _redirectToUpdate, _showcategory } from "../../actions/CategoryActions";
 import CategoryService from "../../services/CategoryServices/CategoryService";
-import UpdateCategoryComponent from "./UpdateCategoryComponents";
+import UpdateCategoryComponent from "./UpdateCategoryComponent";
 
 
 const categoryService = new CategoryService();

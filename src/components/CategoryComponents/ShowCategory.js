@@ -1,7 +1,7 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import ShowCategoryComponent from "./ShowCategoryComponents";
+import ShowCategoryComponent from "./ShowCategoryComponent";
 import {_displayMessage, _redirectToShow, _redirectToUpdate, _showcategory} from "../../actions/CategoryActions";
 import CategoryService from "../../services/CategoryServices/CategoryService";
 

@@ -1,5 +1,5 @@
 import React from "react";
-export default class UpdateOrderBillComponent extends React.Component{
+export default class UpdateCategoryComponent extends React.Component{
 
     categoryIdRef = React.createRef();
     nameRef= React.createRef();

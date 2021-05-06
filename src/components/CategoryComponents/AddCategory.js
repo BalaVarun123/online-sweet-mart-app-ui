@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { _displayMessage, _redirectToShow } from "../../actions/CategoryActions";
 import CategoryService from "../../services/CategoryServices/CategoryService";
-import AddCategoryComponent from "./AddCategoryComponents";
+import AddCategoryComponent from "./AddCategoryComponent";
 const categoryService = new CategoryService();
 class AddCategory extends React.Component{
     render(){
@@ -11,13 +11,12 @@ class AddCategory extends React.Component{
         return <div className="ui container">
            <div className = "ui huge header center aligned"> Add Category</div>
             
-            <AddCategoryComponent message = {this.props.message} category = {this.props.category}  onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} />
+            <AddCategoryComponent message = {this.props.message}   onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} />
         </div>
     }
 }
 const mapStateToProps = (state,props) => {
     return {
-        category : state.category.category,
         message : state.category.message,
         redirectToShow : state.category.redirectToShow,
         redirectionId : state.category.redirectionId
