@@ -6,18 +6,37 @@ class NavBar extends React.Component{
     render(){
         return (<div>
             <div class="ui menu">
-            <div class="header item">
+            <a class="header item" href = "/">
             Online Sweet Mart App
-             </div>
-              <a class="active item">
-                  Home
+             </a>
+              <a class="active item" href = "/admin">
+                  Administration
                 </a>
-                <a class="item">
-                 Messages
-                 </a>
-                <a class="item">
-                Friends
-                </a>
+                <div className="ui simple dropdown item">
+                 Customer Management
+                 <i className="dropdown icon"></i>
+                 <div className="menu">
+                    <a className="item" href = "/customer">Customer</a>
+                    <a className="item" >Cart</a>
+                    </div>
+                 </div>
+                <div className="ui simple dropdown item">
+                Product Management
+                <i className="dropdown icon"></i>
+                <div className="menu">
+                    <a className="item">Product</a>
+                    <a className="item">Category</a>
+                    </div>
+                 </div>
+                
+                <div className="ui simple dropdown item">
+                Order Management
+                <i className="dropdown icon"></i>
+                <div className="menu">
+                    <a className="item">Sweet Item</a>
+                    <a className="item" href = "/order-bill/">Order Bill</a>
+                </div>
+                </div>
                 <div class="right menu">
                 <div class="item" onClick = {this.props.onClickLogOut.bind(this,this.props.userId)}>
                     Logout
