@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
-import ListSweetItem from "./ListSweetItem";
+import { Redirect } from "react-router-dom";
 
 class SweetItem extends React.Component{
     render(){
