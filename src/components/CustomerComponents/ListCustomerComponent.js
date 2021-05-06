@@ -11,16 +11,18 @@ class ListCustomerComponent extends React.Component{
     render(){
         this.loadDetails(this.props.customerList);
         return <div>
-        
-           
+            <p>{this.props.message}</p> 
+            <div>Selected view</div>
             <div >
-            <table class="ui red table"  >                
+            <table className = "ui celled table large selectable">
             <thead>
               <tr>
-                  <th className = "center aligned">USER ID</th>
-                  <th className = "center aligned">USER NAME</th>
-                  <th className = "center aligned">SWEET ORDER</th>
-                  <th className = "center aligned">SWEET ITEM</th>
+                  <th className = "center aligned">User Id</th>
+                  <th className = "center aligned">Username</th>
+                  <th className = "center aligned">Sweet Orders</th>
+                  <th className = "center aligned">Sweet Items</th>
+                  
+                  <th  className = "center aligned" colSpan = {2}>Action</th> {/*UPDATE DELETE*/}
               </tr>  
             </thead>
             <tbody>{this.details}</tbody>
