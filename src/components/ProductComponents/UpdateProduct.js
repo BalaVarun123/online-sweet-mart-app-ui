@@ -1,7 +1,8 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import ProductService from '../../services/ProductServices/ProductServices';
+import {_displayMessage,  _redirectToUpdate, _showProduct } from '../../actions/ProductActions';
+import ProductService from '../../services/ProductServices/ProductService';
 import UpdateProductComponent from './UpdateProductComponent';
 
 
@@ -15,7 +16,7 @@ class UpdateProduct extends React.Component{
         return <div>
             <h2>Update Product</h2>
             <br/>
-            <UpdateProductComponent product = {this.props.product} onSubmit = {this.props.onSubmit}/>
+            <UpdateProductComponent message = {this.props.message} product = {this.props.product} onSubmit = {this.props.onSubmit}/>
         </div>
     }
 
@@ -29,7 +30,8 @@ class UpdateProduct extends React.Component{
 
 const mapStateToProps = (state,props) => {
     return {
-        orderBill : state.orderBill.orderBill,
+        product : state.product.product,
+        message : state.product.message,
         id : props.match.params.id,
         redirectToUpdate: state.product.redirectToUpdate
     }
@@ -38,24 +40,21 @@ const mapStateToProps = (state,props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         responseCallBack : (response) => {
-            console.log("The response is "+JSON.stringify(response.data[0]));
-            if (response.data.length > 0)
-            dispatch(response.data[0], "");
-            else 
-            dispatch(null,"Invalid Order Bill Id");
+            console.log("The given response is "+JSON.stringify(response.data));
+            dispatch(_showProduct(response.data, ""));
 
         },
-        catchCallBack : (error) => {dispatch(null,error.response.data)},
+        // catchCallBack : (error) => {dispatch(_showProduct(null,error.response.data))},
         onSubmit : (product) => {
             console.log("onSubmit activated");
-            const responseCallBack = (response) => dispatch("Updated successfully.");
+            const responseCallBack = (response) => dispatch(_displayMessage("Updated successfully."));
             const catchCallBack = (error) => {
                 console.log("the error is :"+JSON.stringify(error));
-                dispatch(error.response.data);
+                // dispatch(_displayMessage(error.response.data));
             }
-            productService.UpdateProduct(product,responseCallBack,catchCallBack );
+            productService.updateProduct(product,responseCallBack,catchCallBack );
         },
-        resetRedirection : () => {dispatch(false)}
+        resetRedirection : () => {dispatch(_redirectToUpdate(false))}
         
     }
 }

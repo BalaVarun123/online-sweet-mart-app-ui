@@ -30,7 +30,7 @@ export default class AddProductComponent extends React.Component{
                          {/* checked={this.state.isGoing}
                         onChange={this.handleInputChange}  */}
                 </label><br />
-                PRICE: <input type="number" ref={this.priceRef}/><br/>
+                PRICE: <input type="number" step="0.01" ref={this.priceRef}/><br/>
                 <br/>
                 <button type="submit">Add Product</button>
                 <br/>

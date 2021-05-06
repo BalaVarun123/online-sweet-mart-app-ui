@@ -1,12 +1,12 @@
 import React from "react";
-export default class UpdateOrderBillComponent extends React.Component{
+export default class UpdateProductComponent extends React.Component{
 
     ProductIdRef=React.createRef();
     nameRef = React.createRef();
     descriptionRef = React.createRef();
     priceRef = React.createRef();
     photoPathRef=React.createRef();
-    availableRef=React.createRef();
+    
 
 
     constructor(props){
@@ -20,30 +20,32 @@ export default class UpdateOrderBillComponent extends React.Component{
 
 
     render(){
-
+        
         let component;
-       
+        if (this.props.product == null)
+        component = <p>{this.props.message}</p>
+        else{
+            
             component = (<div>
-                <div>View Product.product</div>
+                <div>Update Product</div>
                 
                 <form onSubmit = {this.onSubmit} >
                 <div>
                 Product ID : <input type = "number" min = "0" value = {this.props.product.productId} ref = {this.ProductIdRef}/> <br/>
-                <input type="file" onChange={this.handleChange} ref={this.photoPathRef}/>
-                NAME: <input type="text" min="3" max="15" ref={this.nameRef}/><br/>
-                DESCRIPTION: <input type="textarea" max="150" ref={this.descriptionRef}/><br/>
-                <label>
-                AVAILABLE: <input type="checkbox" ref={this.availableRef}/>        
-                </label><br />
-                PRICE: <input type="number" ref={this.priceRef}/><br/>
+                <input type="file"  ref={this.photoPathRef}/>
+                PhotoPath :{this.props.product.photopath}<br/>
+                NAME: <input type="text" min="3" max="15" defaultValue = {this.props.product.name} ref={this.nameRef}/><br/>
+                DESCRIPTION: <input type="textarea" max="150" defaultValue = {this.props.product.description} ref={this.descriptionRef}/><br/>
+                PRICE: <input type="number" min="0" step="0.01" defaultValue = {this.props.product.price} ref={this.priceRef}/><br/>
                 <br/>
                 <button type="submit">Update</button>
                 <br/>
                 </div>
+                <p>{this.props.message}</p>
                 </form>
             </div>);
         
-        
+            }
         return component;
     }
 
@@ -56,9 +58,9 @@ export default class UpdateOrderBillComponent extends React.Component{
             name : this.nameRef.current.value,
             description : this.descriptionRef.current.value,
             price : this.priceRef.current.value,
-            available : this.availableRef.current.checked,
+            available : true,
             photopath:this.photoPathRef.current.value,
-            
+            productId : this.props.product.productId
         }
         this.props.onSubmit(product);
     }
