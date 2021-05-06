@@ -6,6 +6,7 @@ import OrderBillRouter from './OrderBillRouters/OrderBillRouter';
 import CartRouter from './CartRouters/CartRouter';
 import ProductRouter from './ProductRouters/ProductRouter';
 import SweetOrderRouter from './SweetOrderRouters/SweetOrderRouter';
+import CategoryRouter from './CategoryRouters/CategoryRouter';
 
 
 const AppRouter = () => (
@@ -20,6 +21,7 @@ const AppRouter = () => (
                 <Route path="/cart" component={CartRouter}/>
                 <Route path="/product" component={ProductRouter}/>
                 <Route path="/sweet-order" component={SweetOrderRouter}/>
+                <Route path="/category" component={CategoryRouter}/>
             </Switch>
         </div>
     </BrowserRouter>
