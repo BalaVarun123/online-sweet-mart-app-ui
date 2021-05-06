@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_LOGIN_FAILED, USER_LOGIN_SUCCESSFUL, USER_LOGOUT, USER_LOGOUT_FAILED, USER_LOGOUT_SUCCESSFUL } from "../actionTypes/LoginActionTypes"
+import { LOGIN_SET_LOGIN_STATE, USER_LOGIN, USER_LOGIN_FAILED, USER_LOGIN_SUCCESSFUL, USER_LOGOUT, USER_LOGOUT_FAILED, USER_LOGOUT_SUCCESSFUL } from "../actionTypes/LoginActionTypes"
 
 export function getLoginAction(userId, password) {
     return {
@@ -35,5 +35,13 @@ export function getLoginFailedAction(payload) {
 export function getLogoutFailedAction() {
     return {
         type: USER_LOGOUT_FAILED
+    }
+}
+
+
+export function setLoginState(state){
+    return {
+        type : LOGIN_SET_LOGIN_STATE,
+        payload : state
     }
 }
