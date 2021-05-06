@@ -34,10 +34,7 @@ class AddCartComponent extends React.Component {
 
 
                     <br />
-
-            <div class = 'container' >
-          
-                    
+         
                         <div className = "field">
                             <i class="plus square icon"></i>
                             <label> ADD PRODUCT ID: </label>
