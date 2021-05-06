@@ -37,6 +37,7 @@ return {
 const mapDispatchToProps = (dispatch) => {
 return {
     onClickLogOut : (userId,event) => {
+        console.log("logout user id is :"+userId)
          const loginService = new LoginService();
          loginService.logout(userId,dispatch)
     }

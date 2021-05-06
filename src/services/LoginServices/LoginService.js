@@ -10,10 +10,17 @@ export class LoginService {
         .then(
             response => {
                 console.log("String(response) = "+(response.data  == "Login successful."))
-                if (response.data  == "Login successful.")
-                localStorage.setItem("isLoggedIn", "true");
+                if (response.data  == "Login successful."){
+                    localStorage.setItem("isLoggedIn", "true");
+                    localStorage.setItem("userId",userId);
+                    dispatch(getLoginSuccessfulAction(response.data));
+                }
+                else{
+                    dispatch(getLoginFailedAction(response.data));
+                }
+                
                 console.log("Login response:"+ response.data);
-                dispatch(getLoginSuccessfulAction(response.data));
+                
                 }
         )
         .catch(
@@ -28,6 +35,7 @@ export class LoginService {
         .then(response => {
             if (response.data  == "Logout successful."){
                 localStorage.setItem("isLoggedIn", "false");
+                localStorage.setItem("userId",null);
                 dispatch(getLogoutSuccessfulAction())
             }
             else {

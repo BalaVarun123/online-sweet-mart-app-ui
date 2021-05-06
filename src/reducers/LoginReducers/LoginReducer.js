@@ -3,7 +3,7 @@ import { LOGIN_SET_LOGIN_STATE,USER_LOGIN, USER_LOGIN_FAILED, USER_LOGIN_SUCCESS
 const defaultState = {
     processing : false,
     isLoggedIn : (localStorage.getItem("isLoggedIn") == "true"),
-    userId : -1,
+    userId : (localStorage.getItem("userId")) ? (localStorage.getItem("userId")) : -1,
     userType : null,
     tempUserDetails : null,
     message : ""
@@ -29,6 +29,7 @@ const LoginReducer = (state = defaultState , action) => {
             newState.tempUserDetails = null;
             newState.message = action.payload;
             newState.isLoggedIn = true;
+            newState.message = "";
             break;
         case USER_LOGIN_FAILED:
             newState.processing = false;

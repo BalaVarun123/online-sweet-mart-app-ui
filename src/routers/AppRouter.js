@@ -22,12 +22,12 @@ const AppRouter = (props) => {
                 { props.isLoggedIn &&
                 <Route path="/admin" component={AdminRouter}/>
                 }
-                <Route path="/order-bill" component={OrderBillRouter}/>
-                <Route path="/login" component={LoginContainer} exact/>
-                <Route path="/cart" component={CartRouter}/>
-                <Route path="/product" component={ProductRouter}/>
-                <Route path="/sweet-order" component={SweetOrderRouter}/>
-                <Route path = "/customer" component = {CustomerRouter}/>
+                {props.isLoggedIn && <Route path="/order-bill" component={OrderBillRouter}/>}
+                {props.isLoggedIn && <Route path="/login" component={LoginContainer} exact/>}
+                {props.isLoggedIn && <Route path="/cart" component={CartRouter}/>}
+                {props.isLoggedIn && <Route path="/product" component={ProductRouter}/>}
+                {props.isLoggedIn && <Route path="/sweet-order" component={SweetOrderRouter}/>}
+                {props.isLoggedIn && <Route path = "/customer" component = {CustomerRouter}/>}
                 <Route component = {NotFound}/>
             </Switch>
         </div>
