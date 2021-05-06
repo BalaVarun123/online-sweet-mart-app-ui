@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import ShowProductComponent from './ShowProductComponent';
 import {_displayMessage, _redirectToShow, _redirectToUpdate, _showProduct} from '../../actions/ProductActions';
 import ProductService from '../../services/ProductServices/ProductService';
-
+import Header from '../pages/Header';
+import Footer from '../pages/Footer';
 const productService = new ProductService();;
 class ShowProduct extends React.Component{
 
@@ -14,13 +15,16 @@ class ShowProduct extends React.Component{
         if (this.props.redirectToUpdate){
             this.props.history.push(`/product/update/${this.props.id}`)
         }
-        if (this.props.redirectToShow){
-            this.props.resetRedirection();
-        }
+        // if (this.props.redirectToShow){
+        //     this.props.resetRedirection();
+        // }
         return <div className = "ui container">
-             <div className="ui huge header center aligned">Product Details</div>
+            <Header title="PRODUCT DETAILS" />
+            
             <br/>
             <ShowProductComponent product = {this.props.product} onClickDelete = {this.onClickDelete} onClickUpdate = {this.props.onClickUpdate} message = {this.props.message}/>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <Footer></Footer>
         </div>
     }
 
@@ -42,7 +46,7 @@ const mapStateToProps = (state,props) => {
         message : state.product.message,
         id : props.match.params.id,
         redirectToUpdate: state.product.redirectToUpdate,
-        redirectToShow : state.product.redirectToShow
+        // redirectToShow : state.product.redirectToShow
     }
 
 }

@@ -40,7 +40,6 @@ class ListProductComponent extends React.Component{
                     <tr key = {Product.productId}>
                         <td>{Product.productId}</td>
                         <td>{Product.name}</td>
-                        
                         {/* <td  className = "center aligned"><button type="button" className = "ui button primary" onClick = {this.onClickView.bind(this,Product.productId)}>VIEW</button></td> */}
                         <td  className = "center aligned"><button type="button" className = "ui button primary" onClick = {this.onClickUpdate.bind(this,Product.productId)}>UPDATE</button></td>
                         <td  className = "center aligned"><button type="button" className = "ui button negative" onClick = {this.onClickDelete.bind(this,Product.productId)}>DELETE</button></td>

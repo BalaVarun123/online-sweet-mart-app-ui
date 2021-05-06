@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { _displayMessage, _redirectToShow, _redirectToUpdate, _showAllProduct, _showProduct } from '../../actions/ProductActions';
 import ProductService from '../../services/ProductServices/ProductService';
 import ListProductComponent from './ListProductComponent';
+import Header from '../pages/Header';
+import Footer from '../pages/Footer';
 const  productService = new ProductService();
 class ProductList extends React.Component{
    
@@ -12,8 +14,11 @@ class ProductList extends React.Component{
         if(this.props.redirectToUpdate)
         this.props.history.push(`/product/update/${this.props.redirectionId}`)
         return <div className = "ui container">
-            <div className="ui huge header center aligned">Products List</div>
+            <Header title="SHOW PRODUCTS" />
+            <br/>
             <ListProductComponent productList = {this.props.productList} message = {this.props.message} onClickView = {this.props.onClickView} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.props.onClickDelete}/>
+            <br/><br/><br/>
+            <Footer></Footer>
         </div>
     }
 

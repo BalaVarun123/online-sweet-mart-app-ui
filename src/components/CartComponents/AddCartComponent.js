@@ -62,7 +62,7 @@ class AddCartComponent extends React.Component {
                         </div>
 
                     <p> {this.props.state.message} </p>
-
+                    
                     <button class="ui positive button" type="button" onClick={this.onClickAddProduct} > ADD PRODUCT </button>
                     <button class="ui primary button" type="submit" > SUBMIT </button>
                     <button class="negative ui button" type="reset" > RESET </button>

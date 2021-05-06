@@ -3,15 +3,20 @@ import { connect } from "react-redux";
 import {  _displayMessage, _redirectToShow } from '../../actions/ProductActions';
 import AddProductComponent from './AddProductComponent';
 import ProductService from '../../services/ProductServices/ProductService'
+import Header from '../pages/Header';
+import Footer from '../pages/Footer';
 const productService = new ProductService();
 class AddProduct extends React.Component{
     render(){
         if (this.props.redirectToShow)
             this.props.history.push(`/product/show-all`)
         return <div className = "ui container">
-            <h2 className="ui huge header center aligned">Product Add</h2>
+            <Header title="ADD PRODUCT" />
+            
             <br/>
             <AddProductComponent message = {this.props.message} product = {this.props.product} onSubmit = {this.props.onSubmit}/>
+            <br/><br/>
+            <Footer></Footer>
         </div>
     }
 }

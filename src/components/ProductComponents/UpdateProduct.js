@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import {_displayMessage,  _redirectToUpdate, _showProduct } from '../../actions/ProductActions';
 import ProductService from '../../services/ProductServices/ProductService';
 import UpdateProductComponent from './UpdateProductComponent';
-
+import Header from '../pages/Header';
+import Footer from '../pages/Footer';
 
 const productService = new ProductService();
 class UpdateProduct extends React.Component{
@@ -14,9 +15,11 @@ class UpdateProduct extends React.Component{
             this.props.resetRedirection();
         }
         return <div className = "ui container">
-            <div className="ui huge header center aligned">Update Product</div>
+            <Header title="UPDATE PRODUCT DETAILS" />
             <br/>
             <UpdateProductComponent message = {this.props.message} product = {this.props.product} onSubmit = {this.props.onSubmit}/>
+            <br/><br/><br/><br/>
+            <Footer></Footer>
         </div>
     }
 
