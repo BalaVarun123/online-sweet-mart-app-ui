@@ -4,7 +4,7 @@ import { LoginService } from "../../services/LoginServices/LoginService";
 
 class NavBar extends React.Component{
     render(){
-        return (<div>
+        return (<div>  <br />
             <div class="ui menu">
             <a class="header item" href = "/">
             Online Sweet Mart App
@@ -17,7 +17,7 @@ class NavBar extends React.Component{
                  <i className="dropdown icon"></i>
                  <div className="menu">
                     <a className="item" href = "/customer">Customer</a>
-                    <a className="item" >Cart</a>
+                    <a className="item" href = "/cart/show-all-carts" >Cart</a>
                     </div>
                  </div>
                 <div className="ui simple dropdown item">
