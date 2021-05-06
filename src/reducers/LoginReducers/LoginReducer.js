@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_LOGIN_FAILED, USER_LOGIN_SUCCESSFUL, USER_LOGOUT, USER_LOGOUT_FAILED, USER_LOGOUT_SUCCESSFUL } from "../../actionTypes/LoginActionTypes";
+import {LOGIN_REDIRECT_TO_DASHBOARD, USER_LOGIN, USER_LOGIN_FAILED, USER_LOGIN_SUCCESSFUL, USER_LOGOUT, USER_LOGOUT_FAILED, USER_LOGOUT_SUCCESSFUL } from "../../actionTypes/LoginActionTypes";
 
 const defaultState = {
     processing : false,
@@ -6,7 +6,9 @@ const defaultState = {
     userId : -1,
     userType : null,
     tempUserDetails : null,
-    message : ""
+    message : "",
+    redirectToDashboard : false,
+    userDetails : null
 }
 
 
@@ -27,21 +29,34 @@ const LoginReducer = (state = defaultState , action) => {
             newState.processing = false;
             newState.userId = state.tempUserDetails.userId;
             newState.tempUserDetails = null;
-            newState.message = action.payload;
+            newState.message = action.payload.message;
+            newState.userDetails = action.payload.userDetails;
+            newState.redirectToDashboard = true;
             break;
         case USER_LOGIN_FAILED:
             newState.processing = false;
             newState.tempUserDetails = null;
-            newState.message = action.payload;
+            newState.message = action.payload.message;
+            newState.userDetails = action.payload.userDetails;
             break;
         case USER_LOGOUT_SUCCESSFUL:
-            newState.processing = false;
-            newState.userId = -1;
-            newState.tempUserDetails = null;
+             newState.processing = false;
+             newState.userId = -1;
+             newState.tempUserDetails = null;
+             newState.message = "";
+             newState.userDetails =null;
+             newState.redirectToDashboard  = true;
             break;
         case  USER_LOGOUT_FAILED:
-            newState.processing = false;
-            newState.tempUserDetails = null;
+             newState.processing = false;
+             newState.userId = -1;
+             newState.tempUserDetails = null;
+             newState.message = "";
+             newState.userDetails =null;
+             newState.redirectToDashboard  = true;
+            break;
+        case LOGIN_REDIRECT_TO_DASHBOARD:
+            newState.redirectToDashboard = action.payload;
             break;
         default :
             newState = state;
