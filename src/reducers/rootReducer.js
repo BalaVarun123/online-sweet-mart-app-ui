@@ -8,6 +8,7 @@ import sweetOrderReducer from "./SweetOrderReducers/SweetOrderReducer";
 import CategoryReducer from "./CategoryReducers/CategoryReducer";
 
 import CustomerReducer from './CustomerReducers/CustomerReducer';
+import SweetItemReducer from './SweetItemReducers/SweetItemReducer';
 export default function rootReducer(){
     return combineReducers({
         login : LoginReducer,
@@ -17,6 +18,7 @@ export default function rootReducer(){
         product : ProductReducer,
         sweetOrder : sweetOrderReducer,
         customer : CustomerReducer,
-        category : CategoryReducer
+        category : CategoryReducer,
+        sweetItem : SweetItemReducer
     });
 }
