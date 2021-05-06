@@ -20,7 +20,6 @@ class ListCategoryComponent extends React.Component{
               <tr>
                   <th className = "center aligned">Category Id</th>
                   <th className = "center aligned">Category Name</th>
-                  <th className = "center aligned">Total Cost</th>
                   <th className = "center aligned" colSpan = {2}>Action</th> {/*UPDATE DELETE*/}
 
               </tr>  
@@ -41,7 +40,7 @@ class ListCategoryComponent extends React.Component{
                              <tr key = {category.id}>
                              <td>{category.categoryId}</td>
                              <td>{category.name}</td>
-                             <td> {category.totalCost}</td>
+                             
                              <td className = "center aligned"><button type="button" className = "ui button primary" onClick = {this.onClickUpdate.bind(this,category.categoryId)}>UPDATE</button></td>
                              <td className = "center aligned"><button type="button" className = "ui button negative" onClick = {this.onClickDelete.bind(this,category.categoryId)}>DELETE</button></td>
 

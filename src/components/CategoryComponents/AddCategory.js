@@ -3,15 +3,21 @@ import { connect } from "react-redux";
 import { _displayMessage, _redirectToShow } from "../../actions/CategoryActions";
 import CategoryService from "../../services/CategoryServices/CategoryService";
 import AddCategoryComponent from "./AddCategoryComponent";
+import Header from "../pages/Header";
+import Footer from "../pages/Footer";
 const categoryService = new CategoryService();
 class AddCategory extends React.Component{
     render(){
         if (this.props.redirectToShow)
             this.props.history.push(`/category/show/${this.props.redirectionId}`)
         return <div className="ui container">
+            <Header title="WELCOME TO ADD CATEGORY" />
+            <br/>
            <div className = "ui huge header center aligned"> Add Category</div>
             
             <AddCategoryComponent message = {this.props.message}   onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} />
+            <br/>
+           <Footer></Footer>
         </div>
     }
 }

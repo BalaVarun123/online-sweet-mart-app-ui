@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import ShowCategoryComponent from "./ShowCategoryComponent";
 import {_displayMessage, _redirectToShow, _redirectToUpdate, _showcategory} from "../../actions/CategoryActions";
 import CategoryService from "../../services/CategoryServices/CategoryService";
+import Header from "../pages/Header";
+import Footer from "../pages/Footer";
 
 const categoryService = new CategoryService();
 class ShowCategory extends React.Component{
@@ -18,8 +20,10 @@ class ShowCategory extends React.Component{
             this.props.resetRedirection();
         }
         return <div className = "ui container">
+             <Header title="WELCOME TO SHOW CATEGORY" />
             <div className="ui huge header center aligned"> Category Details</div>
             <ShowCategoryComponent category = {this.props.category} onClickDelete = {this.onClickDelete} onClickUpdate = {this.props.onClickUpdate} message = {this.props.message}/>
+            <Footer></Footer>
         </div>
     }
 
