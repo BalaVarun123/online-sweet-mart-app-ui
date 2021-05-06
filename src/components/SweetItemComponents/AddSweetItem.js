@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { _addProductId,_addSweetOrderId, _displayMessage, _redirectToShow,_removeProductId, _resetProductId , _removeSweetOrderId, _resetSweetOrderId } from "../../actions/SweetItemActions";
 import SweetItemService from "../../services/SweetItemServices/SweetItemService";
+import Header from '../pages/Header';
+import Footer from '../pages/Footer';
 import AddSweetItemComponent from "./AddSweetItemComponent";
 const sweetItemService = new SweetItemService();
 class AddSweetItem extends React.Component{
@@ -9,9 +11,11 @@ class AddSweetItem extends React.Component{
         if (this.props.redirectToShow)
             this.props.history.push(`/sweet-item/show/${this.props.redirectionId}`)
         return <div className = "ui container">
-            <h2 className="ui huge header center aligned">Sweet Item Add</h2>
+            <Header title="ADD SWEET ITEM" />
             <br/>
             <AddSweetItemComponent message = {this.props.message} onSubmit = {this.props.onSubmit} />
+            <br/><br/>
+            <Footer></Footer>
         </div>
     }
 }

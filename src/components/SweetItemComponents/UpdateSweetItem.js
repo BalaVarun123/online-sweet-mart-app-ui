@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { _addProductId,_addSweetOrderId, _displayMessage, _redirectToUpdate, _removeProductId, _resetProductId, _removeSweetOrderId, _resetSweetOrderId, _showSweetItem } from "../../actions/SweetItemActions";
 import SweetItemService from "../../services/SweetItemServices/SweetItemService";
 import UpdateSweetItemComponent from "./UpdateSweetItemComponent";
+import Header from '../pages/Header';
+import Footer from '../pages/Footer';
 
 
 const sweetItemService = new SweetItemService();
@@ -13,9 +15,11 @@ class UpdateSweetItem extends React.Component{
             this.props.resetRedirection();
         }
         return <div className = "ui container">
-            <h2 className="ui huge header center aligned">UpdateSweetItem</h2>
+            <Header title="UPDATE SWEET ITEM" />
             <br/>
             <UpdateSweetItemComponent message = {this.props.message} sweetItem = {this.props.sweetItem} onSubmit = {this.props.onSubmit} onReset = {this.props.onReset}/>
+            <br/><br/>
+            <Footer></Footer>
         </div>
     }
 

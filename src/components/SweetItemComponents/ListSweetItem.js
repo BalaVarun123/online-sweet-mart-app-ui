@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { _displayMessage, _redirectToShow, _redirectToUpdate, _showAllSweetItem } from "../../actions/SweetItemActions";
 import SweetItemService from "../../services/SweetItemServices/SweetItemService";
 import ListSweetItemComponent from "./ListSweetItemComponent";
+import Header from '../pages/Header';
+import Footer from '../pages/Footer';
 const  sweetItemService = new SweetItemService();
 class ListSweetItem extends React.Component{
    
@@ -10,8 +12,11 @@ class ListSweetItem extends React.Component{
         if (this.props.redirectToUpdate)
         this.props.history.push(`/sweet-item/update/${this.props.redirectionId}`)
         return <div className = "ui container">
-            <div className="ui huge header center aligned">All SweetItems</div>
+            <Header title="SHOW SWEET ITEMS" />
+            <br/>
             <ListSweetItemComponent sweetItemList = {this.props.sweetItemList} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.props.onClickDelete} onClickView = {this.props.onClickView}/>
+            <br/><br/>
+            <Footer></Footer>
         </div>
     }
 

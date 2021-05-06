@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import ShowSweetItemComponent from "./ShowSweetItemComponent";
+import Header from '../pages/Header';
+import Footer from '../pages/Footer';
 import {_displayMessage, _redirectToShow, _redirectToUpdate, _showSweetItem} from "../../actions/SweetItemActions";
 import SweetItemService from "../../services/SweetItemServices/SweetItemService";
 
@@ -17,10 +19,11 @@ class ShowSweetItem extends React.Component{
             this.props.resetRedirection();
         }
         return <div  className = "ui container">
-            <div className="ui huge header center aligned">Show SweetItem</div>
+            <Header title="SWEET ITEM DETAILS" />
             <br/>
             <ShowSweetItemComponent sweetItem = {this.props.sweetItem} onClickDelete = {this.onClickDelete} onClickUpdate = {this.props.onClickUpdate} message = {this.props.message}/>
-            
+            <br/><br/>
+            <Footer></Footer>
             </div>
     }
 
