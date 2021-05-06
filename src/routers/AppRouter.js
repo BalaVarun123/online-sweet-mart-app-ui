@@ -9,6 +9,7 @@ import SweetOrderRouter from './SweetOrderRouters/SweetOrderRouter';
 import CategoryRouter from './CategoryRouters/CategoryRouter';
 
 import CustomerRouter from './CustomerRouters/CustomerRouter';
+import SweetItemRouter from './SweetItemRouters/SweetItemRouter';
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -24,6 +25,7 @@ const AppRouter = () => (
                 <Route path="/sweet-order" component={SweetOrderRouter}/>
                 <Route path="/category" component={CategoryRouter}/>
                 <Route path = "/customer" component = {CustomerRouter}/>
+                <Route path ="/sweetItem" component = {SweetItemRouter}/>
 
             </Switch>
         </div>
