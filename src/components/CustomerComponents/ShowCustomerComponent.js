@@ -7,20 +7,24 @@ export default class ShowCustomerComponent extends React.Component{
         if (this.props.Customer == null)
         component = <p>{this.props.message}</p>
         else 
-        component = ( <div>
-            <div>Show customers</div>
-            <div>
-            UserId Id : {this.props.Customer.userId} <br/>
-            Username : {this.props.Customer.username} <br/>
+        component = ( <div class="ui column stackable center page grid">
+             <div class="three wide column"></div>
+            <div className = "ui ten wide column big list segment">
+            <div class="item">
+            <label>User Id : </label>{this.props.customer.userId} 
+            </div>
+            <div class = "item">
+            <label>Username :</label> {this.props.Customer.username}
+            </div>
             <button type = "button">View Sweet orders</button>
-            <button type="button" onClick = {this.props.onClickUpdate}>Update</button>
-            <button type="button" onClick = {this.onClickDelete}>Delete</button>
+            <button type="button" onClick = {this.props.onClickUpdate}className="ui left floated button primary">Update</button>
+            <button type="button" onClick = {this.onClickDelete}className="ui right floated button negative">Delete</button>
             <button type = "button">View Sweet items</button>
-            <button type="button" onClick = {this.props.onClickUpdate}>Update</button>
-            <button type="button" onClick = {this.onClickDelete}>Delete</button>
+            <button type="button" onClick = {this.props.onClickUpdate}className="ui left floated button primary">Update</button>
+            <button type="button" onClick = {this.onClickDelete}className="ui right floated button negative">Delete</button>
             <button type = "button">View cart</button>
-            <button type="button" onClick = {this.props.onClickUpdate}>Update</button>
-            <button type="button" onClick = {this.onClickDelete}>Delete</button>
+            <button type="button" onClick = {this.props.onClickUpdate}className="ui left floated button primary">Update</button>
+            <button type="button" onClick = {this.onClickDelete}className="ui right floated button negative">Delete</button>
             </div>
         </div>);
         return component;
