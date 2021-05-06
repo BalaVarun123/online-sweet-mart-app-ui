@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { _displayMessage, _redirectToUpdate, _showAllcategory } from "../../actions/CategoryActions";
 import CategoryService from "../../services/CategoryServices/CategoryService";
 import ListCategoryComponent from "./ListCategoryComponent";
+import Header from "../pages/Header";
+import Footer from "../pages/Footer";
 const  categoryService = new CategoryService();
 class ListCategory extends React.Component{
    
@@ -10,8 +12,10 @@ class ListCategory extends React.Component{
         if (this.props.redirectToUpdate)
         this.props.history.push(`/category/update/${this.props.redirectionId}`)
         return <div className = "ui container">
+            <Header title="WELCOME TO SHOW ALL CATEGORY" />
             <div className="ui huge header center aligned"> All Category</div>
             <ListCategoryComponent categoryList = {this.props.categoryList} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.props.onClickDelete}/>
+            <Footer></Footer>
         </div>
     }
 
