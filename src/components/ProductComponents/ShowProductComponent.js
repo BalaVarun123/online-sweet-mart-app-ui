@@ -20,9 +20,10 @@ export default class ShowProductComponent extends React.Component{
             <div class="item">
             price : {this.props.product.price} <br/>
             </div>
+            <div class="item">Available : true</div>
             <div class="item">
             Description : {this.props.product.description} <br/>
-            </div>
+            </div><br/>
             <button type="button" onClick = {this.props.onClickUpdate} className="ui left floated button primary">Update</button>
             <button type="button" onClick = {this.onClickDelete} className="ui right floated button negative">Delete</button>
             </div>

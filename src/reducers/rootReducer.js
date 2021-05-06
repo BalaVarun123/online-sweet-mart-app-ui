@@ -6,6 +6,7 @@ import { combineReducers } from 'redux';
 import LoginReducer from './LoginReducers/LoginReducer';
 import sweetOrderReducer from "./SweetOrderReducers/SweetOrderReducer";
 
+import CustomerReducer from './CustomerReducers/CustomerReducer';
 export default function rootReducer(){
     return combineReducers({
         login : LoginReducer,
@@ -13,7 +14,7 @@ export default function rootReducer(){
         admin : adminReducer,
         orderBill : orderBillReducer,
         product : ProductReducer,
-        sweetOrder : sweetOrderReducer
-
+        sweetOrder : sweetOrderReducer,
+        customer : CustomerReducer
     });
 }

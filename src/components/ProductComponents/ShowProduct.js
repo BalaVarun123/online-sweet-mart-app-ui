@@ -15,14 +15,16 @@ class ShowProduct extends React.Component{
         if (this.props.redirectToUpdate){
             this.props.history.push(`/product/update/${this.props.id}`)
         }
-        // if (this.props.redirectToShow){
-        //     this.props.resetRedirection();
-        // }
-        return <div className = "ui container">
+        if (this.props.redirectToShow){
+            this.props.resetRedirection();
+        }
+        return <div className = "ui container center aligned">
             <Header title="PRODUCT DETAILS" />
             
             <br/>
             <ShowProductComponent product = {this.props.product} onClickDelete = {this.onClickDelete} onClickUpdate = {this.props.onClickUpdate} message = {this.props.message}/>
+            <br/><br/>
+            <button type="button" className="ui button"><a href="http://localhost:3000/product/show-all">PRODUCT LIST</a></button>
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             <Footer></Footer>
         </div>
@@ -45,8 +47,7 @@ const mapStateToProps = (state,props) => {
         product : state.product.product,
         message : state.product.message,
         id : props.match.params.id,
-        redirectToUpdate: state.product.redirectToUpdate,
-        // redirectToShow : state.product.redirectToShow
+        redirectToUpdate: state.product.redirectToUpdate
     }
 
 }
@@ -58,8 +59,8 @@ const mapDispatchToProps = (dispatch) => {
         responseCallBack : (response) => {
             dispatch(_showProduct(response.data, ""))
         },
-        // catchCallBack : (error) => {dispatch(_showProduct(null,error.response.data))},
-        resetRedirection : () => {dispatch(_redirectToShow(false))}
+        
+        // resetRedirection : () => {dispatch(_redirectToShow(false))}
     }
    
 

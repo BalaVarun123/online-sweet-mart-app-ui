@@ -1,13 +1,14 @@
 import axios from "../../axios/axios";
 
-const URL_ORDER_BILL_SHOW = "/customer/show/";
-const URL_ORDER_BILL_UPDATE = "/customer/update";
-const URL_ORDER_BILL_DELETE = "/customer/cancel/";
-const URL_ORDER_BILL_ADD = "/customer/add";
-const URL_ORDER_BILL_SHOW_ALL = "/customer/show-all";
+const URL_CUSTOMER_SHOW = "/customer/show/";
+const URL_CUSTOMER_UPDATE = "/customer/update";
+const URL_CUSTOMER_DELETE = "/customer/cancel/";
+const URL_CUSTOMER_ADD = "/customer/add";
+const URL_CUSTOMER_SHOW_ALL = "/customer/show-all";
 export default class CustomerService {
     getCustomer(id,responseCallBack,catchCallBack){
         axios.get(URL_CUSTOMER_SHOW+id)
+        
         .then(responseCallBack)
         .catch(catchCallBack);
     }
@@ -26,6 +27,7 @@ export default class CustomerService {
     }
 
     addCustomer(customer,responseCallBack,catchCallBack){
+        console.log("the customer object" +(customer))
         axios.post(URL_CUSTOMER_ADD,customer)
         .then(responseCallBack)
         .catch(catchCallBack);

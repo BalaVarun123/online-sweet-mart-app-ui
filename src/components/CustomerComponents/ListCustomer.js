@@ -3,14 +3,21 @@ import { connect } from "react-redux";
 import { _displayMessage, _redirectToUpdate, _showAllCustomer } from "../../actions/CustomerActions";
 import CustomerService from "../../services/CustomerServices/CustomerService";
 import ListCustomerComponent from "./ListCustomerComponent";
+import Header from "../pages/Header";
+import Footer from "../pages/Footer";
 const  customerService = new CustomerService();
 class ListCustomer extends React.Component{
    
     render(){
         if (this.props.redirectToUpdate)
         this.props.history.push(`/customer/update/${this.props.redirectionId}`)
-        return <div>
+        return <div className = "ui container">
+             <Header title="CUSTOMER LIST" />
+            <br/>
+           
             <ListCustomerComponent customerList = {this.props.customerList} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.props.onClickDelete}/>
+            <br/>
+           <Footer></Footer>
         </div>
     }
 
