@@ -1,4 +1,5 @@
 import React from "react";
+
 class ListCategoryComponents extends React.Component{
 
 
@@ -12,15 +13,15 @@ class ListCategoryComponents extends React.Component{
         this.loadDetails(this.props.categoryList);
         return <div>
             <p>{this.props.message}</p> 
-            <div>Selected view</div>
+            
             <div>
-            <table>
+            <table className="ui celled table large selectable">
             <thead>
               <tr>
-                  <th>Category Id</th>
-                  <th>Category Name</th>
-                  <th>Total Cost</th>
-                  <th colSpan = {2}>Action</th> {/*UPDATE DELETE*/}
+                  <th className = "center aligned">Category Id</th>
+                  <th className = "center aligned">Category Name</th>
+                  <th className = "center aligned">Total Cost</th>
+                  <th className = "center aligned" colSpan = {2}>Action</th> {/*UPDATE DELETE*/}
 
               </tr>  
             </thead>
@@ -41,8 +42,8 @@ class ListCategoryComponents extends React.Component{
                              <td>{category.categoryId}</td>
                              <td>{category.name}</td>
                              <td> {category.totalCost}</td>
-                             <td><button type="button" onClick = {this.onClickUpdate.bind(this,category.categoryId)}>UPDATE</button></td>
-                             <td><button type="button" onClick = {this.onClickDelete.bind(this,category.categoryId)}>DELETE</button></td>
+                             <td className = "center aligned"><button type="button" className = "ui button primary" onClick = {this.onClickUpdate.bind(this,category.categoryId)}>UPDATE</button></td>
+                             <td className = "center aligned"><button type="button" className = "ui button negative" onClick = {this.onClickDelete.bind(this,category.categoryId)}>DELETE</button></td>
 
                              </tr>
                          );

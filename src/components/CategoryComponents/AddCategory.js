@@ -8,9 +8,9 @@ class AddCategory extends React.Component{
     render(){
         if (this.props.redirectToShow)
             this.props.history.push(`/category/show/${this.props.redirectionId}`)
-        return <div>
-            <h2>category Add</h2>
-            <br/>
+        return <div className="ui container">
+           <div className = "ui huge header center aligned"> Add Category</div>
+            
             <AddCategoryComponent message = {this.props.message} category = {this.props.category}  onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} />
         </div>
     }

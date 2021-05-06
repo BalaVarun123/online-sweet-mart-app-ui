@@ -2,9 +2,9 @@ import axios from "../../axios/axios";
 
 const URL_CATEGORY_SHOW = "/category/show/";
 const URL_CATEGORY_UPDATE = "/category/update";
-const URL_CATEGORY_DELETE = "/category/cancel/";
+const URL_CATEGORY_DELETE = "/category/delete/";
 const URL_CATEGORY_ADD = "/category/add";
-const URL_CATEGORY_SHOW_ALL = "/category/show-all";
+const URL_CATEGORY_SHOW_ALL = "/category/get-all";
 const URL_CATEGORY_TOTAL_COST = "/category/total-cost/"
 export default class categoryService {
   async getCategory(id,responseCallBack,catchCallBack){

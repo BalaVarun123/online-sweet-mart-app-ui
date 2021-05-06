@@ -14,7 +14,7 @@ const CategoryRouter = () => (
             <Switch>
             <Route path="/category/add" component={AddCategory} exact/>
             <Route path="/category/update/:id" component={UpdateCategory} exact/>
-            <Route path="/category/show-all" component={ListCategory} exact/>
+            <Route path="/category/get-all" component={ListCategory} exact/>
             <Route path="/category/show/:id" component={ShowCategory} exact/>
             <Route path="/category" component={Category} exact/>
             </Switch>

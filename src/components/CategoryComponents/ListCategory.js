@@ -9,7 +9,8 @@ class ListCategory extends React.Component{
     render(){
         if (this.props.redirectToUpdate)
         this.props.history.push(`/category/update/${this.props.redirectionId}`)
-        return <div>
+        return <div className = "ui container">
+            <div className="ui huge header center aligned"> All Category</div>
             <ListCategoryComponent categoryList = {this.props.categoryList} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.props.onClickDelete}/>
         </div>
     }

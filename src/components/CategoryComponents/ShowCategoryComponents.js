@@ -5,16 +5,22 @@ export default class ShowCategoryComponent extends React.Component{
         
         let component;
         if (this.props.category == null)
-        component = <p>{this.props.message}</p>
+        component = <h2>{this.props.message}</h2>
         else 
-        component = ( <div>
-            <div>Show Category</div>
-            <div>
-            Category Id : {this.props.category.categoryId} <br/>
+        component = ( <div class="ui column stackable center page grid">
+             <div class="three wide column"></div>
+            <div className = "ui ten wide column big list segment">
+            <div class="item">
+            <label> Category Id : </label>{this.props.category.categoryId} 
+            </div>
+            <div class="item">
             Name : {this.props.category.name} <br/>
-            Total Cost : {this.props.category.totalCost}<br/>
-            <button type="button" onClick = {this.props.onClickUpdate}>Update</button>
-            <button type="button" onClick = {this.onClickDelete}>Delete</button>
+            </div>
+            <div class="item">
+            <label>Total Cost : </label> {this.props.category.totalCost}<br/>
+            </div>
+            <button type="button" onClick = {this.props.onClickUpdate} className ="ui left floated button primary">Update</button>
+            <button type="button" onClick = {this.onClickDelete} className="ui right floated button negative">Delete</button>
             </div>
         </div>);
         return component;

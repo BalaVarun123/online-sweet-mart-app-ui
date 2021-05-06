@@ -7,16 +7,22 @@ export default class UpdateOrderBillComponent extends React.Component{
 
         let component;
         if (this.props.category == null)
-        component = <p>{this.props.message}</p>
+        component = <h2>{this.props.message}</h2>
         else{
-               component = (<div>
+               component = (<div className="ui column stackable center page grid">
+                <div className="three wide column"></div>
                 <form onSubmit = {this.onSubmit} onReset = {this.onReset}>
                 <div>
-                Category Id : <input type = "number" min = "0" value = {this.props.category.categoryId} ref = {this.categoryIdRef}/> <br/>
-                Category Name: <input type="text" ref={this.nameRef}/>
-                <button type="submit">Update</button>
-                <br/>
-                <button type="reset">Reset</button>
+                <div className = "field">
+                <label> Category Id : </label><input type = "number" min = "0" value = {this.props.category.categoryId} ref = {this.categoryIdRef}/> <br/>
+                </div>
+                <div className = "field">
+                <label> Category Name: </label> <input type="text" ref={this.nameRef}/> <br/>
+                </div>
+                
+                <button type="submit" className="ui left floated button primary">Update</button>
+                
+                <button type="reset"className="ui right floated button negative" >Reset</button>
                 <p>{this.props.message}</p>
                 </div>
                 </form>

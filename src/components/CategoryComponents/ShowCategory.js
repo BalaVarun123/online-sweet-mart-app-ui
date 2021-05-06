@@ -17,9 +17,8 @@ class ShowCategory extends React.Component{
         if (this.props.redirectToShow){
             this.props.resetRedirection();
         }
-        return <div>
-            <h2>Show Category</h2>
-            <br/>
+        return <div className = "ui container">
+            <div className="ui huge header center aligned"> Category Details</div>
             <ShowCategoryComponent category = {this.props.category} onClickDelete = {this.onClickDelete} onClickUpdate = {this.props.onClickUpdate} message = {this.props.message}/>
         </div>
     }

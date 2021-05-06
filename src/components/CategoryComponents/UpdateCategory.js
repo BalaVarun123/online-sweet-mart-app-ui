@@ -13,9 +13,8 @@ class UpdateCategory extends React.Component{
         if (this.props.redirectToUpdate){
             this.props.resetRedirection();
         }
-        return <div>
-            <h2>Update Category</h2>
-            <br/>
+        return <div className = "ui container" >
+            <div className = "ui huge header center aligned"> Update Category</div>
             <UpdateCategoryComponent message = {this.props.message} category = {this.props.category}  onSubmit = {this.props.onSubmit} />
         </div>
     }

@@ -1,13 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link , Redirect} from "react-router-dom";
 import ListCategory from "./ListCategory";
 
 class Category extends React.Component{
     render(){
         return <div>
-            <h2>Category</h2>
-            <br/>
-            <ListCategory/>
+           <redirect to = "/category/get-all"/>
         </div>
     }
 }
