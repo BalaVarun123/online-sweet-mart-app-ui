@@ -40,14 +40,6 @@ class AddCartComponent extends React.Component {
                         <input type="number" step="1" min="0" ref={this.productListRef}   required  title="Enter Valid Product ID" placeholder = "Enter Product ID"/> <br />
                     </div>
 
-                    
-                        <div className = "field">
-                            <i class="plus square icon"></i>
-                            <label> ADD PRODUCT ID: </label>
-                            <input type="number" step="1" min="0" ref={this.productListRef} /> <br />
-                        </div>
-
-
 
                     <div className="field">
                         <i class="sistrix icon"> </i>
