@@ -5,6 +5,7 @@ export class Footer extends Component {
         return (
             <div class="ui horizontal divider">
 
+
                 <h4 class="ui grey header">Got Question? | Contact us
                 +917358068806 / +917358072807  
                 
@@ -18,6 +19,18 @@ export class Footer extends Component {
                     </div>
 
                 </h4>                        
+
+                <h4 class="ui grey header">Got Question? | Contact us at
+                +917358068806 / +917358072807 <br/><br/> 
+                <div>    
+                    <i class="phone volume icon"></i> 
+                    <i class="comment alternate icon"></i>
+                    <i class="comments icon"> 
+                    </i> <i class="paper plane icon"></i>
+                </div>
+                </h4>         
+               
+
 
             </div>
         )

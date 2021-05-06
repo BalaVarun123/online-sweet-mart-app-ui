@@ -33,11 +33,20 @@ class AddCartComponent extends React.Component {
 
                     <br />
 
+
                     <div className="field">
                         <i class="plus square icon"></i>
                         <label> PRODUCT ID: </label>
                         <input type="number" step="1" min="0" ref={this.productListRef}   required  title="Enter Valid Product ID" placeholder = "Enter Product ID"/> <br />
                     </div>
+
+                    
+                        <div className = "field">
+                            <i class="plus square icon"></i>
+                            <label> ADD PRODUCT ID: </label>
+                            <input type="number" step="1" min="0" ref={this.productListRef} /> <br />
+                        </div>
+
 
 
                     <div className="field">
@@ -61,7 +70,7 @@ class AddCartComponent extends React.Component {
                     </div>
 
                     <p> {this.props.state.message} </p>
-
+                    
                     <button class="ui positive button" type="button" onClick={this.onClickAddProduct} > ADD PRODUCT </button>
                     <button class="ui primary button" type="submit" > SUBMIT </button>
                     <button class="negative ui button" type="reset" > RESET </button>
