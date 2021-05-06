@@ -10,6 +10,7 @@ export default class AddCustomerComponent extends React.Component{
         super(props);
             this.sweetOrderIds = [];
             this.sweetItemsIds = [];
+
     }
     render(){
         this.renderSweetOrderIds();
@@ -82,11 +83,6 @@ export default class AddCustomerComponent extends React.Component{
          event.preventDefault();
          console.log("this is adding"+(Array.from(this.props.sweetItemIds)))
         //  const listSweetOrder = Array.from(this.props.sweetOrderIds);
-        console.log("sweetOrders" + Array.from(this.props.sweetOrderIds));
-        console.log("sweetItems"+Array.from(this.props.sweetItemIds));
-        console.log("this.usernameRef.current.value"+this.usernameRef.current.value)
-        console.log("this.addCartIdRef.current.value"+this.addCartIdRef.current.value)
-
           const customer = {}
 
              customer.sweetOrders = Array.from(this.props.sweetOrderIds)
