@@ -12,10 +12,10 @@ class UpdateSweetItem extends React.Component{
         if (this.props.redirectToUpdate){
             this.props.resetRedirection();
         }
-        return <div>
-            <h2>UpdateAdmin</h2>
+        return <div className = "ui container">
+            <h2 className="ui huge header center aligned">UpdateSweetItem</h2>
             <br/>
-            <UpdateSweetItemComponent message = {this.props.message} sweetItem = {this.props.sweetItem} productIds = {this.props.productIds} onSubmit = {this.props.onSubmit}  onClickRemoveProductId = {this.props.onClickRemoveProductId} onClickAddProductId = {this.props. onClickAddProductId} sweetOrderIds = {this.props.sweetOrderIds} onSubmit = {this.props.onSubmit}  onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId}  onClickAddSweetOrderId = {this.props. onClickAddSweetOrderId} onReset = {this.props.onReset}/>
+            <UpdateSweetItemComponent message = {this.props.message} sweetItem = {this.props.sweetItem} onSubmit = {this.props.onSubmit} onReset = {this.props.onReset}/>
         </div>
     }
 
@@ -41,12 +41,7 @@ const mapStateToProps = (state,props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         responseCallBack : (response) => {
-            console.log("The response is "+JSON.stringify(response.data[0]));
-            if (response.data.length > 0)
-            dispatch(_showSweetItem(response.data[0], ""));
-            else 
-            dispatch(_showSweetItem(null,"Invalid Order Item Id"));
-
+            dispatch(_showSweetItem(response.data, ""));
         },
         catchCallBack : (error) => {dispatch(_showSweetItem(null,error.message))},
         onSubmit : (sweetItem) => {
@@ -61,24 +56,7 @@ const mapDispatchToProps = (dispatch) => {
         
         
         resetRedirection : () => {dispatch(_redirectToUpdate(false))},
-        onClickRemoveProductId : (id) => {
-            dispatch(_removeProductId(id))
-        },
-        onClickAddProductId : (id) => {
-            dispatch(_addProductId(id) )
-        },
-       onReset : () => {
-          dispatch(_resetProductId());
-      },
-        onClickRemoveSweetOrderId : (id) => {
-            dispatch(_removeSweetOrderId(id))
-        },
-        onClickAddSweetOrderId : (id) => {
-            dispatch(_addSweetOrderId(id) )
-        },
-        onReset : () => {
-            dispatch(_resetSweetOrderId());
-        }
+        
     }
 }
 

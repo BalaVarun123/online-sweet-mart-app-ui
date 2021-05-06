@@ -1,5 +1,3 @@
-
-  
 import React from "react";
 import { connect } from "react-redux";
 import { _displayMessage, _redirectToUpdate, _showAllSweetItem } from "../../actions/SweetItemActions";
@@ -11,7 +9,8 @@ class ListSweetItem extends React.Component{
     render(){
         if (this.props.redirectToUpdate)
         this.props.history.push(`/sweet-item/update/${this.props.redirectionId}`)
-        return <div>
+        return <div className = "ui container">
+            <div className="ui huge header center aligned">All SweetItems</div>
             <ListSweetItemComponent sweetItemList = {this.props.sweetItemList} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.props.onClickDelete}/>
         </div>
     }
@@ -19,10 +18,6 @@ class ListSweetItem extends React.Component{
     componentDidMount(){
         sweetItemService.getAllSweetItems(this.props.loadResponseCallBack ,this.props.loadCatchCallBack)
     }
-
-
-    
-
 
 }
 const mapStatesToProps = (state, props) => {

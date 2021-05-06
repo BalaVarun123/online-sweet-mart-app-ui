@@ -41,24 +41,9 @@ export default (state = defaultState,action) => {
             newState.sweetItemList = action.sweetItemList;
             newState.message = action.message;
             break;
-        case SWEET_ITEM_ADD_PRODUCT_ID:
-            newState.productIds.add(action.id);
+        case SWEET_ITEM_ADD:
+            newState.sweetItem = action.sweetItem;
             break;
-        case SWEET_ITEM_REMOVE_PRODUCT_ID:
-            newState.productIds.delete(action.id);
-            break;
-        case SWEET_ITEM_RESET_PRODUCT_IDS:
-            newState.productIds.clear();
-            break;
-        case SWEET_ITEM_ADD_SWEET_ORDER_ID:
-            newState.sweetOrderIds.add(action.id);
-            break;
-        case SWEET_ITEM_REMOVE_SWEET_ORDER_ID:
-                newState.sweetOrderIds.delete(action.id);
-                break;
-        case SWEET_ITEM_RESET_SWEET_ORDER_IDS:
-                newState.sweetOrderIds.clear();
-                break;
         
         default :
                 newState = state;

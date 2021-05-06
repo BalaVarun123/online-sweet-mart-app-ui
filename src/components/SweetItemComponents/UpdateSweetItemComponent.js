@@ -8,8 +8,6 @@ export default class UpdateSweetItemComponent extends React.Component{
 
     constructor(props){
         super(props);
-        this.productIds = [];
-        this.sweetOrderIds = [];
     }
 
 
@@ -19,26 +17,29 @@ export default class UpdateSweetItemComponent extends React.Component{
         if (this.props.sweetItem == null)
         component = <p>{this.props.message}</p>
         else{
-            this.renderProductIds();
-            this.renderSweetOrderIds();
-            component = (<div>
-                <div>View SweetItem.Products</div>
-                <div>View SweetItem.SweetOrders</div>
+            component = (<div className="ui column stackable center page grid">
+                <div class="three wide column"></div>
                 <p>{this.props.message}</p>
-                <form onSubmit = {this.onSubmit} onReset = {this.onReset}>
+                <form onSubmit = {this.onSubmit} onReset = {this.onReset} className = "ui ten wide column form segment">
                 <div>
-                Order Item Id : <input type = "number" min = "0" value = {this.props.sweetItem.orderItemId} ref = {this.orderItemIdRef}/> <br/>
-                {this.productIds}
+                <div className = "field"></div>
+                <label>OrderItem Id </label> <input type = "number" min = "0" value = {this.props.sweetItem.orderItemId} ref = {this.orderItemIdRef}/> <br/>
+                <div className = "field">
+                 <br/>
+                {this.productId}
+                </div>
                 <br/>
-                <input type = "number" min = "0" step = {1} ref = {this.addProductIdRef} placeholder = "Product ID"/><button type = "button" onClick = {this.onClickAddProductId}>Add Product</button>
+                <label>Product ID </label><input type = "number" min = "0" step = {1} ref = {this.addProductIdRef} placeholder = "Product ID"/>
                 <br/>
-                {this.sweetOrderIds}
+                <div className = "field">
+                {this.sweetOrderId}
+                </div>
                 <br/>
-                <input type = "number" min = "0" step = {1} ref = {this.addSweetOrderIdRef} placeholder = "Sweet Order ID"/><button type = "button" onClick = {this.onClickAddSweetOrderId}>Add Sweet Order</button>
+                <label>Sweet Order ID </label> <br/><input type = "number" min = "0" step = {1} ref = {this.addSweetOrderIdRef} placeholder = "Sweet Order ID"/>
                 <br/>
-                <button type="submit">Update</button>
+                <button type="submit" className="ui left floated button primary">Update SweetItem </button>
                 <br/>
-                <button type="reset">Reset</button>
+                <button type="reset" className= "ui right floated button negative">Reset </button>
                 </div>
                 </form>
             </div>);
@@ -72,44 +73,15 @@ export default class UpdateSweetItemComponent extends React.Component{
 
     onSubmit = (event) => {
         event.preventDefault();
-        const product = Array.from(this.props.productIds);
-        const sweetOrder = Array.from(this.props.sweetOrderIds);
         const sweetItem = {
             orderItemId : this.orderItemIdRef.current.value,
-            product : product,
-            sweetOrder : sweetOrder
+            productId : this.addProductIdRef.current.value,
+            sweetOrderId : this.addSweetOrderIdRef.current.value
         }
         this.props.onSubmit(sweetItem);
     }
 
-    onReset = (_event) => {
-        this.props.onReset();
-        this.forceUpdate();
-    }
-    onClickRemoveProductId = (id,_event) => {
-        this.props.onClickRemoveProductId(id);
-        this.forceUpdate();
-    }
-
-    onClickAddProductId = (_event) =>{
-        if (this.addProductIdRef.current.value){
-            this.props.onClickAddProductId(Number(this.addProductIdRef.current.value));
-            this.forceUpdate();
-        }
-        
-    }
-
-    onClickRemoveSweetOrderId = (id,_event) => {
-        this.props.onClickRemoveSweetOrderId(id);
-        this.forceUpdate();
-    }
-
-    onClickAddSweetOrderId = (_event) =>{
-        if (this.addSweetOrderIdRef.current.value){
-            this.props.onClickAddSweetOrderId(Number(this.addSweetOrderIdRef.current.value));
-            this.forceUpdate();
-        }
-        
-    }
+   
+    
 }
 

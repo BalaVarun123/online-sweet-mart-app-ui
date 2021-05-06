@@ -7,31 +7,31 @@ export default class ShowSweetItemComponent extends React.Component{
         if (this.props.sweetItem == null)
         component = <p>{this.props.message}</p>
         else 
-        component = ( <div>
-            <div>Show sweetItems</div>
+        component = ( <div class="ui column stackable center page grid">
+             <div class="three wide column"></div>
+             <div className = "ui ten wide column big list segment">
             <div>
-            Order Item Id : {this.props.sweetItem.orderItemId} <br/>
-            <button type = "button">View Products</button>
-            <button type = "button">View Sweet orders</button>
-            <button type="button" onClick = {this.props.onClickUpdate}>Update</button>
-            <button type="button" onClick = {this.onClickDelete}>Delete</button>
+            <div class="item">
+            <label>Order Item Id : </label>{this.props.sweetItem.orderItemId} <br/>
             </div>
+            <div class="item">
+            <label>Product ID : </label> <a>{this.props.sweetItem.product.productId}</a>
+            </div>
+            <div class="item"></div>
+            <label>SweetOrder Id : </label> : <a>{this.props.sweetItem.sweetOrder.sweetOrderId}</a>
+            </div>
+            <button type="button" className="ui left floated button primary" onClick = {this.props.onClickUpdate}>Update</button>
+            <button type="button" className="ui right floated button negative" onClick = {this.onClickDelete}>Delete</button>
+            </div>
+            
         </div>);
         return component;
     }
 
-    onClickViewProducts = () => {
-
-    }
-
-
-    onClickViewSweetOrders = () => {
-
-    }
-
+    
     
 
     onClickDelete = (event) => {
-        this.props.onClickDelete(this.props.orderBill.orderBillId);
+        this.props.onClickDelete(this.props.sweetItem.orderItemId);
     }
 }

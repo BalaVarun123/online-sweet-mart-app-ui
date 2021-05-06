@@ -1,10 +1,10 @@
 import axios from "../../axios/axios";
 
-const URL_SWEET_ITEM_SHOW = "/sweet-item/show/";
-const URL_SWEET_ITEM_UPDATE = "/sweet-item/update";
-const URL_SWEET_ITEM_DELETE = "/sweet-item/cancel/";
-const URL_SWEET_ITEM_ADD = "/sweet-item/add";
-const URL_SWEET_ITEM_SHOW_ALL = "/sweet-item/show-all";
+const URL_SWEET_ITEM_SHOW = "/showSweetItem/";
+const URL_SWEET_ITEM_UPDATE = "/updateSweetItem";
+const URL_SWEET_ITEM_DELETE = "/cancelSweetItem/";
+const URL_SWEET_ITEM_ADD = "/addSweetItem";
+const URL_SWEET_ITEM_SHOW_ALL = "/showAllSweetItems";
 export default class SweetItemService {
     getSweetItem(id,responseCallBack,catchCallBack){
         axios.get(URL_SWEET_ITEM_SHOW+id)

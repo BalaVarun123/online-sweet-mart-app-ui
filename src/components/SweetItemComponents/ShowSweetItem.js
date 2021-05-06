@@ -16,12 +16,12 @@ class ShowSweetItem extends React.Component{
         if (this.props.redirectToShow){
             this.props.resetRedirection();
         }
-        return <div>
-            <h2>Show Sweet Item</h2>
+        return <div  className = "ui container">
+            <div className="ui huge header center aligned">Show SweetItem</div>
             <br/>
-            <ShowSweetItemComponent sweetItem = {this.props.sweetItem} onClickDelete = {this.onClickDelete} onClickUpdate = {this.props.onClickUpdate} onClickViewProduct = {this.props.onClickViewProduct} message = {this.props.message}/>
-            <ShowSweetItemComponent sweetItem = {this.props.sweetItem} onClickDelete = {this.onClickDelete} onClickUpdate = {this.props.onClickUpdate} onClickViewSweetOrder = {this.props.onClickViewSweetOrder} message = {this.props.message}/>
-        </div>
+            <ShowSweetItemComponent sweetItem = {this.props.sweetItem} onClickDelete = {this.onClickDelete} onClickUpdate = {this.props.onClickUpdate} message = {this.props.message}/>
+            
+            </div>
     }
 
 
@@ -53,10 +53,7 @@ const mapDispatchToProps = (dispatch) => {
         onClickViewProduct : () => {},
         onClickViewSweetOrder : () => {},
         responseCallBack : (response) => {
-            if (response.data.length > 0)
-            dispatch(_showSweetItem(response.data[0], ""))
-            else 
-            dispatch(_showSweetItem(null,"Invalid Order Item Id"))
+            dispatch(_showSweetItem(response.data, ""))
         },
         catchCallBack : (error) => {dispatch(_showSweetItem(null,error.response.data))},
         resetRedirection : () => {dispatch(_redirectToShow(false))}

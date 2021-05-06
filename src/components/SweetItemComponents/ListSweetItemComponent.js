@@ -1,10 +1,5 @@
-
-  
 import React from "react";
 class ListSweetItemComponent extends React.Component{
-
-
-
     constructor(props){
         super(props);
         this.details = [];
@@ -14,15 +9,14 @@ class ListSweetItemComponent extends React.Component{
         this.loadDetails(this.props.sweetItemList);
         return <div>
             <p>{this.props.message}</p> 
-            <div>Selected view</div>
             <div>
-            <table>
+            <table className = "ui celled table large selectable">
             <thead>
               <tr>
-                  <th>Order Item Id</th>
-                  <th>Products</th>
-                  <th>Sweet Orders</th>
-                  <th colSpan = {2}>Action</th> {/*UPDATE DELETE*/}
+                  <th className = "center aligned">Order Item Id</th>
+                  <th className = "center aligned">Product ID</th>
+                  <th className = "center aligned">Sweet Order ID</th>
+                  <th className = "center aligned" colSpan = {2}>Action</th> {/*UPDATE DELETE*/}
               </tr>  
             </thead>
             <tbody>{this.details}</tbody>
@@ -30,6 +24,8 @@ class ListSweetItemComponent extends React.Component{
            </div>
         </div>
     }
+
+
 
 
     loadDetails = (sweetItemList) =>{
@@ -42,8 +38,8 @@ class ListSweetItemComponent extends React.Component{
                         <td>{sweetItem.orderItemId}</td>
                         {/* <td>{sweetItem.product.map((product) => <button id = {`btn-so-${product.productId}`}>{product.productId}</button>)}</td>
                         <td>{sweetItem.sweetOrder.map((sweetOrder) => <button id = {`btn-so-${sweetOrder.sweetOrderId}`}>{sweetOrder.sweetOrderId}</button>)}</td> */}
-                        <td><button type="button" onClick = {this.onClickUpdate.bind(this,sweetItem.orderItemId)}>UPDATE</button></td>
-                        <td><button type="button" onClick = {this.onClickDelete.bind(this,sweetItem.orderItemId)}>DELETE</button></td>
+                        <td className = "center aligned"><button type="button" className = "ui button primary" onClick = {this.onClickUpdate.bind(this,sweetItem.orderItemId)}>UPDATE</button></td>
+                        <td className = "center aligned"><button type="button" className = "ui button negative" onClick = {this.onClickDelete.bind(this,sweetItem.orderItemId)}>DELETE</button></td>
                     </tr>
                 );
             }
