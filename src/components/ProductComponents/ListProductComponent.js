@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 class ListProductComponent extends React.Component{
 
 
@@ -8,7 +7,7 @@ class ListProductComponent extends React.Component{
         super(props);
         this.details = [];
     }
-
+   
     render(){
         this.loadDetails(this.props.productList);
         return <div>
@@ -21,7 +20,7 @@ class ListProductComponent extends React.Component{
                   <th  className = "center aligned">Product_Id</th>
                   <th  className = "center aligned">Name</th>
                   
-                  <th  className = "center aligned" colSpan = {2}>Action</th> 
+                  <th  className = "center aligned" colSpan = {3}><button type="button" className = "ui button" ><a href="http://localhost:3000/product/add">ADD PRODUCT</a></button></th> 
               </tr>  
             </thead>
             <tbody>{this.details}</tbody>
@@ -40,7 +39,7 @@ class ListProductComponent extends React.Component{
                     <tr key = {Product.productId}>
                         <td>{Product.productId}</td>
                         <td>{Product.name}</td>
-                        {/* <td  className = "center aligned"><button type="button" className = "ui button primary" onClick = {this.onClickView.bind(this,Product.productId)}>VIEW</button></td> */}
+                        <td  className = "center aligned"><button type="button" className = "ui button olive" onClick = {this.onClickShow.bind(this,Product.productId)}>VIEW</button></td>
                         <td  className = "center aligned"><button type="button" className = "ui button primary" onClick = {this.onClickUpdate.bind(this,Product.productId)}>UPDATE</button></td>
                         <td  className = "center aligned"><button type="button" className = "ui button negative" onClick = {this.onClickDelete.bind(this,Product.productId)}>DELETE</button></td>
                         
@@ -64,9 +63,9 @@ class ListProductComponent extends React.Component{
     onClickDelete = (id,event) => {
         this.props.onClickDelete(id);
     }
-    // onClickView = (id,event) =>{
-    //     this.props.onClickView(id);
-    // }
+    onClickShow = (id,event) =>{
+        this.props.onClickShow(id);
+    }
 
 
 }
