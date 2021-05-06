@@ -7,6 +7,7 @@ import CartRouter from './CartRouters/CartRouter';
 import ProductRouter from './ProductRouters/ProductRouter';
 import SweetOrderRouter from './SweetOrderRouters/SweetOrderRouter';
 
+import CustomerRouter from './CustomerRouters/CustomerRouter';
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -20,8 +21,10 @@ const AppRouter = () => (
                 <Route path="/cart" component={CartRouter}/>
                 <Route path="/product" component={ProductRouter}/>
                 <Route path="/sweet-order" component={SweetOrderRouter}/>
+                <Route path = "/customer" component = {CustomerRouter}/>
             </Switch>
         </div>
+       
     </BrowserRouter>
 );
 

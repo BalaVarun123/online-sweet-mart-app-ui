@@ -1,44 +1,53 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { _addSweetOrderId,_addSweetItemId, _addCartId, _displayMessage, _redirectToUpdate, _removeSweetOrderId, _removeSweetItemId,_removeCartId,_resetSweetOrderId, _resetSweetItemId,_resetCartId ,_showCustomer } from "../../actions/CustomerActions";
+import { _addSweetOrderId,_addSweetItemId, _addCartId, _displayMessage, _redirectToUpdate,
+     _removeSweetOrderId, _removeSweetItemId,_removeCartId,_resetSweetOrderId, _resetSweetItemId,
+     _resetCartId ,_showCustomer } from "../../actions/CustomerActions";
 import CustomerService from "../../services/CustomerServices/CustomerService";
 import UpdateCustomerComponent from "./UpdateCustomerComponent";
+import Header from "../pages/Header";
+import Footer from "../pages/Footer";
 
-
-const CustomerService = new CustomerService();
+const customerService = new CustomerService();
 class UpdateCustomer extends React.Component{
     
     render(){
-        if (this.props.redirectToUpdate){
-            this.props.resetRedirection();
-        }
-        return <div>
-            <h2>UpdateAdmin</h2>
+        if (this.props.redirectToShow)
+            this.props.history.push(`/customer/show/${this.props.redirectionId}`)
+        return <div className = "ui container">
+            <div className="ui huge header center aligned">Update Customer</div>
+            <Header title="UPDATE CUSTOMER" />
             <br/>
-            <UpdateCustomerComponent message = {this.props.message} Customer = {this.props.Customer} sweetOrderIds = {this.props.sweetOrderIds} onSubmit = {this.props.onSubmit}  onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId}  onClickAddSweetOrderId = {this.props. onClickAddSweetOrderId} onReset = {this.props.onReset}/>
-            <UpdateCustomerComponent message = {this.props.message} Customer = {this.props.Customer} sweetItemIds = {this.props.sweetItemIds} onSubmit = {this.props.onSubmit}  onClickRemoveSweetItemId = {this.props.onClickRemoveSweetItemId}  onClickAddSweetItemId = {this.props. onClickAddSweetItemId} onReset = {this.props.onReset}/>
-            <UpdateCustomerComponent message = {this.props.message} Customer = {this.props.Customer} cartIds = {this.props.cartIds} onSubmit = {this.props.onSubmit}  onClickRemoveCartId = {this.props.onClickRemoveCartId}  onClickAddCartId = {this.props. onClickAddCartId} onReset = {this.props.onReset}/>
+            <UpdateCustomerComponent message = {this.props.message} customer = {this.props.customer} 
+            sweetOrderIds = {this.props.sweetOrderIds} 
+            onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} 
+            onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId} 
+            onClickAddSweetOrderId = {this.props.onClickAddSweetOrderId} sweetItemIds = {this.props.sweetItemIds} 
+            onClickRemoveSweetItemId = {this.props.onClickRemoveSweetItemId} 
+            onClickAddSweetItemId = {this.props.onClickAddSweetItemId} />
+            <br/>
+           <Footer></Footer>
         </div>
     }
 
 
     componentDidMount(){
         console.log("update component mounted");
-        CustomerService.getCustomer(this.props.id,this.props.responseCallBack,this.props.catchCallBack);
+        customerService.getCustomer(this.props.id,this.props.responseCallBack,this.props.catchCallBack);
     }
 
 }
 
 const mapStateToProps = (state,props) => {
+    console.log("sweet order display"+JSON.stringify(state.customer.sweetOrderIds))
     return {
-        Customer : state.Customer.Customer,
-        message : state.Customer.message,
+        customer : state.customer.customer,
+        message : state.customer.message,
         id : props.match.params.id,
-        redirectToUpdate: state.Customer.redirectToUpdate,
-        sweetOrderIds : state.Customer.sweetOrderIds,
-        sweetItemIds : state.Customer.sweetItemIds,
-        cartIds : state.Customer.cartIds
+        redirectToUpdate: state.customer.redirectToUpdate,
+        sweetOrderIds : state.customer.sweetOrderIds,
+        sweetItemIds : state.customer.sweetItemIds
 
     }
 }
@@ -46,24 +55,22 @@ const mapStateToProps = (state,props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         responseCallBack : (response) => {
-            console.log("The response is "+JSON.stringify(response.data[0]));
-            if (response.data.length > 0)
-            dispatch(_showCustomer(response.data[0], ""));
-            else 
-            dispatch(_showCustomer(null,"Invalid User Id"));
-
+            console.log("The response is "+JSON.stringify(response.data));
+            dispatch(_showCustomer(response.data, ""));
+            
         },
-        catchCallBack : (error) => {dispatch(_showCustomer(null,error.response.data))},
+        catchCallBack : (error) => {dispatch(_showCustomer(null,error.message))},
         onSubmit : (Customer) => {
             console.log("onSubmit activated");
             const responseCallBack = (response) => dispatch(_displayMessage("Updated successfully."));
             const catchCallBack = (error) => {
                 console.log("the error is :"+JSON.stringify(error));
-                dispatch(_displayMessage(error.response.data));
+                dispatch(_displayMessage(error.message));
             }
-            CustomerService.updateCustomer(Customer,responseCallBack,catchCallBack );
+            customerService.updateCustomer(Customer,responseCallBack,catchCallBack );
         },
         resetRedirection : () => {dispatch(_redirectToUpdate(false))},
+
         onClickRemoveSweetOrderId : (id) => {
             dispatch(_removeSweetOrderId(id))
         },

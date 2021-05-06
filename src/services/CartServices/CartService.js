@@ -1,8 +1,9 @@
 import axios from '../../axios/axios';
 
-const CART_URL_ADD = "/add-cart"
-const CART_URL_UPDATE = "/update-cart"
-const PRODUCT_URL_GET = "/product/show-by-id/"
+const CART_URL_ADD = "/add-cart";
+const CART_URL_UPDATE = "/update-cart";
+const PRODUCT_URL_GET = "/product/show-by-id/";
+const CART_URL_DELETE = "/delete-cart/";
 
 
 export default class CartServices {
@@ -20,8 +21,6 @@ export default class CartServices {
 
         let invalidProudctIdFound = false;
 
-        console.log("it should work :" + cart.listProduct)
-
         for (let productId of cart.listProduct) {
 
             await axios.get(PRODUCT_URL_GET + productId)
@@ -32,7 +31,7 @@ export default class CartServices {
 
         if (invalidProudctIdFound) {
 
-            errorCallback({ response: { data: "Invalid product ID" } })
+            errorCallback({ response: { data: " SORRY INVALID PRODUCT ID" } })
         }
         else {
 
@@ -93,5 +92,13 @@ export default class CartServices {
                 .catch(errorCallback)
         }
 
+    }
+
+    //DELETE
+
+    deleteCart(id,responseCallBack,catchCallBack){
+        axios.delete(CART_URL_DELETE+id)
+        .then(responseCallBack)
+        .catch(catchCallBack)
     }
 }

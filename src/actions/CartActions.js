@@ -11,8 +11,6 @@ export const addCartSuccess = (cart) => {
     }
 }
 
-
-
 export const updateCartSuccess = (cart) => {
 
     return {
@@ -22,8 +20,6 @@ export const updateCartSuccess = (cart) => {
 
     }
 }
-
-
 
 const cancelCartSuccess = (cart) => {
 
