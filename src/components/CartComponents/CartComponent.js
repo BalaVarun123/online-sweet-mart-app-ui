@@ -38,8 +38,9 @@ const CartComponent = () => {
 
     </Link>
 
-    </div>
-
+    </div> <br/>  <br/> 
+    
+                <button class="negative ui button" type="reset" > DELETE </button>
 
                 <table class="ui red table"  >
                     <thead>
