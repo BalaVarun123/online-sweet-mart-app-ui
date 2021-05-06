@@ -41,11 +41,11 @@ class ListCustomerComponent extends React.Component{
                     <tr key = {customer.userId}>
                         <td>{customer.userId}</td>
                         <td>{customer.username}</td>
-                        <td>{customer.listSweetOrder.map((sweetOrder) => <button id = {`btn-so-${sweetOrder.sweetOrderId}`}>{sweetOrder.sweetOrderId}</button>)}</td>
-                        <td>{customer.listSweetItem.map((sweetItem) => <button id = {`btn-so-${sweetItem.sweetItemId}`}>{sweetItem.sweetItemId}</button>)}</td>
-                        <td>{customer.cart.map((cart) => <button id = {`btn-so-${cart.cartId}`}>{cart.cartId}</button>)}</td>
-                        <td><button type="button" onClick = {this.onClickUpdate.bind(this,orderBill.orderBillId)}>UPDATE</button></td>
-                        <td><button type="button" onClick = {this.onClickDelete.bind(this,orderBill.orderBillId)}>DELETE</button></td>
+                        {/* <td>{customer.listSweetOrder.map((sweetOrder) => <button id = {`btn-so-${sweetOrder.sweetOrderId}`}>{sweetOrder.sweetOrderId}</button>)}</td>
+                        <td>{customer.listSweetItem.map((sweetItem) => <button id = {`btn-so-${sweetItem.sweetItemId}`}>{sweetItem.sweetItemId}</button>)}</td> */}
+                        {/* <td>{customer.cart.map((cart) => <button id = {`btn-so-${cart.cartId}`}>{cart.cartId}</button>)}</td> */}
+                        <td><button type="button" onClick = {this.onClickUpdate.bind(this,customer.userId)}>UPDATE</button></td>
+                        <td><button type="button" onClick = {this.onClickDelete.bind(this,customer.userId)}>DELETE</button></td>
                     </tr>
                 );
             }
