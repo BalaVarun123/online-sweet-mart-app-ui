@@ -9,7 +9,7 @@ const productService = new ProductService();
 class AddProduct extends React.Component{
     render(){
         if (this.props.redirectToShow)
-            this.props.history.push(`/product/show-all`)
+            this.props.history.push(`/product/show-by-id/${this.props.redirectionId}`)
         return <div className = "ui container">
             <Header title="ADD PRODUCT" />
             

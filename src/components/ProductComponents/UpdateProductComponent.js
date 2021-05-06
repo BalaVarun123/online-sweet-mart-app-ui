@@ -48,6 +48,7 @@ export default class UpdateProductComponent extends React.Component{
                 </div>
                 <br/>
                 <button type="submit" className="ui left floated button primary">Update</button>
+                <button type="button" className="ui right floated button"><a href="http://localhost:3000/product/show-all">PRODUCT LIST</a></button>
                 <br/>
                 </div>
                 <p>{this.props.message}</p>
