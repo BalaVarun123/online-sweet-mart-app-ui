@@ -22,7 +22,7 @@ export default class AddProductComponent extends React.Component{
             <div className = "field">
             <input type="file" onChange={this.handleChange} ref={this.photoPathRef}/>
             <img src={this.state.file} style={{width:70}}/><br/>
-            {/* <p>{this.state.file}</p> */}
+            
             </div>
             <div className = "field">
                 NAME: <input type="text" min="3" max="15" ref={this.nameRef}/><br/>
@@ -39,8 +39,7 @@ export default class AddProductComponent extends React.Component{
                 <label>
                     AVAILABLE:
                     <input type="checkbox" ref={this.availableRef}/>
-                         {/* checked={this.state.isGoing}
-                        onChange={this.handleInputChange}  */}
+                
                 </label><br />
                 </div>
                 

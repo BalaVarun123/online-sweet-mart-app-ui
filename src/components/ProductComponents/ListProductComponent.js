@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 class ListProductComponent extends React.Component{
 
 
@@ -19,8 +20,7 @@ class ListProductComponent extends React.Component{
               <tr>
                   <th  className = "center aligned">Product_Id</th>
                   <th  className = "center aligned">Name</th>
-                  <th  className = "center aligned">Price</th>
-                  <th  className = "center aligned">Description</th>
+                  
                   <th  className = "center aligned" colSpan = {2}>Action</th> 
               </tr>  
             </thead>
@@ -40,10 +40,11 @@ class ListProductComponent extends React.Component{
                     <tr key = {Product.productId}>
                         <td>{Product.productId}</td>
                         <td>{Product.name}</td>
-                        <td>{Product.price}</td>
-                        <td>{Product.description}</td>
+                        
+                        {/* <td  className = "center aligned"><button type="button" className = "ui button primary" onClick = {this.onClickView.bind(this,Product.productId)}>VIEW</button></td> */}
                         <td  className = "center aligned"><button type="button" className = "ui button primary" onClick = {this.onClickUpdate.bind(this,Product.productId)}>UPDATE</button></td>
                         <td  className = "center aligned"><button type="button" className = "ui button negative" onClick = {this.onClickDelete.bind(this,Product.productId)}>DELETE</button></td>
+                        
                     </tr>
                 );
             }
@@ -64,6 +65,9 @@ class ListProductComponent extends React.Component{
     onClickDelete = (id,event) => {
         this.props.onClickDelete(id);
     }
+    // onClickView = (id,event) =>{
+    //     this.props.onClickView(id);
+    // }
 
 
 }
