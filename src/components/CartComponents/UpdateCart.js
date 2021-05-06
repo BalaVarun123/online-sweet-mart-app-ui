@@ -1,6 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router';
 import UpdateCartComponent from './UpdateCartComponent';
+import Header from '../pages/Header';
+import Footer from '../pages/Footer';
 
 
 class UpdateCart extends React.Component {
@@ -9,7 +11,7 @@ class UpdateCart extends React.Component {
         super(props);
 
         this.state = {
-           
+
             redirectToShow: false,
             listProduct: [],
             message: "",
@@ -24,7 +26,15 @@ class UpdateCart extends React.Component {
             return <Redirect to={"/cart/show-cart-by-id/" + this.state.cartId} />
         }
 
-        return <UpdateCartComponent state={this.state} setState={p => { this.setState(p) }} />
+        return <div>
+
+            <Header title="WELCOME TO UPDATE CART" />
+
+            <UpdateCartComponent state={this.state} setState={p => { this.setState(p) }} />  <br /> <br />
+
+            <Footer></Footer>
+
+        </div>
     }
 
 
