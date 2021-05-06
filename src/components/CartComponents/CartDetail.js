@@ -53,6 +53,8 @@ const CartDetail = () => {
 
    </Link> </div>
 
+   
+
 
         <div className="ui huge header center aligned">
           {Object.keys(cart).length === 0 ? (
