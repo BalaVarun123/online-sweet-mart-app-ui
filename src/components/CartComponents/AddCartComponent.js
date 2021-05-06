@@ -15,6 +15,7 @@ class AddCartComponent extends React.Component {
     productIdTags = []
 
     cartServices = new CartServices();
+    
     render() {
 
         this.renderProductIds();
