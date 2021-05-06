@@ -3,8 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 
 
-
-
 class AddCartComponent extends React.Component {
 
     productCountRef = React.createRef();
@@ -15,6 +13,7 @@ class AddCartComponent extends React.Component {
     productIdTags = []
 
     cartServices = new CartServices();
+
     render() {
 
         this.renderProductIds();
@@ -24,15 +23,23 @@ class AddCartComponent extends React.Component {
         return (
 
             <div class="ui column stackable center page grid">
-                
-                <br /> 
-                
+
+                <br />
+
                 <div class="three wide column"></div>
-              
-                <form onSubmit={this.onSubmit} onReset={this.onReset} class="ui form" className = "ui ten wide column form segment">
+
+                <form onSubmit={this.onSubmit} onReset={this.onReset} class="ui form" className="ui ten wide column form segment">
 
 
                     <br />
+
+
+                    <div className="field">
+                        <i class="plus square icon"></i>
+                        <label> PRODUCT ID: </label>
+                        <input type="number" step="1" min="0" ref={this.productListRef}   required  title="Enter Valid Product ID" placeholder = "Enter Product ID"/> <br />
+                    </div>
+
                     
                         <div className = "field">
                             <i class="plus square icon"></i>
@@ -41,25 +48,26 @@ class AddCartComponent extends React.Component {
                         </div>
 
 
-                        <div className = "field">
-                            <i class="sistrix icon"> </i>
-                            <label> PRODUCT COUNT: </label>
-                            <input type="number" step="1" min="0" ref={this.productCountRef} /> <br />
-                        </div>
 
-                        <div className = "field">
-                            <i class="money bill alternate outline icon"></i>
-                            <label> TOTAL: </label>
-                            <input type="number" step="0.01" min="0" ref={this.totalRef} /> <br />
-                        </div>
+                    <div className="field">
+                        <i class="sistrix icon"> </i>
+                        <label> PRODUCT COUNT: </label>
+                        <input type="number" step="1" min="0" ref={this.productCountRef} placeholder = "Enter Your Product Count"/> <br />
+                    </div>
+
+                    <div className="field">
+                        <i class="money bill alternate outline icon"></i>
+                        <label> TOTAL: </label>
+                        <input type="number" step="0.01" min="0" ref={this.totalRef} required placeholder = "Tax Exclusive"/> <br />
+                    </div>
 
 
-                        <div className = "field">
-                            <i class="rupee sign icon"></i>
-                            <label> GRAND TOTAL: </label>
-                            <input type="number" step="0.01" min="0" ref={this.grandTotalRef} />
-                            {this.productIdTags} <br />
-                        </div>
+                    <div className="field">
+                        <i class="rupee sign icon"></i>
+                        <label> GRAND TOTAL: </label>
+                        <input type="number" step="0.01" min="0" ref={this.grandTotalRef} required placeholder = "Total Amount Including TAX"/>
+                        {this.productIdTags} <br />
+                    </div>
 
                     <p> {this.props.state.message} </p>
                     
@@ -67,11 +75,10 @@ class AddCartComponent extends React.Component {
                     <button class="ui primary button" type="submit" > SUBMIT </button>
                     <button class="negative ui button" type="reset" > RESET </button>
 
-                 
-
                 </form>
-               
+
             </div>
+
         )
     }
 
@@ -117,7 +124,7 @@ class AddCartComponent extends React.Component {
 
         this.productIdTags = this.props.state.listProduct.map(
 
-            (productId, index) => <div key={productId}> {productId} <button class="ui inverted red button"type="button" onClick={this.onClickRemoveProductId.bind(this, index)}>REMOVE</button></div>
+            (productId, index) => <div key={productId}> {productId} <button class="ui inverted red button" type="button" onClick={this.onClickRemoveProductId.bind(this, index)}>REMOVE</button></div>
 
 
         )
@@ -140,7 +147,6 @@ class AddCartComponent extends React.Component {
 
 
     }
-
 
 }
 

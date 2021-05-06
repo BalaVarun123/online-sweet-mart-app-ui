@@ -27,7 +27,7 @@ class AddCart extends React.Component {
 
         return <div>
 
-            <Header title="WELCOME TO ADD CART" />
+            <Header title="ADD CART MODULE" />
 
             <AddCartComponent state={this.state} setState={p => { this.setState(p) }} />  <br /> <br />
 

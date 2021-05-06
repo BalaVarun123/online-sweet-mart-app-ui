@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { showAllCarts } from '../../actions/CartActions';
 import CartComponent from '../CartComponents/CartComponent';
+import Header from '../pages/Header';
+import Footer from '../pages/Footer';
 
 
 const CartList = () => {
@@ -19,11 +21,16 @@ const CartList = () => {
 
     }, []);
 
-    console.log("Carts : ", carts);
-
     return (
         <div>
+
+              <Header title="WELCOME TO CART LIST" />
+
             <CartComponent />
+
+            <Footer></Footer>
+
+
         </div>
     )
 }
