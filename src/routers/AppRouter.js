@@ -10,6 +10,8 @@ import CategoryRouter from './CategoryRouters/CategoryRouter';
 
 import DashBoard from "../components/pages/Dashboard";
 import CustomerRouter from './CustomerRouters/CustomerRouter';
+import SweetItemRouter from './SweetItemRouters/SweetItemRouter';
+
 import { connect } from 'react-redux';
 import  NotFound from '../components/pages/NotFound';
 import { setLoginState } from '../actions/LoginActions';
@@ -31,6 +33,7 @@ const AppRouter = (props) => {
                 {props.isLoggedIn && <Route path="/sweet-order" component={SweetOrderRouter}/>}
                 {props.isLoggedIn && <Route path="/category" component={CategoryRouter}/>}
                 {props.isLoggedIn && <Route path = "/customer" component = {CustomerRouter}/>}
+                {props.isLoggedIn && <Route path ="/sweet-item" component = {SweetItemRouter}/>}
                 <Route component = {NotFound}/>
             </Switch>
         </div>
