@@ -2,7 +2,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useParams, Link } from "react-router-dom";
 import { showCartById } from "../../actions/CartActions";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from '../pages/Header';
+import Footer from '../pages/Footer';
+
 
 const CartDetail = () => {
   const cart = useSelector((state) => state.cartReducer.cart);
@@ -26,6 +29,8 @@ const CartDetail = () => {
     return (
 
       <div >   <br /> 
+
+        <Header title="LIST OF PRODUCTS IN CART" />
 
         <div class="ui pink label" >
 
@@ -93,6 +98,7 @@ const CartDetail = () => {
 
           )}
         </div>
+              <Footer></Footer>
 
       </div>
     );

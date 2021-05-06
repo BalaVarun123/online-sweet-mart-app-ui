@@ -28,33 +28,33 @@ class UpdateCartComponent extends React.Component {
                     <div class="field" >
                         <i class="shopping cart icon"></i>
                         <label>  CARTID:  </label>
-                        <input type="number" step="1" min="0" ref={this.cartIdRef} />
+                        <input type="number" step="1" min="0" ref={this.cartIdRef} required  title="Enter Valid Cart ID" placeholder = "Please Enter Your cart Id"/>
                     </div>
 
 
                     <div class="field" >
-                        <label > ADD PRODUCT ID: </label>
-                        <input type="number" step="1" min="0" ref={this.productListRef} /> <br />
+                        <label > PRODUCT ID: </label>
+                        <input type="number" step="1" min="0" ref={this.productListRef} required  title="Enter Valid Product ID" placeholder = "Enter Product ID"/> <br />
                     </div>
 
 
                     <div class="field">
                         <i class="sistrix icon"> </i>
                         <label > PRODUCT COUNT: </label>
-                        <input type="number" step="1" min="0" ref={this.productCountRef} /> <br />
+                        <input type="number" step="1" min="0" ref={this.productCountRef}  placeholder = "Enter No Of Products " /> <br />
                     </div>
 
                     <div class="field" >
                         <i class="money bill alternate outline icon"></i>
                         <label > TOTAL: </label>
-                        <input type="number" step="0.01" min="0" ref={this.totalRef} /> <br />
+                        <input type="number" step="0.01" min="0" ref={this.totalRef} required placeholder = "Tax Exclusive"/> <br />
                     </div>
 
 
                     <div class="field" >
                         <i class="dollar sign icon"></i>
                         <label > GRAND TOTAL: </label>
-                        <input type="number" step="0.01" min="0" ref={this.grandTotalRef} />
+                        <input type="number" step="0.01" min="0" ref={this.grandTotalRef} required placeholder = " Amount With Tax Inclusive" />
                         {this.productIdTags} <br />
                     </div>                  
 
