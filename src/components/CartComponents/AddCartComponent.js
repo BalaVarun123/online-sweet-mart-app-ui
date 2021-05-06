@@ -32,8 +32,11 @@ class AddCartComponent extends React.Component {
               
                 <form onSubmit={this.onSubmit} onReset={this.onReset} class="ui form" className = "ui ten wide column form segment">
 
+
                     <br />
 
+            <div class = 'container' >
+          
                     
                         <div className = "field">
                             <i class="plus square icon"></i>
