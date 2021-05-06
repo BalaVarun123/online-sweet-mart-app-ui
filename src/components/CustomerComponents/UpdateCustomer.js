@@ -14,8 +14,8 @@ class UpdateCustomer extends React.Component{
     render(){
         if (this.props.redirectToShow)
             this.props.history.push(`/customer/show/${this.props.redirectionId}`)
-        return <div>
-            <h2>Customer Update</h2>
+        return <div className = "ui container">
+            <div className="ui huge header center aligned">Update Customer</div>
             <br/>
             <UpdateCustomerComponent message = {this.props.message} customer = {this.props.customer} 
             sweetOrderIds = {this.props.sweetOrderIds} 

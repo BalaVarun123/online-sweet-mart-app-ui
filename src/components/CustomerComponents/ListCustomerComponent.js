@@ -13,16 +13,16 @@ class ListCustomerComponent extends React.Component{
         return <div>
             <p>{this.props.message}</p> 
             <div>Selected view</div>
-            <div>
-            <table>
+            <div >
+            <table className = "ui celled table large selectable">
             <thead>
               <tr>
-                  <th>User Id</th>
-                  <th>Username</th>
-                  <th>Sweet Orders</th>
-                  <th>Sweet Items</th>
-                  <th>Cart</th>
-                  <th colSpan = {2}>Action</th> {/*UPDATE DELETE*/}
+                  <th className = "center aligned">User Id</th>
+                  <th className = "center aligned">Username</th>
+                  <th className = "center aligned">Sweet Orders</th>
+                  <th className = "center aligned">Sweet Items</th>
+                  <th className = "center aligned">Cart</th>
+                  <th  className = "center aligned" colSpan = {2}>Action</th> {/*UPDATE DELETE*/}
               </tr>  
             </thead>
             <tbody>{this.details}</tbody>
@@ -44,8 +44,8 @@ class ListCustomerComponent extends React.Component{
                         {/* <td>{customer.listSweetOrder.map((sweetOrder) => <button id = {`btn-so-${sweetOrder.sweetOrderId}`}>{sweetOrder.sweetOrderId}</button>)}</td>
                         <td>{customer.listSweetItem.map((sweetItem) => <button id = {`btn-so-${sweetItem.sweetItemId}`}>{sweetItem.sweetItemId}</button>)}</td> */}
                         {/* <td>{customer.cart.map((cart) => <button id = {`btn-so-${cart.cartId}`}>{cart.cartId}</button>)}</td> */}
-                        <td><button type="button" onClick = {this.onClickUpdate.bind(this,customer.userId)}>UPDATE</button></td>
-                        <td><button type="button" onClick = {this.onClickDelete.bind(this,customer.userId)}>DELETE</button></td>
+                        <td className = "center aligned"><button className = "ui button primary" type="button" onClick = {this.onClickUpdate.bind(this,customer.userId)}>UPDATE</button></td>
+                        <td className = "center aligned"><button className = "ui button negative" type="button" onClick = {this.onClickDelete.bind(this,customer.userId)}>DELETE</button></td>
                     </tr>
                 );
             }

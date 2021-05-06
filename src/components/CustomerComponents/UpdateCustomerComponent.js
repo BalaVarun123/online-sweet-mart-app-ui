@@ -25,33 +25,46 @@ export default class UpdateCustomerComponent extends React.Component{
             this.renderSweetOrderIds();
            // this.renderSweetItemIds();
             component = (<div>
-                <div>View Customer.SweetOrders</div>
-                <p>{this.props.message}</p>
-                <form onSubmit = {this.onSubmit} onReset = {this.onReset}>
+                <div className="three wide column"></div>
+              
+                <form onSubmit = {this.onSubmit} onReset = {this.onReset} className = "ui ten wide column form segment">
                 <div>
-                User Id : <input type = "number" min = "0" value = {this.props.customer.userId} ref = {this.userIdRef}/> <br/>
-                Username : <input type = "string" min = "3" defaultValue = {this.props.customer.username} ref = {this.usernameRef}/> <br/>
-                cart id : <input type = "number" min ="0" defaultValue = {this.props.customer.cart} ref = {this.addCartIdRef}/> <br/>
-                sweet Order Ids :  <br/>
+                <div className = "field">
+                <label>User Id : </label> <input type = "number" min = "0" value = {this.props.customer.userId} ref = {this.userIdRef}/> 
+                <br/>
+                </div>
+                <div className = "field"></div>
+                <label>Username : </label><input type = "string" min = "3" defaultValue = {this.props.customer.username} ref = {this.usernameRef}/> 
+                <br/>
+                </div>
+                <div className = "field">
+                <label>cart id : </label> <input type = "number" min ="0" defaultValue = {this.props.customer.cart} ref = {this.addCartIdRef}/> 
+                <br/>
+                </div>
+                <div className = "field">
+                <label>sweet Order Ids : </label> <br/>
                 {this.sweetOrderIds}
                 <br/>
-                 this.renderSweetItemIds();
-                sweet Item Ids : <br/>
+                </div>
+                <div className = "field">
+                <label>sweet Item Ids :</label> <br/>
                   {
                       this.sweetItemIds
                   }
-            
+                  </div>
+                  <div className = "field">           
                 <input type = "number" min = "0" step = {1} ref = {this.addSweetOrderIdRef} placeholder = "Sweet Order ID"/>
-                <button type = "button" onClick = {this.onClickAddSweetOrderId}>Add Sweet Order</button>
+                <button type = "button" onClick = {this.onClickAddSweetOrderId}className="ui left floated button secondary">Add Sweet Order</button>
                 <br/>
                 <input type = "number" min = "0" step = {1} ref = {this.addSweetItemIdRef} placeholder = "Sweet Item ID"/>
-                <button type = "button" onClick = {this.onClickAddSweetItemId}>Add Sweet Item</button>
+                <button type = "button" onClick = {this.onClickAddSweetItemId}className="ui left floated button secondary">Add Sweet Item</button>
                 <br/>
-                <button type="submit">Add Customer</button>
+                <button type="submit" className="ui left floated button primary">Add Customer</button>
                 <br/>
-                <button type="reset">Reset</button>
+                <button type="reset" className="ui right floated button negative">Reset</button>
                 <br/>
                 </div>
+                <p>{this.props.message}</p>
                 </form>   
             </div>);
               
@@ -66,7 +79,9 @@ export default class UpdateCustomerComponent extends React.Component{
        this.sweetOrderIds = [];
        for (let id of this.props.sweetOrderIds){
            this.sweetOrderIds.push(
-           <div key = {id}>{id} <button type = "button" onClick = {this.onClickRemoveSweetOrderId.bind(this,id)}>Remove</button></div>  
+            <div key = {id} className = "inline field">
+            <label>{id}</label> 
+           <button type = "button" onClick = {this.onClickRemoveSweetOrderId.bind(this,id)} className="ui tiny button negative">Remove</button></div>  
            );
        }
        console.log("Sweet Order Id tags:"+(this.sweetOrderIds));
@@ -76,7 +91,9 @@ export default class UpdateCustomerComponent extends React.Component{
         this.sweetItemsIds = [];
         for (let id of this.props.sweetItemsIds){
             this.sweetItemIds.push(
-            <div key = {id}>{id} <button type = "button" onClick = {this.onClickRemoveSweetItemId.bind(this,id)}>Remove</button></div>  
+                <div key = {id} className = "inline field">
+                <label>{id}</label>
+             <button type = "button" onClick = {this.onClickRemoveSweetItemId.bind(this,id)}className="ui tiny button negative">Remove</button></div>  
             );
         }
         console.log("Sweet item id tags:"+(this.sweetItemIds));        

@@ -9,7 +9,8 @@ class ListCustomer extends React.Component{
     render(){
         if (this.props.redirectToUpdate)
         this.props.history.push(`/customer/update/${this.props.redirectionId}`)
-        return <div>
+        return <div className = "ui container">
+            <div className="ui huge header center aligned">All customer</div>
             <ListCustomerComponent customerList = {this.props.customerList} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.props.onClickDelete}/>
         </div>
     }
