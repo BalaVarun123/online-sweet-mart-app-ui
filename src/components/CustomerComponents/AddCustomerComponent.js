@@ -20,28 +20,36 @@ export default class AddCustomerComponent extends React.Component{
             <div class="three wide column"></div>
             <form onSubmit = {this.onSubmit} onReset = {this.onReset} className = "ui ten wide column form segment">
                 <div>
+                <i class="user plus icon"></i>
                 User Id : (will be auto generated) <br/>
-                <div className = "field">
+                <br/><div className = "field">
+               <i class="id badge icon"> </i>
                 <label>Username : </label> <input type = "string" min = "3" ref = {this.usernameRef}/> <br/>
                 </div>
                 <div className = "field">
+                <i class="shopping cart icon"></i>
                 <label>cart id : </label> <input type = "number" min ="0"  ref = {this.addCartIdRef}/> <br/>
-                <label>sweet Order Ids : </label>  <br/>
-                {this.sweetOrderIds}
-                <br/>
                 </div>
+                <br/>
+                <label>sweet Order Ids : </label>  <br/>
                 <div className = "field">
-                sweet Item Ids : <br/>
-                  {
-                      this.sweetItemsIds
-                  }
-              </div>
+                <i class="dolly icon"></i>
+                {this.sweetOrderIds}
                 <input type = "number" min = "0" step = {1} ref = {this.addSweetOrderIdRef} placeholder = "Sweet Order ID"/>
                 <button type = "button"  className="ui left floated button secondary" onClick = {this.onClickAddSweetOrderId}>Add Sweet Order</button>
                 <br/>
-                <input type = "number" min = "0" step = {1} ref = {this.addSweetItemIdRef} placeholder = "Sweet Item ID"/>
-                <button type = "button" className="ui left floated button secondary" onClick = {this.onClickAddSweetItemId}>Add Sweet Item</button>
+                </div>
                 <br/>
+                <br/><div className = "field">
+                sweet Item Ids : <br/>
+                  {this.sweetItemsIds}
+                  <input type = "number" min = "0" step = {1} ref = {this.addSweetItemIdRef} placeholder = "Sweet Item ID"/>
+                <button type = "button"  className="ui left floated button secondary" onClick = {this.onClickAddSweetItemId}>Add Sweet Item</button>
+                <br/>
+                  
+              </div>
+                
+
                 <button type="submit" className="ui left floated button secondary">Add Customer</button>
                 <br/>
                 <button type="reset" className="ui right floated button negative">Reset</button>
