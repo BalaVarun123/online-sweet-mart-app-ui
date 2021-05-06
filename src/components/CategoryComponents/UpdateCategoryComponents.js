@@ -14,10 +14,10 @@ export default class UpdateOrderBillComponent extends React.Component{
                 <form onSubmit = {this.onSubmit} onReset = {this.onReset}>
                 <div>
                 <div className = "field">
-                <label> Category Id : </label><input type = "number" min = "0" value = {this.props.category.categoryId} ref = {this.categoryIdRef}/> <br/>
+                <label>Category Id :</label><input type = "number" min = "0" value = {this.props.category.categoryId} ref = {this.categoryIdRef}/> <br/>
                 </div>
                 <div className = "field">
-                <label> Category Name: </label> <input type="text" ref={this.nameRef}/> <br/>
+                <label>Category Name:</label> <input type="text" ref={this.nameRef}/> <br/>
                 </div>
                 
                 <button type="submit" className="ui left floated button primary">Update</button>
