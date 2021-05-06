@@ -4,6 +4,7 @@ import React from 'react';
 
 
 
+
 class AddCartComponent extends React.Component {
 
     productCountRef = React.createRef();
@@ -22,51 +23,57 @@ class AddCartComponent extends React.Component {
 
         return (
 
+            <div class="ui column stackable center page grid">
+                
+                <br /> 
+                
+                <div class="three wide column"></div>
+              
+                <form onSubmit={this.onSubmit} onReset={this.onReset} class="ui form" className = "ui ten wide column form segment">
+
+
+                    <br />
 
             <div class = 'container' >
-
-            
-
-                <p> {this.props.state.message} </p>
-                <form onSubmit={this.onSubmit} onReset={this.onReset} class="ui form" class="ui twelve wide column form segment">
-
-                    <div class="list-group-item list-group-item-warning">
-                        <div class="field" >
+          
+                    
+                        <div className = "field">
                             <i class="plus square icon"></i>
                             <label> ADD PRODUCT ID: </label>
                             <input type="number" step="1" min="0" ref={this.productListRef} /> <br />
                         </div>
 
 
-                        <div class="field">
+                        <div className = "field">
                             <i class="sistrix icon"> </i>
                             <label> PRODUCT COUNT: </label>
                             <input type="number" step="1" min="0" ref={this.productCountRef} /> <br />
                         </div>
 
-                        <div class="field" >
+                        <div className = "field">
                             <i class="money bill alternate outline icon"></i>
                             <label> TOTAL: </label>
                             <input type="number" step="0.01" min="0" ref={this.totalRef} /> <br />
                         </div>
 
 
-                        <div class="field" >
+                        <div className = "field">
                             <i class="rupee sign icon"></i>
                             <label> GRAND TOTAL: </label>
                             <input type="number" step="0.01" min="0" ref={this.grandTotalRef} />
                             {this.productIdTags} <br />
                         </div>
 
-                    </div>
+                    <p> {this.props.state.message} </p>
 
-                    <br />  <br />
+                    <button class="ui positive button" type="button" onClick={this.onClickAddProduct} > ADD PRODUCT </button>
+                    <button class="ui primary button" type="submit" > SUBMIT </button>
+                    <button class="negative ui button" type="reset" > RESET </button>
 
-                    <button class="ui inverted green button" type="button" onClick={this.onClickAddProduct} > ADD </button>
-                    <button class="ui inverted primary button" type="submit" > SUBMIT </button>
-                    <button class="ui inverted red button" type="reset" > RESET </button>
+                 
 
                 </form>
+               
             </div>
         )
     }
@@ -81,7 +88,7 @@ class AddCartComponent extends React.Component {
         cart.total = this.totalRef.current.value;
         cart.grandTotal = this.grandTotalRef.current.value;
         cart.listProduct = this.productIdElements;
-        
+
         this.cartServices.addCart(cart, this.responseCallback, this.errorCallback);
 
     }
@@ -113,7 +120,7 @@ class AddCartComponent extends React.Component {
 
         this.productIdTags = this.props.state.listProduct.map(
 
-            (productId, index) => <div key={productId}> {productId} <button class="negative ui button" type="button" onClick={this.onClickRemoveProductId.bind(this, index)}>REMOVE</button></div>
+            (productId, index) => <div key={productId}> {productId} <button class="ui inverted red button"type="button" onClick={this.onClickRemoveProductId.bind(this, index)}>REMOVE</button></div>
 
 
         )
