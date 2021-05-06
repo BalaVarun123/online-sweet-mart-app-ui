@@ -5,6 +5,7 @@ import ProductReducer from './ProductReducers/productReducer';
 import { combineReducers } from 'redux';
 import LoginReducer from './LoginReducers/LoginReducer';
 import sweetOrderReducer from "./SweetOrderReducers/SweetOrderReducer";
+import CategoryReducer from "./CategoryReducers/CategoryReducer";
 
 import CustomerReducer from './CustomerReducers/CustomerReducer';
 export default function rootReducer(){
@@ -15,6 +16,7 @@ export default function rootReducer(){
         orderBill : orderBillReducer,
         product : ProductReducer,
         sweetOrder : sweetOrderReducer,
-        customer : CustomerReducer
+        customer : CustomerReducer,
+        category : CategoryReducer
     });
 }

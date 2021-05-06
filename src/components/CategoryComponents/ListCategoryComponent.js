@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-class ListCategoryComponents extends React.Component{
+class ListCategoryComponent extends React.Component{
 
 
 
@@ -72,4 +72,4 @@ class ListCategoryComponents extends React.Component{
     
 }
 
-export default ListCategoryComponents;
+export default ListCategoryComponent;

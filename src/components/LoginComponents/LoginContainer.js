@@ -8,6 +8,7 @@ import LoginForm from "./LoginForm";
 var loginService = new LoginService();
 
 class LoginContainer extends React.Component{
+    
     render(){
         return <React.Fragment>
             <LoginForm message = {this.props.message} onSubmit = {this.props.onSubmit}/>
@@ -19,7 +20,8 @@ class LoginContainer extends React.Component{
 const mapStateToProps = (state,props) => {
     console.log("message is "+state.login.message);
     return {
-      message : state.login.message
+      message : state.login.message,
+      isLoggedIn : state.login.isLoggedIn
     }
   }
   
