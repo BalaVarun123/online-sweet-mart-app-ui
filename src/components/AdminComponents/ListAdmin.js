@@ -1,25 +1,27 @@
 import React from "react";
 import { connect } from "react-redux";
-import { _adminRedirectToUpdate, _showAllAdmins } from "../../actions/AdminActions";
+import { _adminRedirectToUpdate, _displayMessage, _showAllAdmins } from "../../actions/AdminActions";
+//import { _displayMessage } from "../../actions/OrderBillActions";
 import AdminService from "../../services/AdminServices/AdminService";
 import ListAdminComponent from "./ListAdminComponent";
 
 
-
+const adminService = new AdminService();
 class ListAdmin extends React.Component{
-    adminService = new AdminService();
+    
     render(){
         if (this.props.redirectToUpdate)
         this.props.history.push(`/admin/update/${this.props.redirectionId}`)
-        return <div>
-            <ListAdminComponent adminList = {this.props.adminList} message = {this.message} onClickUpdate = {this.props.onClickUpdate}/>
+        return <div className = "ui container">
+             <div className="ui huge header center aligned">All admin records</div>
+            <ListAdminComponent adminList = {this.props.adminList} message = {this.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.props.onClickDelete}/>
         </div>
     }
 
 
     componentDidMount(){
         if (!this.props.adminList){
-            this.adminService.getAllAdmins(this.props.responseCallBack,this.props.catchCallBack);
+            adminService.getAllAdmins(this.props.responseCallBack,this.props.catchCallBack);
         }
     }
 }
@@ -34,17 +36,27 @@ const mapStateToProps = (state, props) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
+    const getAllResponseCallBack = (response) => {
+        dispatch(_showAllAdmins(response.data),"")
+    };
+    const getAllCatchCallBack = (error) => {
+        console.log("Could not retrieve data.");
+        dispatch(_showAllAdmins([], "Could not retrieve data."));
+    };
+    const deleteResponseCallBack =  (response) => {
+        dispatch(_displayMessage("Record deleted."));
+        adminService.getAllAdmins(getAllResponseCallBack,getAllCatchCallBack);
+        };
+    const deleteCatchCallBack = (error) => dispatch(_displayMessage(error.response.data));
     return {
         onClickUpdate : (id) => {
             dispatch(_adminRedirectToUpdate(true,id));
         },
-        responseCallBack : (response) => {
-            dispatch(_showAllAdmins(response.data),"")
+        responseCallBack : getAllResponseCallBack,
+        catchCallBack : getAllCatchCallBack,
+        onClickDelete : (id) => {
+            adminService.deleteAdmin(id,deleteResponseCallBack,deleteCatchCallBack );
         },
-        catchCallBack : (error) => {
-            console.log("Could not retrieve data.");
-            dispatch(_showAllAdmins([], "Could not retrieve data."));
-        }
     }
 }
 

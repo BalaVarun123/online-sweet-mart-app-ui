@@ -13,9 +13,8 @@ class UpdateOrderBill extends React.Component{
         if (this.props.redirectToUpdate){
             this.props.resetRedirection();
         }
-        return <div>
-            <h2>UpdateAdmin</h2>
-            <br/>
+        return <div className = "ui container">
+            <div className="ui huge header center aligned">Update Order Bill</div>
             <UpdateOrderBillComponent message = {this.props.message} orderBill = {this.props.orderBill} sweetOrderIds = {this.props.sweetOrderIds} onSubmit = {this.props.onSubmit}  onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId}  onClickAddSweetOrderId = {this.props. onClickAddSweetOrderId} onReset = {this.props.onReset}/>
         </div>
     }

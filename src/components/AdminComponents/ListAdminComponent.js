@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 class ListAdminComponent extends React.Component{
 
 
@@ -12,19 +13,18 @@ class ListAdminComponent extends React.Component{
         this.loadDetails(this.props.adminList);
         return <div>
             <p>{this.props.message}</p> 
-            <div>Selected view</div>
             <div>
-            <table>
+            <table className = "ui celled table large selectable">
             <thead>
               <tr>
-                  <th>ID</th>
-                  <th>Customer ID</th>
-                  <th>User ID</th>
-                  <th>Item ID</th>
-                  <th>Category ID</th>
-                  <th>Cart ID</th>
-                  <th>Product ID</th>
-                  <th colSpan = {2}>Action</th> {/*UPDATE DELETE*/}
+                  <th className = "center aligned">ID</th>
+                  <th className = "center aligned">Customer ID</th>
+                  <th className = "center aligned">User ID</th>
+                  <th className = "center aligned">Item ID</th>
+                  <th className = "center aligned">Category ID</th>
+                  <th className = "center aligned">Cart ID</th>
+                  <th className = "center aligned">Product ID</th>
+                  <th colSpan = {2} className = "center aligned">Action</th> {/*UPDATE DELETE*/}
               </tr>  
             </thead>
             <tbody>{this.details}</tbody>
@@ -40,15 +40,15 @@ class ListAdminComponent extends React.Component{
             for (let admin of adminList){
                 rows.push(
                     <tr key = {admin.id}>
-                        <td>{admin.id}</td>
-                        <td>{admin.customer.userId}</td>
-                        <td>{admin.user.userId}</td>
-                        <td>{admin.item.orderItemId}</td>
-                        <td>{admin.category.categoryId}</td>
-                        <td>{admin.cart.cartId}</td>
-                        <td>{admin.product.productId}</td>
-                        <td><button type="button" onClick = {this.onClickUpdate.bind(this,admin.id)}>UPDATE</button></td>
-                        <td><button type="button" onClick = {this.onClickDelete.bind(this,admin.id)}>DELETE</button></td>
+                        <td><Link to={"/admin/show/"+ admin.id}>{admin.id}</Link></td>
+                        <td><Link>{admin.customer.userId}</Link></td>
+                        <td><Link>{admin.user.userId}</Link></td>
+                        <td><Link>{admin.item.orderItemId}</Link></td>
+                        <td><Link>{admin.category.categoryId}</Link></td>
+                        <td><Link>{admin.cart.cartId}</Link></td>
+                        <td><Link>{admin.product.productId}</Link></td>
+                        <td className = "center aligned"><button type="button" className = "ui button primary" onClick = {this.onClickUpdate.bind(this,admin.id)}>UPDATE</button></td>
+                        <td className = "center aligned"><button type="button" className = "ui button negative" onClick = {this.onClickDelete.bind(this,admin.id)}>DELETE</button></td>
                     </tr>
                 );
             }
@@ -66,8 +66,9 @@ class ListAdminComponent extends React.Component{
     }
 
     onClickDelete = (id,event) => {
-
+        this.props.onClickDelete(id);
     }
+
 
 }
 

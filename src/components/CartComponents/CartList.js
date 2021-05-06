@@ -5,14 +5,18 @@ import CartComponent from '../CartComponents/CartComponent';
 
 
 const CartList = () => {
+
     alert("Cart List");
+    
     const carts = useSelector((state) => state);
     const dispatch = useDispatch();
 
     const fetchCarts = () => showAllCarts();
 
     useEffect(() => {
+
         dispatch(fetchCarts());
+
     }, []);
 
     console.log("Carts : ", carts);

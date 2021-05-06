@@ -23,8 +23,8 @@ class ShowAdmin extends React.Component{
             this.props.history.push(`/admin/update/${this.props.id}`)
         }
         
-        return <div>
-            <h2>ShowAdmin</h2>
+        return <div className = "ui container">
+            <div className="ui huge header center aligned">Admin information</div>
             <p>{this.props.message}</p>
             <br/>
             <ShowAdminComponent admin = {this.props.admin} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.onClickDelete}/>
@@ -32,9 +32,7 @@ class ShowAdmin extends React.Component{
     }
 
     componentDidMount(){
-        if (!this.props.admin){
-            this.adminService.getAdmin(this.props.id,this.props.responseCallBack,this.props.catchCallBack);
-        }
+        this.adminService.getAdmin(this.props.id,this.props.responseCallBack,this.props.catchCallBack);
     }
 
     onClickDelete = () => {
