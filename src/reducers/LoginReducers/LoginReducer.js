@@ -1,9 +1,9 @@
-import { USER_LOGIN, USER_LOGIN_FAILED, USER_LOGIN_SUCCESSFUL, USER_LOGOUT, USER_LOGOUT_FAILED, USER_LOGOUT_SUCCESSFUL } from "../../actionTypes/LoginActionTypes";
+import { LOGIN_SET_LOGIN_STATE,USER_LOGIN, USER_LOGIN_FAILED, USER_LOGIN_SUCCESSFUL, USER_LOGOUT, USER_LOGOUT_FAILED, USER_LOGOUT_SUCCESSFUL } from "../../actionTypes/LoginActionTypes";
 
 const defaultState = {
     processing : false,
-    isLoggedIn : false,
-    userId : -1,
+    isLoggedIn : (localStorage.getItem("isLoggedIn") == "true"),
+    userId : (localStorage.getItem("userId")) ? (localStorage.getItem("userId")) : -1,
     userType : null,
     tempUserDetails : null,
     message : ""
@@ -28,6 +28,8 @@ const LoginReducer = (state = defaultState , action) => {
             newState.userId = state.tempUserDetails.userId;
             newState.tempUserDetails = null;
             newState.message = action.payload;
+            newState.isLoggedIn = true;
+            newState.message = "";
             break;
         case USER_LOGIN_FAILED:
             newState.processing = false;
@@ -38,10 +40,14 @@ const LoginReducer = (state = defaultState , action) => {
             newState.processing = false;
             newState.userId = -1;
             newState.tempUserDetails = null;
+            newState.isLoggedIn = false;
             break;
         case  USER_LOGOUT_FAILED:
             newState.processing = false;
             newState.tempUserDetails = null;
+            break;
+        case  LOGIN_SET_LOGIN_STATE:
+            newState.isLoggedIn = action.payload;
             break;
         default :
             newState = state;
