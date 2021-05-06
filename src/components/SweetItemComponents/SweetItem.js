@@ -5,10 +5,11 @@ import ListSweetItem from "./ListSweetItem";
 class SweetItem extends React.Component{
     render(){
         return <div>
-            <Redirect to =  "/sweet-item/show-all"/>
+            <Redirect to =  "/sweet-Item/show-all"/>
         </div>
     }
 }
+
 
 
 export default SweetItem;

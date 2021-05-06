@@ -20,8 +20,8 @@ export default class ShowSweetItemComponent extends React.Component{
             <div class="item"></div>
             <label>SweetOrder Id : </label> : <a>{this.props.sweetItem.sweetOrder.sweetOrderId}</a>
             </div>
-            <button type="button" className="ui left floated button primary" onClick = {this.props.onClickUpdate}>Update</button>
-            <button type="button" className="ui right floated button negative" onClick = {this.onClickDelete}>Delete</button>
+            <button type="button"  onClick = {this.props.onClickUpdate} className="ui left floated button primary">Update</button>
+            <button type="button"  onClick = {this.onClickDelete} className="ui right floated button negative">Delete</button>
             </div>
             
         </div>);
@@ -31,7 +31,8 @@ export default class ShowSweetItemComponent extends React.Component{
     
     
 
-    onClickDelete = (event) => {
+    onClickDelete = (_event) => {
         this.props.onClickDelete(this.props.sweetItem.orderItemId);
     }
+    
 }

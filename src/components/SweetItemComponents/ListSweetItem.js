@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { _displayMessage, _redirectToUpdate, _showAllSweetItem } from "../../actions/SweetItemActions";
+import { _displayMessage, _redirectToShow, _redirectToUpdate, _showAllSweetItem } from "../../actions/SweetItemActions";
 import SweetItemService from "../../services/SweetItemServices/SweetItemService";
 import ListSweetItemComponent from "./ListSweetItemComponent";
 const  sweetItemService = new SweetItemService();
@@ -11,7 +11,7 @@ class ListSweetItem extends React.Component{
         this.props.history.push(`/sweet-item/update/${this.props.redirectionId}`)
         return <div className = "ui container">
             <div className="ui huge header center aligned">All SweetItems</div>
-            <ListSweetItemComponent sweetItemList = {this.props.sweetItemList} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.props.onClickDelete}/>
+            <ListSweetItemComponent sweetItemList = {this.props.sweetItemList} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.props.onClickDelete} onClickView = {this.props.onClickView}/>
         </div>
     }
 
@@ -43,9 +43,13 @@ const mapDispatchToProps = (dispatch) =>{
         onClickDelete : (id) => {
             sweetItemService.deleteSweetItem(id,deleteResponseCallBack,deleteCatchCallBack );
         },
+        onClickView : (id) => {
+            dispatch(_redirectToShow(true,id));
+        },
         onClickUpdate : (id) => {
             dispatch(_redirectToUpdate(true,id));
         }
+        
     }
 }
 

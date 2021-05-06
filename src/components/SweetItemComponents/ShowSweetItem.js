@@ -50,6 +50,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
 
         onClickUpdate : () => {dispatch(_redirectToUpdate(true))},
+        onClickView : () => {dispatch(_redirectToShow(true))},
         onClickViewProduct : () => {},
         onClickViewSweetOrder : () => {},
         responseCallBack : (response) => {
