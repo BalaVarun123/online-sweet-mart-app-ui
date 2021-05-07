@@ -29,8 +29,8 @@ class DashBoard extends React.Component {
               </div>
               </div>
               <div className="extra content">
-              <a><i className="plus icon"></i> Add </a>
-              <a> <i className="list alternate outline icon"></i>  Show All </a>
+              <a href = "/customer/add"><i className="plus icon"></i> Add </a>
+              <a href = "/customer/show-all"> <i className="list alternate outline icon"></i>  Show All </a>
               </div>
               </div>
             </div>
