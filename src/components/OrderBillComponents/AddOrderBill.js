@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { _addSweetOrderId, _displayMessage, _redirectToShow, _removeSweetOrderId, _resetSweetOrderId } from "../../actions/OrderBillActions";
 import OrderBillService from "../../services/OrderBillServices/OrderBillService";
+import Footer from "../pages/Footer";
+import Header from "../pages/Header";
 import AddOrderBillComponent from "./AddOrderBillComponent";
 const orderBillService = new OrderBillService();
 class AddOrderBill extends React.Component{
@@ -9,8 +11,9 @@ class AddOrderBill extends React.Component{
         if (this.props.redirectToShow)
             this.props.history.push(`/order-bill/show/${this.props.redirectionId}`)
         return <div className = "ui container">
-             <div className="ui huge header center aligned">Add Order Bill</div>
+             <Header title={"ADD NEW ORDER BILL RECORD"}/>
             <AddOrderBillComponent message = {this.props.message} orderBill = {this.props.orderBill} sweetOrderIds = {this.props.sweetOrderIds} onSubmit = {this.props.onSubmit} onReset = {this.props.onReset} onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId} onClickAddSweetOrderId = {this.props.onClickAddSweetOrderId}/>
+            <Footer/>
         </div>
     }
 }
@@ -26,7 +29,6 @@ const mapStateToProps = (state,props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onSubmit : (orderBill) => {
-            console.log("onSubmit activated");
             const responseCallBack = (response) => {
                 dispatch(_displayMessage("Added successfully."));
                 dispatch(_redirectToShow(true,response.data.orderBillId));

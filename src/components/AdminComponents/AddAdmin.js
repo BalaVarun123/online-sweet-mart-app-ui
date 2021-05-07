@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router";
 import { _addAdmin } from "../../actions/AdminActions";
 import AdminService from "../../services/AdminServices/AdminService";
+import Footer from "../pages/Footer";
+import Header from "../pages/Header";
 import AddAdminComponent from "./AddAdminComponent";
 
 const adminService = new AdminService()
@@ -13,8 +15,9 @@ class AddAdmin extends React.Component{
             this.props.history.push(`/admin/show/${this.props.id}`)
         }
         return <div className = "ui container">
-           <div className="ui huge header center aligned">Add admin</div>
+           <Header title={"ADD NEW ADMIN RECORD"}/>
             <AddAdminComponent onSubmit = {this.props.onSubmit} message = {this.props.message}/>
+            <Footer/>
         </div>
     }
 }

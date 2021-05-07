@@ -41,12 +41,12 @@ class ListAdminComponent extends React.Component{
                 rows.push(
                     <tr key = {admin.id}>
                         <td><Link to={"/admin/show/"+ admin.id}>{admin.id}</Link></td>
-                        <td><Link>{admin.customer.userId}</Link></td>
-                        <td><Link>{admin.user.userId}</Link></td>
-                        <td><Link>{admin.item.orderItemId}</Link></td>
-                        <td><Link>{admin.category.categoryId}</Link></td>
-                        <td><Link>{admin.cart.cartId}</Link></td>
-                        <td><Link>{admin.product.productId}</Link></td>
+                        <td><a>{admin.customer.userId}</a></td>
+                        <td><a>{admin.user.userId}</a></td>
+                        <td><a>{admin.item.orderItemId}</a></td>
+                        <td><a>{admin.category.categoryId}</a></td>
+                        <td><a>{admin.cart.cartId}</a></td>
+                        <td><a>{admin.product.productId}</a></td>
                         <td className = "center aligned"><button type="button" className = "ui button primary" onClick = {this.onClickUpdate.bind(this,admin.id)}>UPDATE</button></td>
                         <td className = "center aligned"><button type="button" className = "ui button negative" onClick = {this.onClickDelete.bind(this,admin.id)}>DELETE</button></td>
                     </tr>

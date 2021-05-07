@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import ShowOrderBillComponent from "./ShowOrderBillComponent";
 import {_displayMessage, _redirectToShow, _redirectToUpdate, _showOrderBill} from "../../actions/OrderBillActions";
 import OrderBillService from "../../services/OrderBillServices/OrderBillService";
+import Header from "../pages/Header";
+import Footer from "../pages/Footer";
 
 const orderBillService = new OrderBillService();;
 class ShowOrderBill extends React.Component{
@@ -18,8 +20,9 @@ class ShowOrderBill extends React.Component{
             this.props.resetRedirection();
         }
         return <div className = "ui container">
-             <div className="ui huge header center aligned">Order Bill Details</div>
+             <Header title={"ORDER BILL RECORD FOR id = "+this.props.id}/>
             <ShowOrderBillComponent orderBill = {this.props.orderBill} onClickDelete = {this.onClickDelete} onClickUpdate = {this.props.onClickUpdate} onClickViewSweetOrder = {this.props.onClickViewSweetOrder} message = {this.props.message}/>
+            <Footer/>
         </div>
     }
 

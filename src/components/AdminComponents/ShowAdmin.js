@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { _adminRedirectToUpdate, _showAdmin } from "../../actions/AdminActions";
 import { ADMIN_REDIRECT_TO_UPDATE } from "../../actionTypes/AdminActionTypes";
 import AdminService from "../../services/AdminServices/AdminService";
+import Footer from "../pages/Footer";
+import Header from "../pages/Header";
 import ShowAdminComponent from "./ShowAdminComponent";
 
 class ShowAdmin extends React.Component{
@@ -16,18 +18,17 @@ class ShowAdmin extends React.Component{
     }
 
     render(){
-        if (this.props){
 
-        }
         if (this.props.redirectToUpdate ){
             this.props.history.push(`/admin/update/${this.props.id}`)
         }
         
         return <div className = "ui container">
-            <div className="ui huge header center aligned">Admin information</div>
-            <p>{this.props.message}</p>
+            <Header title={"ADMIN RECORD FOR id = "+ this.props.id}/>
+            
             <br/>
             <ShowAdminComponent admin = {this.props.admin} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.onClickDelete}/>
+            <Footer/>
         </div>
     }
 
