@@ -24,7 +24,7 @@ class NavBar extends React.Component{
                 Product Management
                 <i className="dropdown icon"></i>
                 <div className="menu">
-                    <a className="item" href="http://localhost:3000/product/show-all">Product</a>
+                    <a className="item" href="/product/show-all">Product</a>
                     <a className="item" href="/category/get-all">Category</a>
                     </div>
                  </div>
