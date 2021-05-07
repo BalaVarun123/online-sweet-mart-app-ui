@@ -23,7 +23,7 @@ class DashBoard extends React.Component {
             <div className = "column">
               <div className="ui card">
               <div className="content">
-              <a className="header">Customer</a>
+              <a className="header"  href = "/customer/show-all">Customer</a>
               <div className="description">
               For managing customer information
               </div>
