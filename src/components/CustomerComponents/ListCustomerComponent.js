@@ -19,8 +19,6 @@ class ListCustomerComponent extends React.Component{
               <tr>
                   <th className = "center aligned">User Id</th>
                   <th className = "center aligned">Username</th>
-                  <th className = "center aligned">Sweet Orders</th>
-                  <th className = "center aligned">Sweet Items</th>
                   
                   <th  className = "center aligned" colSpan = {2}>Action</th> {/*UPDATE DELETE*/}
               </tr>  
