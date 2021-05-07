@@ -4,12 +4,12 @@ import { LoginService } from "../../services/LoginServices/LoginService";
 
 class NavBar extends React.Component{
     render(){
-        return (<div>
-            <div class="ui menu">
-            <a class="header item" href = "/">
+        return (<div>  <br />
+            <div className="ui menu">
+            <a className="header item" href = "/">
             Online Sweet Mart App
              </a>
-              <a class="active item" href = "/admin">
+              <a className="item" href = "/admin">
                   Administration
                 </a>
                 <div className="ui simple dropdown item">
@@ -17,7 +17,7 @@ class NavBar extends React.Component{
                  <i className="dropdown icon"></i>
                  <div className="menu">
                     <a className="item" href = "/customer">Customer</a>
-                    <a className="item" >Cart</a>
+                    <a className="item" href = "/cart/show-all-carts" >Cart</a>
                     </div>
                  </div>
                 <div className="ui simple dropdown item">
@@ -25,7 +25,7 @@ class NavBar extends React.Component{
                 <i className="dropdown icon"></i>
                 <div className="menu">
                     <a className="item" href="http://localhost:3000/product/show-all">Product</a>
-                    <a className="item">Category</a>
+                    <a className="item" href="/category/get-all">Category</a>
                     </div>
                  </div>
                 
@@ -33,12 +33,13 @@ class NavBar extends React.Component{
                 Order Management
                 <i className="dropdown icon"></i>
                 <div className="menu">
-                    <a className="item">Sweet Item</a>
+                    <a className="item" href = "/sweet-item/show-all">Sweet Item</a>
                     <a className="item" href = "/order-bill/">Order Bill</a>
                 </div>
                 </div>
-                <div class="right menu">
-                <div class="item" onClick = {this.props.onClickLogOut.bind(this,this.props.userId)}>
+                
+                <div className="right menu">
+                <div className="item" onClick = {this.props.onClickLogOut.bind(this,this.props.userId)}>
                     Logout
                     </div>
                     </div>
