@@ -79,14 +79,14 @@ class DashBoard extends React.Component {
               <div className = "column">
               <div className="ui card">
               <div className="content">
-              <a className="header">Sweet Item</a>
+              <a className="header" href = "/sweet-item/show-all">Sweet Item</a>
               <div className="description">
               For managing individual sweet items.
               </div>
               </div>
               <div className="extra content">
-              <a><i className="plus icon"></i> Add </a>
-              <a> <i className="list alternate outline icon"></i>  Show All </a>
+              <a href = "/sweet-item/add"><i className="plus icon"></i> Add </a>
+              <a href = "/sweet-item/show-all"> <i className="list alternate outline icon"></i>  Show All </a>
               </div>
               </div>
               </div>
