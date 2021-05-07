@@ -3,6 +3,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { _adminRedirectToUpdate, _showAdmin, _updateAdmin } from "../../actions/AdminActions";
 import AdminService from "../../services/AdminServices/AdminService";
+import Footer from "../pages/Footer";
+import Header from "../pages/Header";
 import UpdateAdminComponent from "./UpdateAdminComponent";
 
 let adminService = new AdminService();
@@ -12,9 +14,10 @@ class UpdateAdmin extends React.Component{
             this.props.resetRedirection();
         }
         return <div className = "ui container">
-            <div className="ui huge header center aligned">Update admin</div>
+            <Header title={"UPDATE ADMIN RECORD FOR id = "+ this.props.id}/>
             <br/>
             <UpdateAdminComponent admin = {this.props.admin} message = {this.props.message} onSubmit = {this.props.onSubmit}/>
+            <Footer/>
         </div>
     }
 

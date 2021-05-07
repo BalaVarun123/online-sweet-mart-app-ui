@@ -3,6 +3,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { _addSweetOrderId, _displayMessage, _redirectToUpdate, _removeSweetOrderId, _resetSweetOrderId, _showOrderBill } from "../../actions/OrderBillActions";
 import OrderBillService from "../../services/OrderBillServices/OrderBillService";
+import Footer from "../pages/Footer";
+import Header from "../pages/Header";
 import UpdateOrderBillComponent from "./UpdateOrderBillComponent";
 
 
@@ -14,8 +16,9 @@ class UpdateOrderBill extends React.Component{
             this.props.resetRedirection();
         }
         return <div className = "ui container">
-            <div className="ui huge header center aligned">Update Order Bill</div>
+           <Header title={"UPDATE ORDER BILL RECORD FOR id = "+this.props.id}/>
             <UpdateOrderBillComponent message = {this.props.message} orderBill = {this.props.orderBill} sweetOrderIds = {this.props.sweetOrderIds} onSubmit = {this.props.onSubmit}  onClickRemoveSweetOrderId = {this.props.onClickRemoveSweetOrderId}  onClickAddSweetOrderId = {this.props. onClickAddSweetOrderId} onReset = {this.props.onReset}/>
+            <Footer/>
         </div>
     }
 
@@ -40,7 +43,6 @@ const mapStateToProps = (state,props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         responseCallBack : (response) => {
-            console.log("The response is "+JSON.stringify(response.data[0]));
             if (response.data.length > 0)
             dispatch(_showOrderBill(response.data[0], ""));
             else 
@@ -49,10 +51,8 @@ const mapDispatchToProps = (dispatch) => {
         },
         catchCallBack : (error) => {dispatch(_showOrderBill(null,error.response.data))},
         onSubmit : (orderBill) => {
-            console.log("onSubmit activated");
             const responseCallBack = (response) => dispatch(_displayMessage("Updated successfully."));
             const catchCallBack = (error) => {
-                console.log("the error is :"+JSON.stringify(error));
                 dispatch(_displayMessage(error.response.data));
             }
             orderBillService.updateOrderBill(orderBill,responseCallBack,catchCallBack );

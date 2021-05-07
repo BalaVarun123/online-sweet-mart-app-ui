@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { _adminRedirectToUpdate, _displayMessage, _showAllAdmins } from "../../actions/AdminActions";
 //import { _displayMessage } from "../../actions/OrderBillActions";
 import AdminService from "../../services/AdminServices/AdminService";
+import Footer from "../pages/Footer";
+import Header from "../pages/Header";
 import ListAdminComponent from "./ListAdminComponent";
 
 
@@ -13,8 +15,9 @@ class ListAdmin extends React.Component{
         if (this.props.redirectToUpdate)
         this.props.history.push(`/admin/update/${this.props.redirectionId}`)
         return <div className = "ui container">
-             <div className="ui huge header center aligned">All admin records</div>
+             <Header title="ALL ADMIN RECORDS" />
             <ListAdminComponent adminList = {this.props.adminList} message = {this.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.props.onClickDelete}/>
+            <Footer/>
         </div>
     }
 

@@ -69,7 +69,7 @@ export default class UpdateOrderBillComponent extends React.Component{
             </div>  
            );
        }
-       console.log("Sweet Order Id tags:"+(this.sweetOrderIds));
+
     }
 
     onSubmit = (event) => {

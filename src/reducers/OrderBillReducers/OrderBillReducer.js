@@ -17,7 +17,7 @@ export default (state = defaultState,action) => {
         case ORDER_BILL_SHOW :
             newState.orderBill = action.orderBill;
             newState.message = action.message;
-            newState.sweetOrderIds = new Set(action.orderBill.listSweetOrder.map((sweetOrder) => sweetOrder.sweetOrderId));
+            newState.sweetOrderIds = (action.orderBill)?new Set(action.orderBill.listSweetOrder.map((sweetOrder) => sweetOrder.sweetOrderId)):null;
             break;
         case ORDER_BILL_DISPLAY_MESSAGE:
             newState.message = action.message;

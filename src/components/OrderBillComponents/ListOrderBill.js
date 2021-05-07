@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { _displayMessage, _redirectToUpdate, _showAllOrderBill } from "../../actions/OrderBillActions";
 import OrderBillService from "../../services/OrderBillServices/OrderBillService";
+import Footer from "../pages/Footer";
+import Header from "../pages/Header";
 import ListOrderBillComponent from "./ListOrderBillComponent";
 const  orderBillService = new OrderBillService();
 class ListOrderBill extends React.Component{
@@ -10,8 +12,9 @@ class ListOrderBill extends React.Component{
         if (this.props.redirectToUpdate)
         this.props.history.push(`/order-bill/update/${this.props.redirectionId}`)
         return <div className = "ui container">
-            <div className="ui huge header center aligned">All order bills</div>
+            <Header title={"ALL ORDER BILL RECORDS"}/>
             <ListOrderBillComponent orderBillList = {this.props.orderBillList} message = {this.props.message} onClickUpdate = {this.props.onClickUpdate} onClickDelete = {this.props.onClickDelete}/>
+            <Footer/>
         </div>
     }
 
