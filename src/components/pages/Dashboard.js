@@ -65,7 +65,7 @@ class DashBoard extends React.Component {
             <div className = "column">
               <div className="ui card">
               <div className="content">
-              <a className="header">Category</a>
+              <a className="header" href="/category/get-all">Category</a>
               <div className="description">
               For manging product categories.
               </div>
