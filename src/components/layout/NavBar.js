@@ -5,11 +5,11 @@ import { LoginService } from "../../services/LoginServices/LoginService";
 class NavBar extends React.Component{
     render(){
         return (<div>  <br />
-            <div class="ui menu">
-            <a class="header item" href = "/">
+            <div className="ui menu">
+            <a className="header item" href = "/">
             Online Sweet Mart App
              </a>
-              <a class="active item" href = "/admin">
+              <a className="item" href = "/admin">
                   Administration
                 </a>
                 <div className="ui simple dropdown item">
@@ -37,8 +37,8 @@ class NavBar extends React.Component{
                     <a className="item" href = "/order-bill/">Order Bill</a>
                 </div>
                 </div>
-                <div class="right menu">
-                <div class="item" onClick = {this.props.onClickLogOut.bind(this,this.props.userId)}>
+                <div className="right menu">
+                <div className="item" onClick = {this.props.onClickLogOut.bind(this,this.props.userId)}>
                     Logout
                     </div>
                     </div>
