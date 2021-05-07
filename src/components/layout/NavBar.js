@@ -33,10 +33,11 @@ class NavBar extends React.Component{
                 Order Management
                 <i className="dropdown icon"></i>
                 <div className="menu">
-                    <a className="item">Sweet Item</a>
+                    <a className="item" href = "/sweet-item/show-all">Sweet Item</a>
                     <a className="item" href = "/order-bill/">Order Bill</a>
                 </div>
                 </div>
+                
                 <div className="right menu">
                 <div className="item" onClick = {this.props.onClickLogOut.bind(this,this.props.userId)}>
                     Logout
