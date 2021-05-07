@@ -29,15 +29,15 @@ class DashBoard extends React.Component {
               </div>
               </div>
               <div className="extra content">
-              <a href = "/customer/add"><i className="plus icon"></i> Add </a>
-              <a href = "/customer/show-all"> <i className="list alternate outline icon"></i>  Show All </a>
+              <a><i className="plus icon"></i> Add </a>
+              <a> <i className="list alternate outline icon"></i>  Show All </a>
               </div>
               </div>
             </div>
             <div className = "column">
               <div className="ui card">
               <div className="content">
-              <a className="header">Cart</a>
+              <a className="header"  href = "/cart/show-all-carts" >Cart</a>
               <div className="description">
               For managing carts of customers
               </div>
